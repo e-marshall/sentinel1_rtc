@@ -1,0 +1,25 @@
+# In _config.yml
+title: Sentinel-1 RTC data workflows with xarray 
+author: emma marshall
+#logo: 
+execute:
+  execute_notebooks: force
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+  
+only_build_toc_files: true
+
+execute:
+    allow_errors: true
+    timeout: 500
+
+repository:
+  url: https://github.com/e-marshall/sentinel_rtc
+  branch: main
+  
+html:
+  use_issue_button: True
+  use_repository_button: True
+
