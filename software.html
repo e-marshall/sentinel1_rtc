@@ -51,7 +51,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working with ASF processed RTC imagery" href="asf_local_mf.html" />
+    <link rel="next" title="Working with ASF processed RTC imagery: open_mfdataset() approach" href="asf_local_mf.html" />
     <link rel="prev" title="Thanks for coming to this site! Please note it is under construction" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -115,7 +115,13 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="asf_local_mf.html">
-   Working with ASF processed RTC imagery
+   Working with ASF processed RTC imagery:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     open_mfdataset()
+    </span>
+   </code>
+   approach
   </a>
  </li>
  <li class="toctree-l1">
@@ -403,19 +409,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib        : 3.5.2
-geopandas         : 0.11.1
-numpy             : 1.21.6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>adlfs             : 2022.7.0
 xarray            : 2022.6.0
+pandas            : 1.4.3
+sarsen            : 0.9.2
 pystac_client     : 0.4.0
+matplotlib        : 3.5.2
+rich              : 12.5.1
 stackstac         : 0.4.2
 rioxarray         : 0.11.1
-planetary_computer: 0.4.7
-rich              : 12.5.1
 requests          : 2.28.1
-sarsen            : 0.9.2
-pandas            : 1.4.3
-adlfs             : 2022.7.0
+geopandas         : 0.11.1
+planetary_computer: 0.4.7
+numpy             : 1.21.6
 </pre></div>
 </div>
 </div>
@@ -427,7 +433,7 @@ adlfs             : 2022.7.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Last updated: 2022-09-16T16:28:45.559642-06:00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Last updated: 2022-09-16T17:45:33.257575-06:00
 
 Python implementation: CPython
 Python version       : 3.10.5
@@ -484,7 +490,7 @@ Architecture: 64bit
     <a class='right-next' id="next-link" href="asf_local_mf.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Working with ASF processed RTC imagery</p>
+        <p class="prev-next-title">Working with ASF processed RTC imagery: <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> approach</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

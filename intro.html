@@ -114,7 +114,13 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="asf_local_mf.html">
-   Working with ASF processed RTC imagery
+   Working with ASF processed RTC imagery:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     open_mfdataset()
+    </span>
+   </code>
+   approach
   </a>
  </li>
  <li class="toctree-l1">
@@ -382,10 +388,10 @@ title="Print to PDF"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
-<p>This tutorial contains a number of jupyter notebooks that focus on working with Sentinel-1 imagery that has had Radiometric Terrain Correction (RTC) applied to it. Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged.</p>
-<p>SAR data is collected in <strong>slant rang</strong>, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. For a much more detailed explanation of this check out this <span class="xref myst">page</span>. To use SAR data to examine Earth’s surface, we need to <strong>geocode</strong> it into x and y coordinates. As data is transformed from radar coordinates to geocoded coordinates, the spaces that are represented by individual pixels in the two coordinate systems do not always align. This is where we use a digital elevation model to remove some issues, but there are specific distortions related to radar viewing geometry and high-relief surface topography that need to be corrected as well.</p>
+<p>This tutorial contains a number of jupyter notebooks that focus on working with Sentinel-1 imagery that has already undergone Radiometric Terrain Correction (RTC). Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged.</p>
+<p>SAR data is collected in <strong>slant range</strong>, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates to geocoded coordinates, the spaces that are represented by individual pixels in the two coordinate systems do not always align and distortions can arise due to certain viewing angles and surface topography features. For a much more detailed explanation of this check out this <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">page</a>.</p>
 <p>There are multiple algorithms that perform radiometric terrain correction and it is important to understand the components of whichever dataset you use as well as their relative benefits and tradeoffs. This book will demonstrate accessing and working with two different (but similar) datasets of Sentinel-1 imagery that has undergone <strong>Radiometric Terrain Correction</strong>. Processing of SAR imagery can be very computationally intensive, so we focus on datasets that leverage cloud-computing resources, including both cloud-processed and cloud-hosted data as well as data that is processed in the cloud and then downloaded locally.</p>
-<p>The first three notebooks will focus on Sentinel-1 RTC imagery that is processed by Alaska Satellite Facility (ASF). The first notebook will demonstrate how to submit processing jobs programmatically to ASF’s On-Demand Processing Server. The following two notebooks will show two approaches to working with the ASF-processed data once it has been downloaded locally- these will cover steps related to reading in the data and organizing it as ready-to-use xarray data cubes with x,y and time dimensions. The fourth notebook focuses on a different dataset of Sentinel-1 RTC imagery that has been processed and is hosted by Microsoft Planetary Computer. This notebook will focus on working with <span class="xref myst">STAC</span> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosting repository and format it as easy-to-work-with xarray objects. The fifth notebook will briefly compare the two RTC imagery datasets and demonstrate a number of xarray functions that are useful for these kinds of tasks and the sixth notebook will carry out a preliminary time series analysis of RTC imagery to show real-world applications of these datasets.</p>
+<p>The first three notebooks will focus on Sentinel-1 RTC imagery that is processed by Alaska Satellite Facility (ASF). The first notebook will demonstrate how to submit processing jobs programmatically to ASF’s On-Demand Processing Server. The following two notebooks will show two approaches to working with the ASF-processed data once it has been downloaded locally- these will cover steps related to reading in the data and organizing it as ready-to-use xarray data cubes with x,y and time dimensions. The fourth notebook focuses on a different dataset of Sentinel-1 RTC imagery that has been processed and is hosted by Microsoft Planetary Computer. This notebook will focus on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosting repository and format it as easy-to-work-with xarray objects. The fifth notebook will briefly compare the two RTC imagery datasets and demonstrate a number of xarray functions that are useful for these kinds of tasks and the sixth notebook will carry out a preliminary time series analysis of RTC imagery to show real-world applications of these datasets.</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="learning-objectives">
 <h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h1>
@@ -403,7 +409,7 @@ title="Print to PDF"
 <li><p>ASF RTC data
 a. submitting HyP3 jobs <br>
 b. working with processed data: <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> <br>
-c. workign with processed data: <code class="docutils literal notranslate"><span class="pre">VRT</span></code> <br></p></li>
+c. wrorking with processed data: <code class="docutils literal notranslate"><span class="pre">VRT</span></code> <br></p></li>
 <li><p>Planetary Computer RTC data</p></li>
 <li><p>Dataset comparison</p></li>
 <li><p>time series analysis.</p></li>
