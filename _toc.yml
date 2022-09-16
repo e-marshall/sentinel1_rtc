@@ -7,6 +7,8 @@ chapters:
 - file: asf_local_mf.ipynb
 - file: asf_local_vrt.ipynb
 - file: PC_RTC.ipynb
+- file: dataset_comparison.ipynb
+- file: rtc_timeseries.ipynb
 - file: summary.md
 - file: Acknowledgments.md
 - file: References.md
