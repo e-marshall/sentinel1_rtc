@@ -5,10 +5,12 @@ root: intro
 chapters:
 - file: software.ipynb
 - file: asf_local_mf.ipynb
-- file: asf_local_vrt.ipynb
+- file: asf_local_vrt_troubleshoot.ipynb
+#- file: asf_local_vrt.ipynb
 - file: PC_RTC.ipynb
 - file: dataset_comparison.ipynb
 - file: rtc_timeseries.ipynb
+- file: questions.md
 - file: summary.md
 - file: Acknowledgments.md
 - file: References.md
