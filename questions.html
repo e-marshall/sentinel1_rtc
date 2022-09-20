@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Sentinel-1 RTC data workflows with xarray</title>
+    <title>Dataset questions &#8212; Sentinel-1 RTC data workflows with xarray</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,8 +49,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="References.html" />
+    <link rel="prev" title="RTC time series analysis" href="rtc_timeseries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,7 +107,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software.html">
    Software
@@ -142,8 +144,8 @@ const thebe_selector_output = ".output, .cell_output"
    RTC time series analysis
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="questions.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Dataset questions
   </a>
  </li>
@@ -230,22 +232,115 @@ title="Source repository"
 
 </a>
 
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/questions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pc-rtc-imagery">
+   PC RTC imagery
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asf-rtc-imagery">
+   ASF RTC imagery
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1></h1>
+                <h1>Dataset questions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pc-rtc-imagery">
+   PC RTC imagery
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asf-rtc-imagery">
+   ASF RTC imagery
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -253,13 +348,60 @@ title="Source repository"
                 
               <div>
                 
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="tex2jax_ignore mathjax_ignore section" id="dataset-questions">
+<h1>Dataset questions<a class="headerlink" href="#dataset-questions" title="Permalink to this headline">#</a></h1>
+<p>Place to keep track of questions I’ve encountered while working with the ASF and PC RTC datasets…</p>
+<ol class="simple">
+<li><p>ASF source granules are SLC images and PC are RTC, what effect does this have on the RTC product?</p></li>
+<li><p>PC dataset doesn’t appear to have a layover-shadow map?</p></li>
+<li><p>ASF data has a layover shadow map, and some pixels masked out of the backscatter images, but it looks like there are layover pixels that aren’t masked out in the data products. I thought you couldn’t extract reliable data from pixels w/ layover?</p></li>
+<li><p>product IDs / source files</p>
+<ul class="simple">
+<li><p>ASF provides a 4-digit product key in the filename, but it doesn’t look like this directly corresponds to the source granule?
+eg. product ID = 1424 for RTC image from source granule: S1A_IW_SLC__1SDV_20210502T121414_20210502T121441_037709_047321_900F</p></li>
+<li><p>can pull this from the README for that file - but is there a better way to do this?</p></li>
+<li><p>PC includes product id as a coordinate variable: eg. ‘S1A_IW_GRDH_1SDV_20210602T120544_20210602T120609_038161_0480FD_rtc’.</p></li>
+<li><p>is there a better way to compare ASF, PC RTC images from the same S1 acquisitions than pulling the granule ID from the ASF product readme?</p></li>
+<li><p>it doesn’t look like PC provides a mapping back to source granule?</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="pc-rtc-imagery">
+<h2>PC RTC imagery<a class="headerlink" href="#pc-rtc-imagery" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>radiometric terrain correction performed on GRD images that have already been multilooked, ground-projected</p></li>
+<li><p>methods description <a class="reference external" href="https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc">here</a></p></li>
+</ul>
+</div>
+<div class="section" id="asf-rtc-imagery">
+<h2>ASF RTC imagery<a class="headerlink" href="#asf-rtc-imagery" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>because using SLC source imagery, terrain correction performed in slant range, then corrected image is mapped to DEM space</p></li>
+<li><p>geocoding is final step</p></li>
+<li><p>methods description <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">here</a></p></li>
+</ul>
+</div>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -268,6 +410,20 @@ title="Source repository"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="rtc_timeseries.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">RTC time series analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="References.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
