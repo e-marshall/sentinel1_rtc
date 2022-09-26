@@ -336,13 +336,25 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
+  <a class="reference internal nav-link" href="#tutorial-outline">
+   Tutorial Outline
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-1-data-access-and-organization">
+     Chapter 1: Data access and organization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-2-dataset-comparison-and-preliminary-analysis">
+     Chapter 2: Dataset comparison and preliminary analysis
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial-structure">
-   Tutorial Structure
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
   </a>
  </li>
 </ul>
@@ -383,13 +395,25 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
+  <a class="reference internal nav-link" href="#tutorial-outline">
+   Tutorial Outline
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-1-data-access-and-organization">
+     Chapter 1: Data access and organization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chapter-2-dataset-comparison-and-preliminary-analysis">
+     Chapter 2: Dataset comparison and preliminary analysis
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial-structure">
-   Tutorial Structure
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
   </a>
  </li>
 </ul>
@@ -417,6 +441,17 @@ title="Print to PDF"
 <p>There are multiple algorithms that perform radiometric terrain correction and it is important to understand the components of whichever dataset you use as well as their relative benefits and tradeoffs. This book will demonstrate accessing and working with two different (but similar) datasets of Sentinel-1 imagery that has undergone <strong>Radiometric Terrain Correction</strong>. Processing of SAR imagery can be very computationally intensive, so we focus on datasets that leverage cloud-computing resources, including both cloud-processed and cloud-hosted data as well as data that is processed in the cloud and then downloaded locally.</p>
 <p>The first three notebooks will focus on Sentinel-1 RTC imagery that is processed by Alaska Satellite Facility (ASF). The first notebook will demonstrate how to submit processing jobs programmatically to ASF’s On-Demand Processing Server. The following two notebooks will show two approaches to working with the ASF-processed data once it has been downloaded locally- these will cover steps related to reading in the data and organizing it as ready-to-use xarray data cubes with x,y and time dimensions. The fourth notebook focuses on a different dataset of Sentinel-1 RTC imagery that has been processed and is hosted by Microsoft Planetary Computer. This notebook will focus on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosting repository and format it as easy-to-work-with xarray objects. The fifth notebook will briefly compare the two RTC imagery datasets and demonstrate a number of xarray functions that are useful for these kinds of tasks and the sixth notebook will carry out a preliminary time series analysis of RTC imagery to show real-world applications of these datasets.</p>
 </div>
+<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-outline">
+<h1>Tutorial Outline<a class="headerlink" href="#tutorial-outline" title="Permalink to this headline">#</a></h1>
+<div class="section" id="chapter-1-data-access-and-organization">
+<h2>Chapter 1: Data access and organization<a class="headerlink" href="#chapter-1-data-access-and-organization" title="Permalink to this headline">#</a></h2>
+<p>Chapter 1 focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks. The first two demonstrate two approaches to accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The third contains an exapmle of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer.</p>
+</div>
+<div class="section" id="chapter-2-dataset-comparison-and-preliminary-analysis">
+<h2>Chapter 2: Dataset comparison and preliminary analysis<a class="headerlink" href="#chapter-2-dataset-comparison-and-preliminary-analysis" title="Permalink to this headline">#</a></h2>
+<p>Chapter 2 makes use of the datasets prepared in chapter 1. The first notebook demonstrates comparing the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya.</p>
+</div>
+</div>
 <div class="tex2jax_ignore mathjax_ignore section" id="learning-objectives">
 <h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h1>
 <p>This tutorial demonstrates accessing and working with different Sentinel-1 SAR RTC datasets. The learning goals include <strong>domain specific steps related to working with synthetic aperture radar data</strong> as well as specific <em>python and xarray techniques</em>.</p>
@@ -426,18 +461,6 @@ title="Print to PDF"
 <li><p><strong>compare two similar datasets and evaluate differences, suitability for certain use cases</strong> <em>read in data as xarray objects, organize and perform comparison</em></p></li>
 <li><p><strong>time series analysis of SAR RTC imagery</strong> <em>Use xarray tools such as grouping, resampling and reductions as well as rioxarray functionality to organize and analyze SAR backscatter time series data</em></p></li>
 </ul>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-structure">
-<h1>Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permalink to this headline">#</a></h1>
-<ol class="simple">
-<li><p>ASF RTC data
-a. submitting HyP3 jobs <br>
-b. working with processed data: <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> <br>
-c. wrorking with processed data: <code class="docutils literal notranslate"><span class="pre">VRT</span></code> <br></p></li>
-<li><p>Planetary Computer RTC data</p></li>
-<li><p>Dataset comparison</p></li>
-<li><p>time series analysis.</p></li>
-</ol>
 <div class="toctree-wrapper compound">
 </div>
 </div>

@@ -16,6 +16,16 @@ There are multiple algorithms that perform radiometric terrain correction and it
 
 The first three notebooks will focus on Sentinel-1 RTC imagery that is processed by Alaska Satellite Facility (ASF). The first notebook will demonstrate how to submit processing jobs programmatically to ASF's On-Demand Processing Server. The following two notebooks will show two approaches to working with the ASF-processed data once it has been downloaded locally- these will cover steps related to reading in the data and organizing it as ready-to-use xarray data cubes with x,y and time dimensions. The fourth notebook focuses on a different dataset of Sentinel-1 RTC imagery that has been processed and is hosted by Microsoft Planetary Computer. This notebook will focus on working with [STAC](https://stacspec.org/en) data and using python packages such as `pystac_client` and `stackstac` to access data from a cloud-hosting repository and format it as easy-to-work-with xarray objects. The fifth notebook will briefly compare the two RTC imagery datasets and demonstrate a number of xarray functions that are useful for these kinds of tasks and the sixth notebook will carry out a preliminary time series analysis of RTC imagery to show real-world applications of these datasets. 
 
+# Tutorial Outline
+
+## Chapter 1: Data access and organization
+
+Chapter 1 focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks. The first two demonstrate two approaches to accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The third contains an exapmle of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. 
+
+## Chapter 2: Dataset comparison and preliminary analysis
+
+Chapter 2 makes use of the datasets prepared in chapter 1. The first notebook demonstrates comparing the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya. 
+
 # Learning objectives
 
 This tutorial demonstrates accessing and working with different Sentinel-1 SAR RTC datasets. The learning goals include **domain specific steps related to working with synthetic aperture radar data** as well as specific *python and xarray techniques*. 
@@ -24,14 +34,3 @@ This tutorial demonstrates accessing and working with different Sentinel-1 SAR R
 - **programmatically submit RTC processing jobs to be executed by Alaska Satellite Facility On-Demand Processing server using the HyP3 SDK package** *Organize, query and access processed data on your local machine*
 - **compare two similar datasets and evaluate differences, suitability for certain use cases** *read in data as xarray objects, organize and perform comparison*
 - **time series analysis of SAR RTC imagery** *Use xarray tools such as grouping, resampling and reductions as well as rioxarray functionality to organize and analyze SAR backscatter time series data*
-
-# Tutorial Structure
-
-1. ASF RTC data
-    a. submitting HyP3 jobs <br>
-    b. working with processed data: `open_mfdataset()` <br>
-    c. wrorking with processed data: `VRT` <br>
-2. Planetary Computer RTC data
-3. Dataset comparison
-4. time series analysis. 
-
