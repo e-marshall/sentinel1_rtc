@@ -135,7 +135,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dataset_comparison.html">
+  <a class="reference internal" href="dataset_comparison_new.html">
    RTC dataset comparison
   </a>
  </li>
@@ -299,14 +299,26 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pc-rtc-imagery">
-   PC RTC imagery
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Dataset questions
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pc-rtc-imagery">
+     PC RTC imagery
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#asf-rtc-imagery">
+     ASF RTC imagery
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#asf-rtc-imagery">
-   ASF RTC imagery
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-questions">
+   Programming questions
   </a>
  </li>
 </ul>
@@ -328,14 +340,26 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pc-rtc-imagery">
-   PC RTC imagery
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Dataset questions
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pc-rtc-imagery">
+     PC RTC imagery
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#asf-rtc-imagery">
+     ASF RTC imagery
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#asf-rtc-imagery">
-   ASF RTC imagery
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-questions">
+   Programming questions
   </a>
  </li>
 </ul>
@@ -380,7 +404,21 @@ eg. product ID = 1424 for RTC image from source granule: S1A_IW_SLC__1SDV_202105
 <li><p>geocoding is final step</p></li>
 <li><p>methods description <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">here</a></p></li>
 </ul>
+<p>Two different groups within the ASF dataset?</p>
 </div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="programming-questions">
+<h1>Programming questions<a class="headerlink" href="#programming-questions" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p>feel like i’m relying on list comprehension a lot for creating, organizing objects - is there a more direct way to do these tasks?</p></li>
+<li><p>selecting off non-dimensional coordinates - keep messing up</p></li>
+<li><p>dimensions of the ASF, PC objects are a bit of a mess, need to clean up</p></li>
+<li><p>passing a dimension to <code class="docutils literal notranslate"><span class="pre">reduce()</span></code></p></li>
+</ol>
+<p>ufunc
+<a class="reference external" href="https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html">https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html</a>
+<a class="reference external" href="https://stackoverflow.com/questions/57419541/how-to-use-apply-ufunc-with-numpy-digitize-for-each-image-along-time-dimension-o/57513184#57513184">https://stackoverflow.com/questions/57419541/how-to-use-apply-ufunc-with-numpy-digitize-for-each-image-along-time-dimension-o/57513184#57513184</a>
+<a class="reference external" href="https://github.com/pydata/xarray/issues/2808">https://github.com/pydata/xarray/issues/2808</a></p>
 </div>
 
     <script type="text/x-thebe-config">

@@ -22,3 +22,16 @@ Place to keep track of questions I've encountered while working with the ASF and
 - because using SLC source imagery, terrain correction performed in slant range, then corrected image is mapped to DEM space
 - geocoding is final step
 - methods description [here](https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/)
+
+Two different groups within the ASF dataset? 
+
+# Programming questions
+1. feel like i'm relying on list comprehension a lot for creating, organizing objects - is there a more direct way to do these tasks? 
+2. selecting off non-dimensional coordinates - keep messing up
+3. dimensions of the ASF, PC objects are a bit of a mess, need to clean up
+4. passing a dimension to `reduce()`
+
+ufunc
+https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html
+https://stackoverflow.com/questions/57419541/how-to-use-apply-ufunc-with-numpy-digitize-for-each-image-along-time-dimension-o/57513184#57513184
+https://github.com/pydata/xarray/issues/2808
