@@ -108,41 +108,60 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="software.html">
-   Software
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch1_root.html">
+   Data cleaning and organization
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="asf_local_mf.html">
+     Xarray
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       open_mfdataset()
+      </span>
+     </code>
+     approach
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="asf_local_vrt_troubleshoot.html">
+     GDAL VRT approach
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="PC_RTC.html">
+     Microsoft Planetary Computer Sentinel-1 RTC Imagery
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="asf_local_mf.html">
-   Working with ASF processed RTC imagery:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     open_mfdataset()
-    </span>
-   </code>
-   approach
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2_root.html">
+   Dataset comparison and preliminary analysis
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="asf_local_vrt_troubleshoot.html">
-   Working with ASF processed RTC imagery: VRT approach
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PC_RTC.html">
-   Microsoft Planetary Computer Sentinel-1 RTC Imagery
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dataset_comparison_new.html">
-   RTC dataset comparison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="rtc_timeseries.html">
-   RTC time series analysis
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dataset_comparison_new.html">
+     RTC dataset comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rtc_timeseries.html">
+     RTC time series analysis
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -414,6 +433,7 @@ eg. product ID = 1424 for RTC image from source granule: S1A_IW_SLC__1SDV_202105
 <li><p>selecting off non-dimensional coordinates - keep messing up</p></li>
 <li><p>dimensions of the ASF, PC objects are a bit of a mess, need to clean up</p></li>
 <li><p>passing a dimension to <code class="docutils literal notranslate"><span class="pre">reduce()</span></code></p></li>
+<li><p>xarray open_mfdataset() – can you specify input args in addition to the xr object? ie want to perform the same preprocessing to different variables stored in different tiff files (VV, VH, layover-shadow map).</p></li>
 </ol>
 <p>ufunc
 <a class="reference external" href="https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html">https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html</a>

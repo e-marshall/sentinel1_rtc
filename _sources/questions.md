@@ -30,6 +30,7 @@ Two different groups within the ASF dataset?
 2. selecting off non-dimensional coordinates - keep messing up
 3. dimensions of the ASF, PC objects are a bit of a mess, need to clean up
 4. passing a dimension to `reduce()`
+5. xarray open_mfdataset() -- can you specify input args in addition to the xr object? ie want to perform the same preprocessing to different variables stored in different tiff files (VV, VH, layover-shadow map). 
 
 ufunc
 https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html
