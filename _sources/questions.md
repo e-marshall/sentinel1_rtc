@@ -1,3 +1,15 @@
+# Tutorial structure questions 
+a. intro
+1. need more discussino of RTC processing?
+b. asf data, xr.open_mfdataset()
+1. helpful to include image of directory structure for local files?
+2. worth describing the area of interest/why it was chosen more in clipping by vector section? -- or maybe elsewhere in tutorial, but worht including more introduction on area?
+c. PC data access
+1. worth mentioning differences btw VV, VH returns/ linking to SAR handbook explanation of polarization? not sure right balance between 'science-y' and demonstrating workflow/code
+d. dataset comparison
+e. time series example
+1. maybe take this out? feel like its getting long..
+
 # Dataset questions
 
 Place to keep track of questions I've encountered while working with the ASF and PC RTC datasets...
