@@ -1,7 +1,8 @@
-# Thanks for coming to this site! Please note it is *under construction*
-Content and code may not be in complete, working form at this time. Please reach out to emma.marshall@utah.edu with any comments/ questions about this work.
-
 # Introduction 
+
+```{warning}
+Thanks for coming to this site! Please note it is *under construction*. Content and code may not be in complete, working form at this time. Please reach out to emma.marshall@utah.edu with any comments/ questions about this work.
+```
 
 This tutorial will demonstrate various ways to access, process and work with Sentinel-1 Radiometrically Terrain Corrected imagery using the python package and open source project `xarray` as well as a number of other open source software packages. These examples are designed to show examples of data access, manipulation, processing and analysis workflows with complex datasets as well as to demonstrate common functionality of working with multi-dimensional gridded data using `xarray`. 
 
