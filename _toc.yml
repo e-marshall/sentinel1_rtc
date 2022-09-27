@@ -11,7 +11,7 @@ chapters:
   
 - file: ch2_root.md
   sections:
-  - file: dataset_comparison_new.ipynb
+  - file: dataset_comparison.ipynb
   - file: rtc_timeseries.ipynb
 - file: questions.md
 - file: todo.md

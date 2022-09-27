@@ -39,10 +39,9 @@ Two different groups within the ASF dataset?
 
 # Programming questions
 1. feel like i'm relying on list comprehension a lot for creating, organizing objects - is there a more direct way to do these tasks? 
-2. selecting off non-dimensional coordinates - keep messing up
-3. dimensions of the ASF, PC objects are a bit of a mess, need to clean up
-4. passing a dimension to `reduce()`
 5. xarray open_mfdataset() -- can you specify input args in addition to the xr object? ie want to perform the same preprocessing to different variables stored in different tiff files (VV, VH, layover-shadow map). 
+6. docs on assigning non-dimensional xr coords? 
+
 
 ufunc
 https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html
