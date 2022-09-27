@@ -1,0 +1,24 @@
+name: s1rtc
+channels:
+  - conda-forge
+dependencies:
+  - adlfs
+  - datashader
+  - geopandas
+  - folium
+  - hvplot
+  - hyp3_sdk
+  - ipykernel
+  - jupyter-book
+  - matplotlib-base
+  - pip
+  - planetary-computer
+  - pystac
+  - pystac-client
+  - python=3.10
+  - rich
+  - rioxarray
+  - sarsen
+  - shapely
+  - stackstac
+  - watermark
