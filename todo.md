@@ -11,7 +11,6 @@ mf_dataset notebook
 vrt
 - list xarray methods used in learning goals section
 - move read in vector data cell
-- might need to mess w/ some dimensions / coords in the vrt_full object at the end of the notebook
 - getting error trying to use `rio.write_nodata()` to convert nodata value from 0. to nan
         "AttributeError: 'RasterDataset' object has no attribute 'write_nodata'" <-- version issue?
 
