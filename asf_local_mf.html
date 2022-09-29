@@ -510,6 +510,9 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">dask</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">intake.source.utils</span> <span class="kn">import</span> <span class="n">reverse_format</span>
 </pre></div>
 </div>
 </div>
@@ -547,7 +550,7 @@ title="Print to PDF"
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-0052b4ab-3def-11ed-99d8-d88083ee7b7d</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-5cf61cb5-4022-11ed-b458-d88083ee7b7d</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -560,7 +563,7 @@ title="Print to PDF"
 
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="http://10.56.29.56:8787/status" target="_blank">http://10.56.29.56:8787/status</a>
+                    <strong>Dashboard: </strong> <a href="http://192.168.86.35:8787/status" target="_blank">http://192.168.86.35:8787/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -576,11 +579,11 @@ title="Print to PDF"
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">2aa475c8</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">7d2f9bcb</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://10.56.29.56:8787/status" target="_blank">http://10.56.29.56:8787/status</a>
+                    <strong>Dashboard:</strong> <a href="http://192.168.86.35:8787/status" target="_blank">http://192.168.86.35:8787/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 1
@@ -613,11 +616,11 @@ title="Print to PDF"
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-3129fd68-64cc-4820-927d-f1c15f9a1e6e</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-b106751e-6ac9-44cd-a389-16ecb8709114</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> inproc://10.56.29.56/72152/1
+                        <strong>Comm:</strong> inproc://192.168.86.35/210008/1
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 1
@@ -625,7 +628,7 @@ title="Print to PDF"
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://10.56.29.56:8787/status" target="_blank">http://10.56.29.56:8787/status</a>
+                        <strong>Dashboard:</strong> <a href="http://192.168.86.35:8787/status" target="_blank">http://192.168.86.35:8787/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 16
@@ -659,7 +662,7 @@ title="Print to PDF"
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> inproc://10.56.29.56/72152/4
+                            <strong>Comm: </strong> inproc://192.168.86.35/210008/4
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 16
@@ -667,7 +670,7 @@ title="Print to PDF"
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://10.56.29.56:40191/status" target="_blank">http://10.56.29.56:40191/status</a>
+                            <strong>Dashboard: </strong> <a href="http://192.168.86.35:36477/status" target="_blank">http://192.168.86.35:36477/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 14.96 GiB
@@ -681,7 +684,7 @@ title="Print to PDF"
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-vchkzfwh
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-axylrkq6
                         </td>
                     </tr>
 
@@ -749,6 +752,22 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/unzipped_keep/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*VV.tif&#39;</span><span class="p">))</span>
+<span class="n">fpaths_vh</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*VH.tif&#39;</span><span class="p">))</span>
+<span class="n">fpaths_ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*ls_map.tif&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="read-in-files-using-xr-open-mfdataset">
@@ -758,6 +777,29 @@ title="Print to PDF"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>can the preprocess fn take input parameters in addition to the ds? if so consider combining these into one preprocess function with an input parameter for variable (VV, VH, LS)?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv_sub</span> <span class="o">=</span> <span class="n">fpaths_vv</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">fpaths_vv_sub</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/unzipped_keep/S1A_IW_20210821T000314_DVP_RTC30_G_gpuned_748F_(1)/S1A_IW_20210821T000314_DVP_RTC30_G_gpuned_748F_VV.tif&#39;),
+ PosixPath(&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/unzipped_keep/S1A_IW_20220116T120547_DVP_RTC30_G_gpuned_0D1E_(1)/S1A_IW_20220116T120547_DVP_RTC30_G_gpuned_0D1E_VV.tif&#39;),
+ PosixPath(&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/unzipped_keep/S1A_IW_20210708T120545_DVP_RTC30_G_gpuned_3E89_(1)/S1A_IW_20210708T120545_DVP_RTC30_G_gpuned_3E89_VV.tif&#39;),
+ PosixPath(&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/unzipped_keep/S1A_IW_20220422T120547_DVP_RTC30_G_gpuned_61B6_(1)/S1A_IW_20220422T120547_DVP_RTC30_G_gpuned_61B6_VV.tif&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -774,7 +816,7 @@ title="Print to PDF"
     
     <span class="c1">#we want to extract important metadata from the tif filenames</span>
     <span class="c1">#use the &#39;source&#39; key from the encoding dictionary to attach the filename</span>
-    <span class="n">vv_fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">da_orig</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])</span><span class="c1">#[113:]</span>
+    <span class="n">vv_fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">da_orig</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])</span><span class="c1">#[113:]</span>
     
     <span class="c1">#extract relevant metadata</span>
     <span class="n">sensor</span> <span class="o">=</span> <span class="n">vv_fn</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
@@ -844,12 +886,15 @@ title="Print to PDF"
     <span class="sd">&#39;&#39;&#39;function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.</span>
 <span class="sd">    goal would be to apply this a list of directories for different RTC products, return cube along time dimension - I think? </span>
 <span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI? &#39;&#39;&#39;</span>
-
+    
+    <span class="c1">#fname_ls = []</span>
     
     <span class="n">da</span> <span class="o">=</span> <span class="n">da_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;band_data&#39;</span><span class="p">:</span><span class="s1">&#39;vh&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
    
-    <span class="n">vv_fn</span> <span class="o">=</span> <span class="n">da_orig</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">][</span><span class="mi">113</span><span class="p">:]</span>
+    <span class="c1">#vv_fn = da_orig.encoding[&#39;source&#39;][113:]</span>
+    <span class="n">vv_fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">da_orig</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fname: &#39;</span><span class="p">,</span> <span class="n">vv_fn</span><span class="p">)</span>
     
     <span class="n">sensor</span> <span class="o">=</span> <span class="n">vv_fn</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
     <span class="n">beam_mode</span> <span class="o">=</span> <span class="n">vv_fn</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
@@ -905,7 +950,7 @@ title="Print to PDF"
     <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">)</span>
     <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
     
-    <span class="k">return</span> <span class="n">da</span>
+    <span class="k">return</span> <span class="n">da</span> <span class="c1">#, fname_ls</span>
 </pre></div>
 </div>
 </div>
@@ -922,6 +967,7 @@ title="Print to PDF"
     <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;band_data&#39;</span><span class="p">:</span><span class="s1">&#39;layover_shadow_mask&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     
     <span class="n">vv_fn</span> <span class="o">=</span> <span class="n">da_orig</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">][</span><span class="mi">113</span><span class="p">:]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">vv_fn</span><span class="p">)</span>
     
     <span class="n">sensor</span> <span class="o">=</span> <span class="n">vv_fn</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
     <span class="n">beam_mode</span> <span class="o">=</span> <span class="n">vv_fn</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
@@ -1003,6 +1049,113 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vh</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fname: fname:  S1A_IW_20210610T000310_DVP_RTC30_G_gpuned_AC38_VH.tif
+fname:  S1A_IW_20211017T121357_DVP_RTC30_G_gpuned_F9A9_VH.tif
+ S1A_IW_20210821T000314_DVP_RTC30_G_gpuned_748F_VH.tif
+fname:  S1A_IW_20220317T120545_DVP_RTC30_G_gpuned_C890_VH.tif
+fname:  S1A_IW_20211223T120548_DVP_RTC30_G_gpuned_5413_VH.tif
+fname:  S1A_IW_20211005T121357_DVP_RTC30_G_gpuned_BEAB_VH.tif
+fname:  S1A_IW_20220221T120546_DVP_RTC30_G_gpuned_5D96_VH.tif
+fname:  S1A_IW_20220403T121418_DVP_RTC30_G_gpuned_57F2_VH.tif
+fname:  S1A_IW_20210622T000310_DVP_RTC30_G_gpuned_D48F_VH.tif
+fname:  S1A_IW_20211008T000315_DVP_RTC30_G_gpuned_68EA_VH.tif
+fname: fname:  S1A_IW_20210701T121417_DVP_RTC30_G_gpuned_65E0_VH.tif
+ S1A_IW_20220415T121353_DVP_RTC30_G_gpuned_6270_VH.tif
+fname:  S1A_IW_20220109T121354_DVP_RTC30_G_gpuned_485C_VH.tif
+fname:  S1A_IW_20220305T120545_DVP_RTC30_G_gpuned_056C_VH.tif
+fname:  S1A_IW_20210911T121356_DVP_RTC30_G_gpuned_3A2A_VH.tif
+fname: fname:  S1A_IW_20211125T000315_DVP_RTC30_G_gpuned_199D_VH.tif
+fname:  S1A_IW_20210813T120548_DVP_RTC30_G_gpuned_F5AA_VH.tiffname:  S1A_IW_20220521T121356_DVP_RTC30_G_gpuned_CA1B_VH.tiffname:  S1A_IW_20210930T120550_DVP_RTC30_G_gpuned_066E_VH.tif
+fname:  S1A_IW_20220418T000312_DVP_RTC30_G_gpuned_D846_VH.tif
+fname:  S1A_IW_20220509T121355_DVP_RTC30_G_gpuned_33F5_VH.tif
+
+ S1A_IW_20210529T000309_DVP_RTC30_G_gpuned_9A2F_VH.tif
+
+fname: fname:  S1A_IW_20210926T000315_DVP_RTC30_G_gpuned_2CBE_VH.tif
+ S1A_IW_20210607T121351_DVP_RTC30_G_gpuned_1139_VH.tif
+fname: fname:  S1A_IW_20210514T121414_DVP_RTC30_G_gpuned_FA4F_VH.tif
+ S1A_IW_20220121T121354_DVP_RTC30_G_gpuned_0579_VH.tif
+fname: fname:  S1A_IW_20220124T000312_DVP_RTC30_G_gpuned_F4B3_VH.tif
+ S1A_IW_20210809T000313_DVP_RTC30_G_gpuned_ED8C_VH.tif
+fname:  S1A_IW_20210526T121350_DVP_RTC30_G_gpuned_E74B_VH.tif
+fname:  S1A_IW_20210728T000312_DVP_RTC30_G_gpuned_E61E_VH.tif
+fname:  S1A_IW_20210517T000308_DVP_RTC30_G_gpuned_D35A_VH.tif
+fname:  S1A_IW_20220406T000312_DVP_RTC30_G_gpuned_BD36_VH.tif
+fname:  S1A_IW_20210602T120543_DVP_RTC30_G_gpuned_DCE1_VH.tif
+fname:  S1A_IW_20211105T120549_DVP_RTC30_G_gpuned_81EB_VH.tif
+fname: fname:  S1A_IW_20211117T120549_DVP_RTC30_G_gpuned_6153_VH.tif
+ S1A_IW_20220205T000312_DVP_RTC30_G_gpuned_B7B0_VH.tif
+fname: fname:  S1A_IW_20210626T120545_DVP_RTC30_G_gpuned_772E_VH.tif
+ S1A_IW_20220430T000313_DVP_RTC30_G_gpuned_5569_VH.tif
+fname:  S1A_IW_20220112T000313_DVP_RTC30_G_gpuned_5BAD_VH.tif
+fname: fname:  S1A_IW_20210818T121355_DVP_RTC30_G_gpuned_0CAD_VH.tiffname:  S1A_IW_20220329T120546_DVP_RTC30_G_gpuned_FD00_VH.tif
+
+ S1A_IW_20220410T120546_DVP_RTC30_G_gpuned_F306_VH.tif
+fname: fname:  S1A_IW_20211012T120550_DVP_RTC30_G_gpuned_250E_VH.tiffname:  
+ fname:  S1A_IW_20220202T121353_DVP_RTC30_G_gpuned_F0A6_VH.tif
+S1A_IW_20210713T121418_DVP_RTC30_G_gpuned_E113_VH.tif
+S1A_IW_20210505T000307_DVP_RTC30_G_gpuned_54B1_VH.tiffname: 
+ S1A_IW_20210906T120549_DVP_RTC30_G_gpuned_F573_VH.tif
+fname:  S1A_IW_20220521T121420_DVP_RTC30_G_gpuned_E5B6_VH.tif
+fname: fname:  S1A_IW_20211029T121357_DVP_RTC30_G_gpuned_01F4_VH.tif
+ S1A_IW_20211113T000315_DVP_RTC30_G_gpuned_B942_VH.tif
+fname:  S1A_IW_20210902T000314_DVP_RTC30_G_gpuned_9331_VH.tif
+fname: fname:  S1A_IW_20210502T121414_DVP_RTC30_G_gpuned_1424_VH.tiffname:  S1A_IW_20220504T120547_DVP_RTC30_G_gpuned_5FF4_VH.tif
+ 
+S1A_IW_20211207T000314_DVP_RTC30_G_gpuned_BDC1_VH.tif
+fname:  S1A_IW_20220104T120547_DVP_RTC30_G_gpuned_407D_VH.tif
+fname:  S1A_IW_20210704T000311_DVP_RTC30_G_gpuned_106F_VH.tif
+fname:  S1A_IW_20210923T121357_DVP_RTC30_G_gpuned_83D7_VH.tif
+fname:  S1A_IW_20220217T000311_DVP_RTC30_G_gpuned_52BB_VH.tif
+fname:  S1A_IW_20210725T121354_DVP_RTC30_G_gpuned_B661_VH.tiffname:  S1A_IW_20210806T121354_DVP_RTC30_G_gpuned_528F_VH.tiffname:  S1A_IW_20220209T120546_DVP_RTC30_G_gpuned_22BD_VH.tif
+fname: fname:  S1A_IW_20220226T121353_DVP_RTC30_G_gpuned_5844_VH.tif
+fname:  S1A_IW_20210914T000315_DVP_RTC30_G_gpuned_5F4E_VH.tif
+
+ S1A_IW_20210716T000312_DVP_RTC30_G_gpuned_AA59_VH.tif
+
+fname:  S1A_IW_20220521T121420_DVP_RTC30_G_gpuned_1380_VH.tif
+fname:  S1A_IW_20210825T120548_DVP_RTC30_G_gpuned_F587_VH.tiffname:  S1A_IW_20210801T120547_DVP_RTC30_G_gpuned_378D_VH.tif
+
+fname: fname:  S1A_IW_20211024T120550_DVP_RTC30_G_gpuned_B409_VH.tif
+ S1A_IW_20210521T120543_DVP_RTC30_G_gpuned_71C9_VH.tif
+fname:  S1A_IW_20220427T121354_DVP_RTC30_G_gpuned_0535_VH.tif
+fname:  S1A_IW_20211211T120548_DVP_RTC30_G_gpuned_832B_VH.tif
+fname:  S1A_IW_20210830T121356_DVP_RTC30_G_gpuned_F7ED_VH.tif
+fname: fname: fname:  S1A_IW_20210514T121349_DVP_RTC30_G_gpuned_971C_VH.tif
+fname:  S1A_IW_20220116T120547_DVP_RTC30_G_gpuned_0D1E_VH.tif
+fname:  S1A_IW_20211231T000313_DVP_RTC30_G_gpuned_D082_VH.tif
+ S1A_IW_20220313T000311_DVP_RTC30_G_gpuned_D4E6_VH.tif
+ S1A_IW_20210614T120544_DVP_RTC30_G_gpuned_C14C_VH.tif
+fname:  S1A_IW_20211122T121356_DVP_RTC30_G_gpuned_AA68_VH.tif
+fname:  S1A_IW_20211216T121355_DVP_RTC30_G_gpuned_6683_VH.tif
+fname:  S1A_IW_20211219T000314_DVP_RTC30_G_gpuned_6581_VH.tif
+fname:  S1A_IW_20210509T120542_DVP_RTC30_G_gpuned_8A4F_VH.tif
+fname:  S1A_IW_20210701T121352_DVP_RTC30_G_gpuned_0031_VH.tiffname: fname:  S1A_IW_20220403T121353_DVP_RTC30_G_gpuned_3C39_VH.tif S1A_IW_20210708T120545_DVP_RTC30_G_gpuned_3E89_VH.tif
+
+
+fname: fname:  S1A_IW_20220301T000311_DVP_RTC30_G_gpuned_6943_VH.tif
+ S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_VH.tif
+fname: fname:  S1A_IW_20210720T120546_DVP_RTC30_G_gpuned_9849_VH.tif
+ fname:  S1A_IW_20220422T120547_DVP_RTC30_G_gpuned_61B6_VH.tif
+S1A_IW_20210713T121418_DVP_RTC30_G_gpuned_24B8_VH.tif
+fname:  S1A_IW_20211101T000315_DVP_RTC30_G_gpuned_8CD8_VH.tif
+fname:  S1A_IW_20220128T120546_DVP_RTC30_G_gpuned_57E1_VH.tif
+fname: fname:  S1A_IW_20220325T000312_DVP_RTC30_G_gpuned_01B2_VH.tif
+fname:  S1A_IW_20211228T121355_DVP_RTC30_G_gpuned_ABA0_VH.tif
+ S1A_IW_20210918T120549_DVP_RTC30_G_gpuned_8F7B_VH.tif
+fname: fname:  S1A_IW_20220516T120548_DVP_RTC30_G_gpuned_7418_VH.tif
+fname:  S1A_IW_20210713T121353_DVP_RTC30_G_gpuned_1DFD_VH.tif
+ S1A_IW_20211110T121357_DVP_RTC30_G_gpuned_F1DE_VH.tif
+fname: fname:  S1A_IW_20220322T121353_DVP_RTC30_G_gpuned_3770_VH.tif
+ S1A_IW_20211204T121356_DVP_RTC30_G_gpuned_D049_VH.tif
+fname: fname:  S1A_IW_20210619T121352_DVP_RTC30_G_gpuned_6340_VH.tif
+ S1A_IW_20211020T000316_DVP_RTC30_G_gpuned_BB26_VH.tif
+fname:  S1A_IW_20211129T120549_DVP_RTC30_G_gpuned_CFFC_VH.tif
+fname:  S1A_IW_20220310T121353_DVP_RTC30_G_gpuned_6E6F_VH.tif
 </pre></div>
 </div>
 </div>
@@ -1389,7 +1542,7 @@ Attributes: (12/16)
     area:                              e
     product_id:                        748F
     utm_zone:                          UTM zone 45N
-    epsg_code:                         EPSG:32645</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-1b189d7f-d3f2-4bfb-9c43-72ca37cec939' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-1b189d7f-d3f2-4bfb-9c43-72ca37cec939' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 17452</li><li><span class='xr-has-index'>y</span>: 13379</li><li><span class='xr-has-index'>acq_date</span>: 103</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-3f532354-c9e1-43c8-94d2-e8148e9f6925' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3f532354-c9e1-43c8-94d2-e8148e9f6925' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.833e+05 3.833e+05 ... 9.068e+05</div><input id='attrs-b60c1fbd-6562-4722-9416-97ad0ecfa477' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b60c1fbd-6562-4722-9416-97ad0ecfa477' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2f7e5a18-2726-4ad1-bc88-ffc9552c5b66' class='xr-var-data-in' type='checkbox'><label for='data-2f7e5a18-2726-4ad1-bc88-ffc9552c5b66' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([383265., 383295., 383325., ..., 906735., 906765., 906795.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.907e+06 2.907e+06 ... 3.309e+06</div><input id='attrs-666fe423-f9c7-484a-b5b4-03f3fb57976d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-666fe423-f9c7-484a-b5b4-03f3fb57976d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6a458b49-9278-4aa8-aa71-cce6ff7c4a9c' class='xr-var-data-in' type='checkbox'><label for='data-6a458b49-9278-4aa8-aa71-cce6ff7c4a9c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([2907375., 2907405., 2907435., ..., 3308655., 3308685., 3308715.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>acq_date</span></div><div class='xr-var-dims'>(acq_date)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2021-08-21 ... 2022-04-06</div><input id='attrs-76595f66-2b29-49f2-bd6b-ea8c33cbbf1d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-76595f66-2b29-49f2-bd6b-ea8c33cbbf1d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-38d5ef63-8c42-405b-8336-84b2feb2361e' class='xr-var-data-in' type='checkbox'><label for='data-38d5ef63-8c42-405b-8336-84b2feb2361e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2021-08-21T00:00:00.000000000&#x27;, &#x27;2022-01-16T00:00:00.000000000&#x27;,
+    epsg_code:                         EPSG:32645</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-8fbbe09d-99c2-4a33-b123-49f25c9ff944' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-8fbbe09d-99c2-4a33-b123-49f25c9ff944' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 17452</li><li><span class='xr-has-index'>y</span>: 13379</li><li><span class='xr-has-index'>acq_date</span>: 103</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7e72cf3b-eef6-4605-8503-aa4756aef093' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7e72cf3b-eef6-4605-8503-aa4756aef093' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.833e+05 3.833e+05 ... 9.068e+05</div><input id='attrs-47846228-bc2d-47d6-9a22-a364ad885fc7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-47846228-bc2d-47d6-9a22-a364ad885fc7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-738f3a7c-09a7-4179-b3ab-0a39540290b9' class='xr-var-data-in' type='checkbox'><label for='data-738f3a7c-09a7-4179-b3ab-0a39540290b9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([383265., 383295., 383325., ..., 906735., 906765., 906795.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.907e+06 2.907e+06 ... 3.309e+06</div><input id='attrs-c3774d76-466d-4ccd-a9a3-2cdcf3f85df8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c3774d76-466d-4ccd-a9a3-2cdcf3f85df8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8bac230e-906e-4a1d-b3a2-36bca62d99b3' class='xr-var-data-in' type='checkbox'><label for='data-8bac230e-906e-4a1d-b3a2-36bca62d99b3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([2907375., 2907405., 2907435., ..., 3308655., 3308685., 3308715.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>acq_date</span></div><div class='xr-var-dims'>(acq_date)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2021-08-21 ... 2022-04-06</div><input id='attrs-069e4368-004d-45a9-901f-5ec0bb1f280c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-069e4368-004d-45a9-901f-5ec0bb1f280c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-097443ad-1f23-496b-936e-ff2274f14ec5' class='xr-var-data-in' type='checkbox'><label for='data-097443ad-1f23-496b-936e-ff2274f14ec5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2021-08-21T00:00:00.000000000&#x27;, &#x27;2022-01-16T00:00:00.000000000&#x27;,
        &#x27;2021-07-08T00:00:00.000000000&#x27;, &#x27;2022-04-22T00:00:00.000000000&#x27;,
        &#x27;2022-04-27T00:00:00.000000000&#x27;, &#x27;2022-04-10T00:00:00.000000000&#x27;,
        &#x27;2022-05-21T00:00:00.000000000&#x27;, &#x27;2021-08-09T00:00:00.000000000&#x27;,
@@ -1440,7 +1593,7 @@ Attributes: (12/16)
        &#x27;2021-07-25T00:00:00.000000000&#x27;, &#x27;2021-05-29T00:00:00.000000000&#x27;,
        &#x27;2022-03-01T00:00:00.000000000&#x27;, &#x27;2022-01-12T00:00:00.000000000&#x27;,
        &#x27;2021-05-14T00:00:00.000000000&#x27;, &#x27;2021-10-29T00:00:00.000000000&#x27;,
-       &#x27;2022-04-06T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>band</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-85a34cb6-f495-4cc3-b2d3-c973d6d79642' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-85a34cb6-f495-4cc3-b2d3-c973d6d79642' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3be3e3ec-7bf0-46fe-bd3d-131a2fe3d8d7' class='xr-var-data-in' type='checkbox'><label for='data-3be3e3ec-7bf0-46fe-bd3d-131a2fe3d8d7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(1)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-82920f56-443c-492a-98e5-d74e372b231a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-82920f56-443c-492a-98e5-d74e372b231a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-16dfbc9d-83e8-4282-bb73-03e031559f1c' class='xr-var-data-in' type='checkbox'><label for='data-16dfbc9d-83e8-4282-bb73-03e031559f1c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 45N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>87.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>519570.0 30.0 0.0 3200520.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9029f008-11f9-4604-9c09-8afaee951ff5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9029f008-11f9-4604-9c09-8afaee951ff5' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>vh</span></div><div class='xr-var-dims'>(acq_date, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 845, 4935), meta=np.ndarray&gt;</div><input id='attrs-a6b45a0f-0758-4a85-9870-4c9e701d325c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a6b45a0f-0758-4a85-9870-4c9e701d325c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c40246b8-fde6-468e-aaa8-9b7fe0a2540c' class='xr-var-data-in' type='checkbox'><label for='data-c40246b8-fde6-468e-aaa8-9b7fe0a2540c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+       &#x27;2022-04-06T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>band</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-6d6e0f31-c8c1-4759-8c1a-221274c7723f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6d6e0f31-c8c1-4759-8c1a-221274c7723f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-01ad91a9-cbe3-4377-83e7-9d3e2ec68644' class='xr-var-data-in' type='checkbox'><label for='data-01ad91a9-cbe3-4377-83e7-9d3e2ec68644' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(1)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-aa3e29a1-9e90-43f4-81bc-d98a05904c06' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aa3e29a1-9e90-43f4-81bc-d98a05904c06' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b3b4bca6-3030-45a6-b75a-8559d0d8694f' class='xr-var-data-in' type='checkbox'><label for='data-b3b4bca6-3030-45a6-b75a-8559d0d8694f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 45N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>87.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>519570.0 30.0 0.0 3200520.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5a827c1e-e3bf-4f9a-86e6-775d03192b8c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5a827c1e-e3bf-4f9a-86e6-775d03192b8c' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>vh</span></div><div class='xr-var-dims'>(acq_date, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 845, 4935), meta=np.ndarray&gt;</div><input id='attrs-c77a99f6-2712-40cd-8e5a-55339710fe26' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c77a99f6-2712-40cd-8e5a-55339710fe26' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3b45721-01ce-4f46-89a4-0919686aa430' class='xr-var-data-in' type='checkbox'><label for='data-c3b45721-01ce-4f46-89a4-0919686aa430' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1628,7 +1781,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-c36608ea-8235-4a5a-b2d9-15063db87f13' class='xr-section-summary-in' type='checkbox'  ><label for='section-c36608ea-8235-4a5a-b2d9-15063db87f13' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>sensor :</span></dt><dd>S1A</dd><dt><span>beam_mode :</span></dt><dd>IW</dd><dt><span>acquisition_date :</span></dt><dd>2021-08-21 00:00:00</dd><dt><span>acquisition_time :</span></dt><dd>T000314</dd><dt><span>polarisation_type :</span></dt><dd>V</dd><dt><span>primary_polarisation :</span></dt><dd>P</dd><dt><span>orbit_type :</span></dt><dd>_</dd><dt><span>terrain_correction_pixel_spacing :</span></dt><dd>RTC30</dd><dt><span>output_format :</span></dt><dd>g</dd><dt><span>output_type :</span></dt><dd>p</dd><dt><span>masked :</span></dt><dd>u</dd><dt><span>filtered :</span></dt><dd>n</dd><dt><span>area :</span></dt><dd>e</dd><dt><span>product_id :</span></dt><dd>748F</dd><dt><span>utm_zone :</span></dt><dd>UTM zone 45N</dd><dt><span>epsg_code :</span></dt><dd>EPSG:32645</dd></dl></div></li></ul></div></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-f5feb195-ae5b-4624-a419-83fc63df6f52' class='xr-section-summary-in' type='checkbox'  ><label for='section-f5feb195-ae5b-4624-a419-83fc63df6f52' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>sensor :</span></dt><dd>S1A</dd><dt><span>beam_mode :</span></dt><dd>IW</dd><dt><span>acquisition_date :</span></dt><dd>2021-08-21 00:00:00</dd><dt><span>acquisition_time :</span></dt><dd>T000314</dd><dt><span>polarisation_type :</span></dt><dd>V</dd><dt><span>primary_polarisation :</span></dt><dd>P</dd><dt><span>orbit_type :</span></dt><dd>_</dd><dt><span>terrain_correction_pixel_spacing :</span></dt><dd>RTC30</dd><dt><span>output_format :</span></dt><dd>g</dd><dt><span>output_type :</span></dt><dd>p</dd><dt><span>masked :</span></dt><dd>u</dd><dt><span>filtered :</span></dt><dd>n</dd><dt><span>area :</span></dt><dd>e</dd><dt><span>product_id :</span></dt><dd>748F</dd><dt><span>utm_zone :</span></dt><dd>UTM zone 45N</dd><dt><span>epsg_code :</span></dt><dd>EPSG:32645</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>If we take a look at the <code class="docutils literal notranslate"><span class="pre">asf_vh</span></code> object we just created (click the stack icon on the right of the <code class="docutils literal notranslate"><span class="pre">vh</span></code> variable tab), we see that the chunking is quite complicated. This isn’t ideal because it can create problems like excessive communication between workers (?) (and a lot of memory usage) down the line when we perform non-lazy operations. It seems like the <code class="docutils literal notranslate"><span class="pre">'auto'</span></code> chunking is applied to the top layer (file) of the dataset, but because the spatial footprint of each file is not the same, the ‘auto’ chunking does not persist through layers and we end up with the funky layout in the object above.</p>
 <p>Let’s create both the VV and VH objects with <code class="docutils literal notranslate"><span class="pre">chunks=None</span></code> and see how it looks:</p>
@@ -5460,7 +5613,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/asf_local_mf_40_1.png" src="_images/asf_local_mf_40_1.png" />
+<img alt="_images/asf_local_mf_44_1.png" src="_images/asf_local_mf_44_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5524,7 +5677,7 @@ Data variables:
 <span class="ne">NameError</span>: name &#39;asf_clip&#39; is not defined
 </pre></div>
 </div>
-<img alt="_images/asf_local_mf_47_1.png" src="_images/asf_local_mf_47_1.png" />
+<img alt="_images/asf_local_mf_51_1.png" src="_images/asf_local_mf_51_1.png" />
 </div>
 </div>
 <p><strong>layover shadow mask interpreation</strong>:</p>
@@ -5570,7 +5723,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_local_mf_51_0.png" src="_images/asf_local_mf_51_0.png" />
+<img alt="_images/asf_local_mf_55_0.png" src="_images/asf_local_mf_55_0.png" />
 </div>
 </div>
 <p>It looks like there are some interesting differences between the geometric distortions within the two images. Let’s take a look at them side-by-side:</p>
@@ -5584,7 +5737,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_local_mf_53_0.png" src="_images/asf_local_mf_53_0.png" />
+<img alt="_images/asf_local_mf_57_0.png" src="_images/asf_local_mf_57_0.png" />
 </div>
 </div>
 <p>It looks like there are areas affected by different distortion effects on different dates. For example, in the lower left quadrant, there is a region that is blue (5) on 6/7/2010 but most of that area appears green (19) on 6/10/2010. On 6/7, that area is affected by layover, but on 6/10 much of that same area seems to be in the radar shadow. This is likely due to different viewing geometries on different orbital passes: one of the above scenes was likely collected during an ascending pass and one during a descending.</p>
