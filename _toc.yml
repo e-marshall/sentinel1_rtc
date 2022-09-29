@@ -5,7 +5,6 @@ root: intro
 chapters:
 - file: ch1_root.md
   sections:
-  - file: asf_local_mf.ipynb
   - file: asf_local_vrt.ipynb
   - file: PC_RTC.ipynb
   
@@ -19,6 +18,9 @@ chapters:
 - file: Acknowledgments.md
 - file: References.md
 - file: pc_Asf_vv.ipynb
+- file: Appendix.md
+  sections:
+  - file: asf_local_mf.ipynb
   
 #format: jb-book
 #root: intro
