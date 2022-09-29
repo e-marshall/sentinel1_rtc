@@ -23,11 +23,11 @@ The first two notebooks will show two approaches to working with the Sentinel-1 
 
 ## Chapter 1: Data access and organization
 
-Chapter 1 focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks. The first two demonstrate two approaches to accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The third contains an exapmle of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. 
+[Chapter 1](ch1_root.md) focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains two notebooks. The first demonstrates accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The second contains an example of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. 
 
 ## Chapter 2: Dataset comparison and preliminary analysis
 
-Chapter 2 makes use of the datasets prepared in chapter 1. The first notebook demonstrates comparing the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya. 
+[Chapter 2](ch2_root.md) makes use of the datasets prepared in chapter 1. The first notebook demonstrates comparing the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya. 
 
 # Learning objectives
 
