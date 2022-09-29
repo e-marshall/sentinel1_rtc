@@ -8,6 +8,10 @@ Xarray's `xr.open_mfdataset()` [function](https://docs.xarray.dev/en/stable/gene
 
 However, for this dataset, I found that the `xr.open_mfdataset()` function wasn't a great fit. The raster stack all covered a common area of interest, but each file did not have the exact same spatial footprint. This created problems when specifying a chunking strategy, because the chunking was defined off of the first file in the stack, but would not be appropriate for files furhter down in the stack with different borders. The processing would work fine for all lazy steps, but a memory 'blow-up' would occur when I tried to perform a step that required computation. I initially thought I had bypassed this issue by clipping the returned dataset to the spatial extent of my area of interest (much smaller), but soon realized that this process encountered memory issues as well. 
 
+```{note}
+The stack I used contains multiple scenes that cover the same area of interest (multiple viewing geometries). If you wanted to select only scenes from a single viewing geometry at the expense of a denser time series, `xr.open_mfdataset()` might work a bit better (I didn't try this so cannot say for sure)
+```
+
 Ultimately, I decided to use the approach of creating GDAL VRT objects, and reading those in with `rioxarray.open_rasterio()` to organize the data as xarray objects. This worked much better from a memory perspective but created much more work with organizing metadata and structuring the dataset in an analysis-ready format. The `xr.open_mfdataset()` function seems like a much more effecient approach if your dataset is well-aligned with its parameters (ie. a spatially uniform stack). While it did not end up being the best tool for this task, I decided to include the notebook with the `xr.open_mfdataset()` approach anyway in case it is useful to see a demosntration of this function. I learned a lot about how to structure a `preprocess` function and many other steps working on this example. 
 
 Take a look at the notebook using `xr.open_mfdataset()` to read in stacks of ASF-processed Sentinel-1 RTC imagery files [here](asf_local_mf.ipynb)
