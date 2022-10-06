@@ -109,6 +109,11 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   Software + Data
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="ch1_root.html">
    Data cleaning and organization
@@ -153,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="rtc_timeseries.html">
-     RTC time series analysis
+     Applied example: RTC time series analysis
     </a>
    </li>
   </ul>
@@ -184,6 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="questions.html">
    Tutorial structure questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Summary.html">
+   Summary
   </a>
  </li>
  <li class="toctree-l1">
@@ -9446,7 +9456,7 @@ Data variables:
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>note sure why that’s not workiing rn</p>
+<p>is it not owrkign because nodata value needs to be specified for some type of object attr?</p>
 </div>
 <p>So using <code class="docutils literal notranslate"><span class="pre">xr.Dataset.where()</span></code> (don’t think this will actually overwrite the official nodata value, but it should replace the zeros:</p>
 <div class="cell docutils container">
@@ -10437,20 +10447,6 @@ Data variables:
     </tr>
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-8fe38fde-8217-4c66-bb69-0a7eec9cddbf' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-8fe38fde-8217-4c66-bb69-0a7eec9cddbf' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
-<p>Now we have all of the same metadata attached to our xarray datacube of Sentinel-1 RTC imagery that we had using the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach, but we’ve done this with much less computational expense and a chunking strategy that is more appropriate for the nature of the dataset.</p>
-<p>We’ll store this object to use it in a later notebook.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">store</span> vrt_full
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored &#39;vrt_full&#39; (Dataset)
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="quick-visualization">
 <h2>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this headline">#</a></h2>
@@ -10475,7 +10471,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f85f774b790&gt;]
 </pre></div>
 </div>
-<img alt="_images/asf_local_vrt_94_1.png" src="_images/asf_local_vrt_94_1.png" />
+<img alt="_images/asf_local_vrt_91_1.png" src="_images/asf_local_vrt_91_1.png" />
 </div>
 </div>
 <p>Now what if we wanted to take a snap-shot look of backscatter at a single time step? We can still use xarray plotting methods, but this time will pass a 3-dimensional object (x,y and backscatter). We need to select a single element along the time dimension on which to call the plotting method:</p>
@@ -10492,6 +10488,15 @@ Data variables:
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;vrt_full&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have all of the same metadata attached to our xarray datacube of Sentinel-1 RTC imagery that we had using the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach, but we’ve done this with much less computational expense and a chunking strategy that is more appropriate for the nature of the dataset.</p>
+<p>We’ll store this object to use it in a later notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">store</span> vrt_full
 </pre></div>
 </div>
 </div>

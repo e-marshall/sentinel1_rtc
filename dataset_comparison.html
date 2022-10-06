@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RTC time series analysis" href="rtc_timeseries.html" />
+    <link rel="next" title="Applied example: RTC time series analysis" href="rtc_timeseries.html" />
     <link rel="prev" title="Dataset comparison and preliminary analysis" href="ch2_root.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -109,6 +109,11 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   Software + Data
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch1_root.html">
    Data cleaning and organization
@@ -153,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="rtc_timeseries.html">
-     RTC time series analysis
+     Applied example: RTC time series analysis
     </a>
    </li>
   </ul>
@@ -184,6 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="questions.html">
    Tutorial structure questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Summary.html">
+   Summary
   </a>
  </li>
  <li class="toctree-l1">
@@ -6156,10 +6166,10 @@ Data variables:
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="nn">Input In [37],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nn">Input In [3],</span> in <span class="ni">asf_pc_sidebyside</span><span class="nt">(timestep)</span>
+<span class="nn">Input In [4],</span> in <span class="ni">asf_pc_sidebyside</span><span class="nt">(timestep)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">timestep</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ASF&#39;</span><span class="p">);</span>
 <span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_subset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">timestep</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PC&#39;</span><span class="p">)</span>
@@ -13557,7 +13567,7 @@ Data variables:
     <a class='right-next' id="next-link" href="rtc_timeseries.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RTC time series analysis</p>
+        <p class="prev-next-title">Applied example: RTC time series analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

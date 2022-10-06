@@ -2,8 +2,8 @@
 a. intro
 1. need more discussino of RTC processing?
 b. asf data, xr.open_mfdataset()
-1. helpful to include image of directory structure for local files?
-2. worth describing the area of interest/why it was chosen more in clipping by vector section? -- or maybe elsewhere in tutorial, but worht including more introduction on area?
+~~1. helpful to include image of directory structure for local files?
+~2. worth describing the area of interest/why it was chosen more in clipping by vector section? -- or maybe elsewhere in tutorial, but worht including more introduction on area?
 c. PC data access
 1. worth mentioning differences btw VV, VH returns/ linking to SAR handbook explanation of polarization? not sure right balance between 'science-y' and demonstrating workflow/code
 d. dataset comparison
@@ -17,8 +17,7 @@ Place to keep track of questions I've encountered while working with the ASF and
 1. ASF source granules are SLC images and PC are RTC, what effect does this have on the RTC product?
 
 2. PC dataset doesn't appear to have a layover-shadow map?
-3. ASF data has a layover shadow map, and some pixels masked out of the backscatter images, but it looks like there are layover pixels that aren't masked out in the data products. I thought you couldn't extract reliable data from pixels w/ layover?
-4. product IDs / source files 
+~~4. product IDs / source files 
     - ASF provides a 4-digit product key in the filename, but it doesn't look like this directly corresponds to the source granule?
     eg. product ID = 1424 for RTC image from source granule: S1A_IW_SLC__1SDV_20210502T121414_20210502T121441_037709_047321_900F
     - can pull this from the README for that file - but is there a better way to do this?
@@ -34,8 +33,6 @@ Place to keep track of questions I've encountered while working with the ASF and
 - because using SLC source imagery, terrain correction performed in slant range, then corrected image is mapped to DEM space
 - geocoding is final step
 - methods description [here](https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/)
-
-Two different groups within the ASF dataset? 
 
 # Programming questions
 1. feel like i'm relying on list comprehension a lot for creating, organizing objects - is there a more direct way to do these tasks? 
