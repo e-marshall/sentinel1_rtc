@@ -366,6 +366,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   Learning goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#software-and-setup">
    Software and setup
   </a>
@@ -424,6 +429,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#handle-nodata-values">
    Handle nodata values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-visualization">
+   Quick visualization
   </a>
  </li>
 </ul>
@@ -446,6 +456,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   Learning goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#software-and-setup">
    Software and setup
   </a>
@@ -506,6 +521,11 @@ title="Print to PDF"
    Handle nodata values
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-visualization">
+   Quick visualization
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -522,14 +542,24 @@ title="Print to PDF"
 <p>The access point for data in this notebook is a directory containing un-zipped directories of RTC scenes.</p>
 <p>The previous notebook demonstrated an approach using the xarray function <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code>. Because of the size and some  characteristics of the dataset, this approach can be computationally expensive. Another way to approach reading in large amounts of data to avoid these issues is to use the gdal <code class="docutils literal notranslate"><span class="pre">build_vrt</span></code> command. VRT is short for GDAL Virtual Format. VRT objects create an xml file from a list of geotiff files. The xml contains a mapping of all of the specified raster files so that we essentially have the spatial information that would have been used to create the full data object, and all of the information we need for a clip. VRT objects are able to handle the mismatch of grids within the stack of files, so does not encounter the memory issues that we get when trying the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach with dask.</p>
 <p>You will see that this approach let’s you read in the data stack with less computational expense, but because of how the data is represented, some metadata is lost and must be re-structured. We will go through those steps here, with explanations of the xarray tools we use along the way.</p>
-<p><strong>Learning goals</strong>:</p>
-<p><em>add specific xarray methods used</em></p>
-<p>Handling large amounts of locally stored data</p>
+<section id="learning-goals">
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
+<p><strong>Techniques (xarray, python and general):</strong> <br></p>
 <ul class="simple">
-<li><p>organize large set of geotiff files stored locally</p></li>
-<li><p>reading in large data stacks as xarray objects using gdal build VRT</p></li>
+<li><p>Build gdal VRT objects</p></li>
+<li><p>Read in data using <code class="docutils literal notranslate"><span class="pre">rioxarray.open_rasterio()</span></code></p></li>
+<li><p>Clip raster object by a vector using <code class="docutils literal notranslate"><span class="pre">rioxarray.clip()</span></code></p></li>
+<li><p>Indexing and selecting xarray objects by dimensional and non-dimensional coordinates</p></li>
+<li><p>Formatting time-aware xarray objects</p></li>
 </ul>
-<p><strong>NOTE</strong>: code for submitting HyP jobs still needs to be added back in</p>
+<p><strong>High-level science goals:</strong> <br></p>
+<ul class="simple">
+<li><p>Organize large set of geotiff files stored locally</p></li>
+<li><p>Use VRT objects to create xarray objects from large data stacks</p></li>
+<li><p>Extract and organize metadata stored in filenames and text files</p></li>
+<li><p>Handle nodata values</p></li>
+</ul>
+</section>
 <section id="software-and-setup">
 <h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -10416,6 +10446,10 @@ Data variables:
 </div>
 </div>
 </div>
+</section>
+<section id="quick-visualization">
+<h2>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this headline">#</a></h2>
+<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definte a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
@@ -10424,6 +10458,7 @@ Data variables:
 </div>
 </div>
 </div>
+<p>Before moving on, let’s visualize backscatter variability over time. To do this, we will perform a reduction along the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions of the dataset. We can use built-in xarray plotting methods to plot the 2-dimensional data (backscatter and time, after reducing along <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -10435,9 +10470,10 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f85f774b790&gt;]
 </pre></div>
 </div>
-<img alt="_images/asf_local_vrt_92_1.png" src="_images/asf_local_vrt_92_1.png" />
+<img alt="_images/asf_local_vrt_94_1.png" src="_images/asf_local_vrt_94_1.png" />
 </div>
 </div>
+<p>Now what if we wanted to take a snap-shot look of backscatter at a single time step? We can still use xarray plotting methods, but this time will pass a 3-dimensional object (x,y and backscatter). We need to select a single element along the time dimension on which to call the plotting method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
@@ -10445,13 +10481,17 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/emmamarshall/miniconda3/envs/sentinel/lib/python3.10/site-packages/dask/core.py:119: RuntimeWarning: divide by zero encountered in log10
-  return func(*(_execute_task(a, cache) for a in args))
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;vrt_full&#39; is not defined
 </pre></div>
 </div>
-<img alt="_images/asf_local_vrt_93_1.png" src="_images/asf_local_vrt_93_1.png" />
 </div>
 </div>
+<p>The next notebook on <span class="xref myst">preliminary dataset inspection</span> demonstrates how to explore and familiarize oneself with the dataset now that we have it read in and organized.</p>
 </section>
 </section>
 

@@ -402,11 +402,6 @@ title="Print to PDF"
    Wrap-up
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convert-from-power-to-db-scale">
-   Convert from power to db scale
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -461,11 +456,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#wrap-up">
    Wrap-up
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convert-from-power-to-db-scale">
-   Convert from power to db scale
   </a>
  </li>
 </ul>
@@ -5680,132 +5670,12 @@ Data variables:
 <img alt="_images/asf_local_mf_51_1.png" src="_images/asf_local_mf_51_1.png" />
 </div>
 </div>
-<p><strong>layover shadow mask interpreation</strong>:</p>
-<p>the values are a summation of 17 possible pixel values:</p>
-<p>0 - not tested for layover or shadow
-1 - not affected by layover or shadow</p>
-<p>3 - look angle &lt; slope angle</p>
-<p>5 - affected by layover</p>
-<p>7 - affected by layover, look angle &lt; slope</p>
-<p>9 - look angle &lt; opposite slope angle</p>
-<p>11 - look angle &lt; slope and opposite slope angle</p>
-<p>13 - affected by layover; look angle &lt; opposite slope angle</p>
-<p>15 - affected by layover; look angle &lt; slope and opposite slope angle</p>
-<p>17 - affected by shadow</p>
-<p>19 - affected by shadow; look angle &lt; slope angle</p>
-<p>21 - affected by layover and shadow</p>
-<p>23 -</p>
-<p>Let’s write a quick function to take a look at a similar breakdown for other time steps more easily:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>clean up attr labeling in these plots</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_timestep</span><span class="p">(</span><span class="n">input_arr</span><span class="p">,</span> <span class="n">time_step_int</span><span class="p">):</span>
-    
-    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-
-    <span class="n">input_arr</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">time_step_int</span><span class="p">)</span><span class="o">.</span><span class="n">ls</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="n">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">time_step_int</span><span class="p">)</span><span class="o">.</span><span class="n">vv</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
-    <span class="n">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">time_step_int</span><span class="p">)</span><span class="o">.</span><span class="n">vh</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
-
-    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Layover-shadow mask (L), VV (C) and VH (R) backscatter </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">asf_clip</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">time_step_int</span><span class="p">)</span><span class="o">.</span><span class="n">acq_date</span><span class="p">)[:</span><span class="o">-</span><span class="mi">19</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_timestep</span><span class="p">(</span><span class="n">asf_clip</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/asf_local_mf_55_0.png" src="_images/asf_local_mf_55_0.png" />
-</div>
-</div>
-<p>It looks like there are some interesting differences between the geometric distortions within the two images. Let’s take a look at them side-by-side:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
-
-<span class="n">asf_clip</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">ls</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
-<span class="n">asf_clip</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">ls</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/asf_local_mf_57_0.png" src="_images/asf_local_mf_57_0.png" />
-</div>
-</div>
-<p>It looks like there are areas affected by different distortion effects on different dates. For example, in the lower left quadrant, there is a region that is blue (5) on 6/7/2010 but most of that area appears green (19) on 6/10/2010. On 6/7, that area is affected by layover, but on 6/10 much of that same area seems to be in the radar shadow. This is likely due to different viewing geometries on different orbital passes: one of the above scenes was likely collected during an ascending pass and one during a descending.</p>
 </section>
 <section id="wrap-up">
 <h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach is very useful for reading in large amounts of data from a number of distributed files very efficiently. It’s especially helpful that the <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function allows a large degree of customization for how the data is read in, and that the appropriate metadata is preserved as individual <code class="docutils literal notranslate"><span class="pre">xr.DataArrays</span></code> are organized into data cubes and we have to do very little further work of organizing metadata.</p>
 <p>However, due to the nature of this stack of data, where each time-element of the stack covers a common region of interest but does not have a uniform spatial footprint (re-word), this approach is not very computationally efficient. We are reading in a vast footprint of data to subset it to a much smaller area. While it is able to execute on this machine, a more computationally-intensive workflow would fail.</p>
 <p>Another approach we can try is to use gdal VRT objects. Gdal vrt objects create an xml file from a list of geotiff files. The xml contains a mapping of all of the specified raster files so that we essentially have the spatial information that would have been used to create the full data object, and all of the information we need for a clip. VRT objects are able to handle the mismatch of grids within the stack of files, so does not encounter the memory issues that we get when trying the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach with dask.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>maybe take the below section out?</p>
-</div>
-</section>
-<section id="convert-from-power-to-db-scale">
-<h2>Convert from power to db scale<a class="headerlink" href="#convert-from-power-to-db-scale" title="Permalink to this headline">#</a></h2>
-<p>In the above plots, we wrapped the xarray objects in the <code class="docutils literal notranslate"><span class="pre">power_to_db()</span></code> function to convert the data from power-scale to decibel-scale (from gamma-nought to sigma-nought). The cells below will demonstrate how to use xarray functionality to transform the power-scale objects to decibel-scale objects if we wanted to work with them further.</p>
-<p>The first way you might think to do this would be to create a new <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object out of the <code class="docutils literal notranslate"><span class="pre">vrt_clip</span></code> object by applying <code class="docutils literal notranslate"><span class="pre">power_to_db()</span></code> to each <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> object (see the code below). However, there is an easier way to do this that requires less lines of code and uses more built-in xarray functionality. This is to use the <code class="docutils literal notranslate"><span class="pre">.map()</span></code> or <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> function. <code class="docutils literal notranslate"><span class="pre">apply()</span></code> is a backwards compatible version of <code class="docutils literal notranslate"><span class="pre">.map()</span></code>. Read more about them <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.apply.html?highlight=apply()">here</a> and <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.map.html#xarray.Dataset.map">here</a>. This powerful function let’s us apply the transformation to each variable within an <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_clip_sigma1 = xr.Dataset({&#39;vv&#39;:power_to_db(asf_clip.vv),</span>
-<span class="c1">#                  &#39;vh&#39;:power_to_db(asf_clip.vh),</span>
-<span class="c1">#                    &#39;ls&#39;:asf_clip.ls})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_clip_sigma_m = asf_clip.map(power_to_db)</span>
-<span class="c1">#asf_clip_sigma_a = asf_clip.apply(power_to_db)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_clip_sigma_m.equals(asf_clip_sigma_a)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_clip_sigma_m.equals(asf_clip_sigma1)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_clip_sigma = asf_clip_sigma_m</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_clip_sigma</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 
