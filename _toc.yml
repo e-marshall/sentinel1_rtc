@@ -2,6 +2,7 @@
 
 format: jb-book
 root: intro
+- file: software.ipynb
 chapters:
 - file: ch1_root.md
   sections:

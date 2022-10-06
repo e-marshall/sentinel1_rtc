@@ -1,3 +1,6 @@
+from shapely import geometry
+import geopandas as gpd
+import numpy as np
 # functions for working with sentinel1 rtc imagery from asf and planetary computer
 
 def points2coords(pt_ls): #should be [xmin, ymin, xmax, ymax]
@@ -7,16 +10,19 @@ def points2coords(pt_ls): #should be [xmin, ymin, xmax, ymax]
                  (pt_ls[0], pt_ls[1])]
     return coords_ls
     
-
 def extract_tif_fnames(scene_path):
     ''' return a list of files associated with a single S1 scene'''
     scene_files_ls = os.listdir(dir_path_all + scene_path)
+        
+    #make object for readme file
+    a = [file for file in scene_files_ls if file.endswith('README.md.txt')]
     
     scene_files_vv = [fname for fname in scene_files_ls if fname.endswith('_VH.tif')]
     scene_files_vh = [fname for fname in scene_files_ls if fname.endswith('_VV.tif')]
     scene_files_ls = [fname for fname in scene_files_ls if fname.endswith('_ls_map.tif')]
+    #scene_files_rm = [file for file in scene_files_ls if file.endswith('README.md.txt')]
     
-    return scene_files_vv, scene_files_vh, scene_files_ls
+    return scene_files_vv, scene_files_vh, scene_files_ls, a
 
 def preprocess_vv(da_orig):
     '''function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.
@@ -258,7 +264,7 @@ def get_bbox_single(input_xr, buffer = 0):
  
     crs = input_xr.rio.crs
 
-    polygon_geom = Polygon(pts_ls)
+    polygon_geom = geometry.Polygon(pts_ls)
     polygon = gpd.GeoDataFrame(index=[0], crs=crs, geometry=[polygon_geom]) 
     polygon_prj = polygon
     polygon = polygon_prj.to_crs(crs)
@@ -277,8 +283,42 @@ def get_bbox_single(input_xr, buffer = 0):
                  (bounds_xmin, bounds_ymin)]
                    
     
-    bounds_geom = Polygon(bounds_ls)
+    bounds_geom = geometry.Polygon(bounds_ls)
     bound_gdf = gpd.GeoDataFrame(index=[0], crs=crs, geometry = [bounds_geom])
     bounds_prj = bound_gdf.to_crs(crs)
     
     return bounds_prj
+
+def extract_granule_id(filepath):
+    ''' this function takes a filepath to the readme associated with an S1 scene and returns the source granule id used to generate the RTC imagery''' 
+
+    md = markdown.Markdown(extensions=['meta'])
+    data = pathlib.Path(filepath).read_text()
+    #this text predates granule ID in readme
+    gran_str = 'The source granule used to generate the products contained in this folder is:\n'
+    split = data.split(gran_str)
+    #isolate the granule id
+    post = split[1][:67]
+    
+    return post
+
+def make_granule_coord(readme_fpaths_ls):
+    '''this fn takes a list of the filepaths to every read me, extracts the granule ID, 
+    extracts acq date for each granule ID, organizes this as an array that
+    can be assigned as a coord to an xr object'''
+    
+    granule_ls = [extract_granule_id(readme_fpaths_ls[element]) for element in range(len(readme_fpaths_ls))]
+    
+    acq_date = [pd.to_datetime(granule[17:25]) for granule in granule_ls]
+
+    granule_da = xr.DataArray(data = granule_ls, 
+                              dims = ['acq_date'],
+                              coords = {'acq_date':acq_date},
+                             attrs = {'description': 'source granule ID for ASF-processed S1 RTC imagery, extracted from README files for each scene'},
+                             name = 'granule_id')
+    #granule_da = granule_da.sortby(acq_date)
+    granule_da = granule_da.sortby(granule_da.acq_date)
+   # granule_tuple = tuple(zip(acq_date, granule_ls))
+    
+    return granule_da
+
