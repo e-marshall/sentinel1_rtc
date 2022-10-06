@@ -6,6 +6,7 @@ chapters:
 - file: ch1_root.md
   sections:
   - file: asf_local_vrt.ipynb
+  - file: asf_inspect.ipynb
   - file: PC_RTC.ipynb
   
 - file: ch2_root.md
