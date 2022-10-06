@@ -6787,7 +6787,6 @@ Data variables:
 <li><p>assign coord for orbital pass</p></li>
 <li><p>drop dims for acq time, hour</p></li>
 </ol>
-<p>setting dtype = datetime64 f up the date??</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">acquisition_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
@@ -8418,13 +8417,6 @@ Data variables:
     <span class="n">input_xr</span> <span class="o">=</span> <span class="n">input_xr</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s1">&#39;orbital_dir&#39;</span><span class="p">)</span>
     <span class="n">input_xr</span> <span class="o">=</span> <span class="n">input_xr</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;acq_hour&#39;</span><span class="p">:</span><span class="n">input_xr</span><span class="o">.</span><span class="n">acquisition_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">})</span>
     <span class="n">input_xr</span> <span class="o">=</span> <span class="n">input_xr</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">orbital_dir</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">input_xr</span><span class="o">.</span><span class="n">acq_hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">,</span><span class="s1">&#39;desc&#39;</span><span class="p">))</span>
-    <span class="c1">#input_xr = input_xr.expand_dims(&#39;orbital_pass&#39;)</span>
-                                     <span class="c1">#xr.where(input_xr.acq_hour == 0, &#39;asc&#39;, &#39;desc&#39;)})</span>
-   <span class="c1"># input_xr = input_xr.assign_coords({&#39;orbital_pass&#39;:xr.where(input_xr.acq_hour == 0, &#39;asc&#39;, &#39;desc&#39;)})</span>
-    <span class="c1">#input_xr = input_xr.expand_dims({&#39;pass&#39;:len(input_xr.orbital_pass)})</span>
-
-   <span class="c1"># input_xr = input_xr.drop_dims([&#39;acquisition_time&#39;])</span>
-    <span class="c1">#input_xr = input_xr.swap_dims({&#39;orbital_pass&#39;:&#39;orbital_dir&#39;})</span>
     
     <span class="k">return</span> <span class="n">input_xr</span>
 </pre></div>
@@ -10471,7 +10463,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f85f774b790&gt;]
 </pre></div>
 </div>
-<img alt="_images/asf_local_vrt_91_1.png" src="_images/asf_local_vrt_91_1.png" />
+<img alt="_images/asf_local_vrt_90_1.png" src="_images/asf_local_vrt_90_1.png" />
 </div>
 </div>
 <p>Now what if we wanted to take a snap-shot look of backscatter at a single time step? We can still use xarray plotting methods, but this time will pass a 3-dimensional object (x,y and backscatter). We need to select a single element along the time dimension on which to call the plotting method:</p>
