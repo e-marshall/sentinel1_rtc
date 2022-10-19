@@ -1518,22 +1518,7 @@ Data variables:
 
 </pre></div>
 </div>
-<p><strong>layover shadow mask interpreation</strong>:</p>
-<p>the values are a summation of 17 possible pixel values:</p>
-<p>0 - not tested for layover or shadow
-1 - not affected by layover or shadow</p>
-<p>3 - look angle &lt; slope angle</p>
-<p>5 - affected by layover</p>
-<p>7 - affected by layover, look angle &lt; slope</p>
-<p>9 - look angle &lt; opposite slope angle</p>
-<p>11 - look angle &lt; slope and opposite slope angle</p>
-<p>13 - affected by layover; look angle &lt; opposite slope angle</p>
-<p>15 - affected by layover; look angle &lt; slope and opposite slope angle</p>
-<p>17 - affected by shadow</p>
-<p>19 - affected by shadow; look angle &lt; slope angle</p>
-<p>21 - affected by layover and shadow</p>
-<p>23 -</p>
-<p>Let’s write a quick function to take a look at a similar breakdown for other time steps more easily:</p>
+<p>Quick function to take a look at a similar breakdown for other time steps more easily:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section could use more structure/layout rather than just plots</p>
@@ -1692,7 +1677,7 @@ Data variables:
   finalize=lambda sum_, count: sum_ / count,
 </pre></div>
 </div>
-<img alt="_images/asf_inspect_26_1.png" src="_images/asf_inspect_26_1.png" />
+<img alt="_images/asf_inspect_25_1.png" src="_images/asf_inspect_25_1.png" />
 </div>
 </div>
 <p>Let’s look at backscatter differences between seasons:</p>
@@ -1719,7 +1704,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7faee76ffcd0&gt;
 </pre></div>
 </div>
-<img alt="_images/asf_inspect_29_1.png" src="_images/asf_inspect_29_1.png" />
+<img alt="_images/asf_inspect_28_1.png" src="_images/asf_inspect_28_1.png" />
 </div>
 </div>
 <p>Seasonal distortions ?</p>
@@ -1730,7 +1715,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_inspect_31_0.png" src="_images/asf_inspect_31_0.png" />
+<img alt="_images/asf_inspect_30_0.png" src="_images/asf_inspect_30_0.png" />
 </div>
 </div>
 </section>
@@ -4512,7 +4497,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_inspect_63_0.png" src="_images/asf_inspect_63_0.png" />
+<img alt="_images/asf_inspect_62_0.png" src="_images/asf_inspect_62_0.png" />
 </div>
 </div>
 <p>Interesting, it looks like there’s only really data for the 0, 2, 4, 8 and 11 elements of the list of duplicates.</p>
@@ -4524,6 +4509,7 @@ Data variables:
 </div>
 </div>
 </div>
+<p>We can use xarray’s <code class="docutils literal notranslate"><span class="pre">.isel()</span></code> method, <code class="docutils literal notranslate"><span class="pre">.xr.DataArray.isin()</span></code>, <code class="docutils literal notranslate"><span class="pre">xr.Dataset.where()</span></code>, and list comprehension to efficiently subset the time steps we want to keep:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drop_product_id_ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">asf_duplicates</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">product_id</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">drop_ls</span><span class="p">]</span>

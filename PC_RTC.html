@@ -392,10 +392,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-data-using-xarray">
-   Reading data using
-   <strong>
-    xarray
-   </strong>
+   Reading data using xarray
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -441,10 +438,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-data-using-xarray">
-   Reading data using
-   <strong>
-    xarray
-   </strong>
+   Reading data using xarray
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -10199,7 +10193,7 @@ You can query the object programmatically for the same metadata stored in the ta
 <p>We will now use <code class="docutils literal notranslate"><span class="pre">dask.distributed</span></code> to manage our tasks. Confusingly, we will use the dask.distributed class <code class="docutils literal notranslate"><span class="pre">Client</span></code> to interact with the cluster.</p>
 </section>
 <section id="reading-data-using-xarray">
-<h2>Reading data using <strong>xarray</strong><a class="headerlink" href="#reading-data-using-xarray" title="Permalink to this headline">#</a></h2>
+<h2>Reading data using xarray<a class="headerlink" href="#reading-data-using-xarray" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distributed</span> <span class="kn">import</span> <span class="n">Client</span>
@@ -10215,7 +10209,7 @@ You can query the object programmatically for the same metadata stored in the ta
 </div>
 </div>
 </div>
-<p>Click the link above to open the dask dashboard for the client we’ve just instantiated.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">client.dashboard_link</span></code> points to a dask dashboard for the client we’ve just instantiated.</p>
 <p>Now that we have queried the data that is available from Microsoft Planetary Computer and inspected the metadata using <code class="docutils literal notranslate"><span class="pre">pystac</span></code>, we will use <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to read the data into our notebook as an xarray object. Calling <code class="docutils literal notranslate"><span class="pre">stackstac.stack()</span></code> produces a lazy <code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> with dask integration out of a STAC <code class="docutils literal notranslate"><span class="pre">collection</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -11070,7 +11064,6 @@ Attributes:
                               <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="n">acq_date</span><span class="p">},</span>
                              <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;source granule ID S1 GRD files used to process PC RTC images, extracted from STAC metadata&#39;</span><span class="p">},</span>
                              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;granule_id&#39;</span><span class="p">)</span>
-   <span class="c1"># granule_tuple = tuple(zip(acq_date, granule_ls))</span>
     
     <span class="k">return</span> <span class="n">granule_da</span>
 </pre></div>
@@ -11613,8 +11606,6 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;granule_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">granule_coord</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1">#da_pc = da.set_coords({&#39;granule_id&#39;:da.granule_id})</span>
 </pre></div>
 </div>
 </div>
@@ -13967,7 +13958,7 @@ Coordinates: (12/37)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean backscatter from ASCENDING passes for VH band (red) and VV band (blue) over time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean backscatter from ASCENDING passes for VH band (red) and VV band (blue) over time&#39;</span><span class="p">);</span>
 
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">da_asc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">da_asc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vh&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">);</span>
@@ -13982,13 +13973,13 @@ Coordinates: (12/37)
 <p class="admonition-title">Note</p>
 <p>good idea to link to SAR handbook for interpreting polarizations below or no?</p>
 </div>
-<p>Interesting! It looks like there is more variability in the VH band than the VV band. Chapter 2 of the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/Chp2Content.pdf">SAR handbook</a> contains information about how polarization impacts radar returns.
+<p>Interesting! It looks like there is more variability in the VH band than the VV band. Over the year, there is about 4 dB variability in the VV band but over twice as much in the VH band. Chapter 2 of the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/Chp2Content.pdf">SAR handbook</a> contains information about how polarization impacts radar returns.
 The above plots are looking only at the ascending passes. Let’s take a look at all of the time steps (ascending + descending). Any effects based on the different viewing geometries of the ascending and descending passes should have been removed during the radiometric terrain correction step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean backscatter for VH band (red) and VV band (blue) over time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean backscatter for VH band (red) and VV band (blue) over time&#39;</span><span class="p">);</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vh&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">);</span>
 </pre></div>

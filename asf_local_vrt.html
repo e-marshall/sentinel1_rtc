@@ -389,11 +389,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#software-and-setup">
    Software and setup
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extract-slc-granule-id-from-readme">
-   Extract SLC granule ID from readme
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#read-in-vector-data">
@@ -401,6 +396,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-slc-granule-id-from-readme">
+   Extract SLC granule ID from readme
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-vrt-objects">
@@ -479,11 +479,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#software-and-setup">
    Software and setup
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extract-slc-granule-id-from-readme">
-   Extract SLC granule ID from readme
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#read-in-vector-data">
@@ -491,6 +486,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-slc-granule-id-from-readme">
+   Extract SLC granule ID from readme
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-vrt-objects">
@@ -598,11 +598,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>instead of re-writing every function that’s used again, going to read them in from s1_tools package after they’ve been defined in a notebook - so next cell should be deleted</strong></p>
+<p><strong>delete the below cell once organized into s1_tools package and imported</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in PC data (We will use this later for a comparison)</span>
-<span class="c1">#we&#39;ll use this function to get bounding box coordinates from a list of points </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we&#39;ll use this function to get bounding box coordinates from a list of points </span>
 <span class="k">def</span> <span class="nf">points2coords</span><span class="p">(</span><span class="n">pt_ls</span><span class="p">):</span> <span class="c1">#should be [xmin, ymin, xmax, ymax]</span>
     
     <span class="n">coords_ls</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
@@ -610,6 +609,37 @@ title="Print to PDF"
                  <span class="p">(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
     <span class="k">return</span> <span class="n">coords_ls</span>
     
+</pre></div>
+</div>
+</div>
+</div>
+<section id="read-in-vector-data">
+<h3>Read in vector data<a class="headerlink" href="#read-in-vector-data" title="Permalink to this headline">#</a></h3>
+<p><em>probably move this elsewehre in nb</em></p>
+<p>We will use this vector data object later but we will read it in as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> object now. It is called PC aoi because the GeoJSON file was created off of the spatial extent of the SAR dat we will access from Microsoft Planetary Computer, in order to have comparable datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
+
+<span class="n">pc_aoi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">pc_aoi</span>
+
+<span class="ne">NameError</span>: name &#39;gpd&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -675,6 +705,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="extract-slc-granule-id-from-readme">
 <h2>Extract SLC granule ID from readme<a class="headerlink" href="#extract-slc-granule-id-from-readme" title="Permalink to this headline">#</a></h2>
@@ -747,63 +778,6 @@ title="Print to PDF"
 </div>
 </div>
 <p>The top line above is the full granule ID for the Sentinel-1 acquisition from 6/2/2021. You can read about the Sentinel-1 file naming convention <a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-1-sar/naming-conventions">here</a>, but for now we are interested in the 6-digit mission data take ID (<code class="docutils literal notranslate"><span class="pre">0480FD</span></code> in the above cell)</p>
-<section id="read-in-vector-data">
-<h3>Read in vector data<a class="headerlink" href="#read-in-vector-data" title="Permalink to this headline">#</a></h3>
-<p><em>probably move this elsewehre in nb</em></p>
-<p>We will use this vector data object later but we will read it in as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> object now. It is called PC aoi because the GeoJSON file was created off of the spatial extent of the SAR dat we will access from Microsoft Planetary Computer, in order to have comparable datasets.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
-
-<span class="n">pc_aoi</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>POLYGON ((619420.000 3089790.000, 628100.000 3...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="_images/asf_local_vrt_21_1.png" src="_images/asf_local_vrt_21_1.png" />
-</div>
-</div>
-</section>
 </section>
 <section id="create-vrt-objects">
 <h2>Create VRT objects<a class="headerlink" href="#create-vrt-objects" title="Permalink to this headline">#</a></h2>
@@ -827,7 +801,6 @@ Because we are making a VRT from a large number of files, we’ll supply a text 
 </div>
 </div>
 </div>
-<p><strong>fix the next cell use cell magic</strong></p>
 <p>Next, we will use gdal command line tools to create the VRT objects:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -920,9 +893,6 @@ Because we are making a VRT from a large number of files, we’ll supply a text 
 <span class="n">acq_times_vh</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">extract_metadata_attrs</span><span class="p">(</span><span class="n">fpaths_vh</span><span class="p">[</span><span class="n">file</span><span class="p">])[</span><span class="s1">&#39;acquisition_time&#39;</span><span class="p">],</span><span class="s1">&#39;T%H%M%S&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fpaths_vh</span><span class="p">))]</span>
 <span class="n">acq_times_vv</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">extract_metadata_attrs</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">[</span><span class="n">file</span><span class="p">])[</span><span class="s1">&#39;acquisition_time&#39;</span><span class="p">],</span><span class="s1">&#39;T%H%M%S&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">))]</span>
 <span class="n">acq_times_ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">extract_metadata_attrs</span><span class="p">(</span><span class="n">fpaths_ls</span><span class="p">[</span><span class="n">file</span><span class="p">])[</span><span class="s1">&#39;acquisition_time&#39;</span><span class="p">],</span><span class="s1">&#39;T%H%M%S&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fpaths_ls</span><span class="p">))]</span>
-
-<span class="c1">#acq_times_vv = [extract_metadata_attrs(fpaths_vv[file])[&#39;acquisition_time&#39;].strftime(&#39;%hh%mm%ss&#39;) for file in range(len(fpaths_vv))]</span>
-<span class="c1">#acq_times_ls = [extract_metadata_attrs(fpaths_ls[file])[&#39;acquisition_time&#39;].strftime(&#39;%hh%mm%ss&#39;) for file in range(len(fpaths_vv))]</span>
 </pre></div>
 </div>
 </div>
@@ -3359,8 +3329,7 @@ Data variables:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stacked_meta_tuple</span><span class="p">(</span><span class="n">input_ls</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;breaking up the earlier function into 2...</span>
-<span class="sd">    this function takes a list of dictionaries where each dict is metadata for a given time step,</span>
+    <span class="sd">&#39;&#39;&#39; this function takes a list of dictionaries where each dict is metadata for a given time step,</span>
 <span class="sd">    returns a tuple. input list is re-organized to a tuple where each [0] values is a metadata category (ie. sensor) and </span>
 <span class="sd">    [1] is a time series of the categories values over time (ie. S1A, S1A, S1A ...)&#39;&#39;&#39;</span>
     
@@ -3388,6 +3357,9 @@ Data variables:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_meta_coords</span><span class="p">(</span><span class="n">input_xr</span><span class="p">,</span> <span class="n">input_tuple</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;takes an input xarray object and a tuple of metadata created from the above fn.</span>
+<span class="sd">    returns xr object with metadata from tuple applied</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     
     <span class="n">out_xr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
         <span class="n">input_xr</span><span class="o">.</span><span class="n">data_vars</span><span class="p">,</span>
@@ -6777,16 +6749,17 @@ Data variables:
     </tr>
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-363a6d6f-0263-4cfe-99d1-c5bcf85a3afd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-363a6d6f-0263-4cfe-99d1-c5bcf85a3afd' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
-<p>You can see that all of the acquisition times are roughly either around 00:00 or 12:00 (check that these are UTC? what local time? 6 am / 6pm ish?). We can use the different times of the acquistitions to group the data by orbital direction ie. categorize acquisitions as ascending or descending passes</p>
+<p>You can see that all of the acquisition times are roughly either around 00:00 or 12:00 UTC which corresponds to roughly 6am and 6pm local time. We can use the different times of the acquistitions to group the data by orbital direction ie. categorize acquisitions as ascending or descending passes</p>
 </section>
 <section id="add-orbital-direction-coord">
 <h2>Add orbital direction coord<a class="headerlink" href="#add-orbital-direction-coord" title="Permalink to this headline">#</a></h2>
+<p>Next we want to add orbital direction as a coordinate to the xarray object. The steps to do this are:</p>
 <ol class="simple">
-<li><p>assign coord thats acq_time.dt.hour</p></li>
-<li><p>use np where to translate hour to asc or desc</p></li>
+<li><p>assign coord that is acq_time.dt.hour</p></li>
+<li><p>use np.where() to translate hour to asc or desc</p></li>
 <li><p>assign coord for orbital pass</p></li>
-<li><p>drop dims for acq time, hour</p></li>
 </ol>
+<p>Check the <code class="docutils literal notranslate"><span class="pre">dt.hour</span></code> accessor of the <code class="docutils literal notranslate"><span class="pre">vrt_full.acquisition_time</span></code> data array to confirm that’s what we want:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">acquisition_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
@@ -7410,6 +7383,7 @@ Coordinates: (12/15)
        &#x27;B661&#x27;, &#x27;9A2F&#x27;, &#x27;6943&#x27;, &#x27;5BAD&#x27;, &#x27;FA4F&#x27;, &#x27;01F4&#x27;, &#x27;BD36&#x27;],
       dtype=&#x27;&lt;U4&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-03531f84-071e-4761-b216-0f745559ddb0' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-03531f84-071e-4761-b216-0f745559ddb0' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
+<p>Assign the above object as a coordinate of <code class="docutils literal notranslate"><span class="pre">vrt_full</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;acq_hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">acquisition_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -7417,10 +7391,7 @@ Coordinates: (12/15)
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>better to have orbital dir as a dimension coord or non?</p>
-</div>
+<p>Assign a second coordinate that is orbital direction using the <code class="docutils literal notranslate"><span class="pre">acq_hour</span></code> coordinate and <code class="docutils literal notranslate"><span class="pre">xr.where()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;orbital_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">acq_hour</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">))</span>
@@ -8409,26 +8380,6 @@ Data variables:
         </td>
     </tr>
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-cb8f626a-b085-48cc-8ffd-eb9c1f9b06c8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-cb8f626a-b085-48cc-8ffd-eb9c1f9b06c8' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_orbital_dir_coord</span><span class="p">(</span><span class="n">input_xr</span><span class="p">):</span>
-    
-    <span class="n">input_xr</span> <span class="o">=</span> <span class="n">input_xr</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s1">&#39;orbital_dir&#39;</span><span class="p">)</span>
-    <span class="n">input_xr</span> <span class="o">=</span> <span class="n">input_xr</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;acq_hour&#39;</span><span class="p">:</span><span class="n">input_xr</span><span class="o">.</span><span class="n">acquisition_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">})</span>
-    <span class="n">input_xr</span> <span class="o">=</span> <span class="n">input_xr</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">orbital_dir</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">input_xr</span><span class="o">.</span><span class="n">acq_hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">,</span><span class="s1">&#39;desc&#39;</span><span class="p">))</span>
-    
-    <span class="k">return</span> <span class="n">input_xr</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#vrt_full = add_orbital_dir_coord(vrt_full)#</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9448,7 +9399,7 @@ Data variables:
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>is it not owrkign because nodata value needs to be specified for some type of object attr?</p>
+<p>this is not working because nodata value needs to be specified for some type of object attr - I think</p>
 </div>
 <p>So using <code class="docutils literal notranslate"><span class="pre">xr.Dataset.where()</span></code> (don’t think this will actually overwrite the official nodata value, but it should replace the zeros:</p>
 <div class="cell docutils container">
@@ -10454,7 +10405,7 @@ Data variables:
 <p>Before moving on, let’s visualize backscatter variability over time. To do this, we will perform a reduction along the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions of the dataset. We can use built-in xarray plotting methods to plot the 2-dimensional data (backscatter and time, after reducing along <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">));</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -10463,7 +10414,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f85f774b790&gt;]
 </pre></div>
 </div>
-<img alt="_images/asf_local_vrt_90_1.png" src="_images/asf_local_vrt_90_1.png" />
+<img alt="_images/asf_local_vrt_89_1.png" src="_images/asf_local_vrt_89_1.png" />
 </div>
 </div>
 <p>Now what if we wanted to take a snap-shot look of backscatter at a single time step? We can still use xarray plotting methods, but this time will pass a 3-dimensional object (x,y and backscatter). We need to select a single element along the time dimension on which to call the plotting method:</p>

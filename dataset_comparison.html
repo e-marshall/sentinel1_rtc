@@ -6129,9 +6129,10 @@ Data variables:
 </section>
 <section id="visual-comparison">
 <h2>Visual comparison<a class="headerlink" href="#visual-comparison" title="Permalink to this headline">#</a></h2>
-<p>still need to add in more structure, explanation here</p>
+<p>Let’s perform some preliminary visual comparisons of the datasets:</p>
 <section id="individual-time-steps">
 <h3>Individual time steps<a class="headerlink" href="#individual-time-steps" title="Permalink to this headline">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">asf_bc_sidebyside()</span></code> to compare snapshot views of backscatter at individual time steps:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -6437,6 +6438,7 @@ Data variables:
 </section>
 <section id="average-backscatter-over-time">
 <h3>Average backscatter over time<a class="headerlink" href="#average-backscatter-over-time" title="Permalink to this headline">#</a></h3>
+<p>Now we will look at the backscatter mean along the time dimension</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fig, axs = plt.subplots(ncols = 2, figsize=(16,8))</span>
@@ -6461,7 +6463,7 @@ Data variables:
 </section>
 <section id="handling-spatial-resolution-differences">
 <h2>Handling spatial resolution differences<a class="headerlink" href="#handling-spatial-resolution-differences" title="Permalink to this headline">#</a></h2>
-<p>The PC dataset has a higher spatial resolution than the ASF dataset, which you can see evident in the sizes of the x and y dimensions of the dataset. The ASF dataset masks out more pixels due to shadow than the PC dataset. To explore whether or not this is the cause of the observed backscatter offset between the two, we need to mask out the pixels in the PC dataset that are masked in the ASF dataset.</p>
+<p>The PC dataset has a higher spatial resolution than the ASF dataset, which you can see in the sizes of the x and y dimensions of the dataset. The ASF dataset masks out more pixels due to shadow than the PC dataset. To explore whether or not this is the cause of the observed backscatter offset between the two, we need to mask out the pixels in the PC dataset that are masked in the ASF dataset.</p>
 <p>In order to do this, first we must downsample the PC dataset to match the spatial resolution of the ASF dataset. There are multiple xarray methods that could be used but here we will use the <code class="docutils literal notranslate"><span class="pre">xr.interp_like()</span></code> method because we would like the PC x and y dimensions to match the ASF dimensiosn exactly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8548,14 +8550,6 @@ Data variables:
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Frozen({&#39;time&#39;: dtype(&#39;&lt;M8[ns]&#39;), &#39;granule_id&#39;: dtype(&#39;&lt;U67&#39;), &#39;x&#39;: dtype(&#39;float64&#39;), &#39;y&#39;: dtype(&#39;float64&#39;), &#39;spatial_ref&#39;: dtype(&#39;int64&#39;), &#39;sensor&#39;: dtype(&#39;&lt;U3&#39;), &#39;beam_mode&#39;: dtype(&#39;&lt;U2&#39;), &#39;acquisition_time&#39;: dtype(&#39;&lt;M8[ns]&#39;), &#39;polarisation_type&#39;: dtype(&#39;&lt;U2&#39;), &#39;orbit_type&#39;: dtype(&#39;&lt;U1&#39;), &#39;terrain_correction_pixel_spacing&#39;: dtype(&#39;&lt;U5&#39;), &#39;output_format&#39;: dtype(&#39;&lt;U1&#39;), &#39;output_type&#39;: dtype(&#39;&lt;U1&#39;), &#39;masked&#39;: dtype(&#39;&lt;U1&#39;), &#39;filtered&#39;: dtype(&#39;&lt;U1&#39;), &#39;area&#39;: dtype(&#39;&lt;U1&#39;), &#39;product_id&#39;: dtype(&#39;&lt;U4&#39;), &#39;acq_hour&#39;: dtype(&#39;int64&#39;), &#39;orbital_dir&#39;: dtype(&#39;&lt;U4&#39;), &#39;data_take_id&#39;: dtype(&#39;&lt;U6&#39;)})
-</pre></div>
-</div>
-</div>
-</div>
-<p>And now ASF:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_subset.coords[&#39;time&#39;] = asf_subset.time.dt.date</span>
 </pre></div>
 </div>
 </div>
@@ -11716,7 +11710,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f73e16d7fd0&gt;]
 </pre></div>
 </div>
-<img alt="_images/dataset_comparison_68_1.png" src="_images/dataset_comparison_68_1.png" />
+<img alt="_images/dataset_comparison_66_1.png" src="_images/dataset_comparison_66_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -11759,7 +11753,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Comparison of backscatter values from ASF-processed and PC-processed Sentinel-1 RTC imagery&#39;)
 </pre></div>
 </div>
-<img alt="_images/dataset_comparison_70_1.png" src="_images/dataset_comparison_70_1.png" />
+<img alt="_images/dataset_comparison_68_1.png" src="_images/dataset_comparison_68_1.png" />
 </div>
 </div>
 </section>
