@@ -18,11 +18,11 @@ chapters:
 - file: appendix.md
   sections:
   - file: asf_local_mf.ipynb
-- file: questions.md
+#- file: questions.md
 - file: Summary.md
 - file: Acknowledgments.md
 - file: References.md
-- file: pc_Asf_vv.ipynb
+#- file: pc_Asf_vv.ipynb
 
   
 #format: jb-book
