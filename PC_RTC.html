@@ -379,6 +379,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#learning-goals">
    Learning goals
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-useful-resources">
+     Other useful resources
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stac-items">
@@ -425,6 +432,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#learning-goals">
    Learning goals
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-useful-resources">
+     Other useful resources
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stac-items">
@@ -478,6 +492,15 @@ title="Print to PDF"
 <li><p>Accessing cloud-hosted data stored as COGs (cloud-optimized geotiffs)</p></li>
 <li><p>Extracting and organizing metadata</p></li>
 </ul>
+<section id="other-useful-resources">
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this headline">#</a></h3>
+<p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/howdoi.html">How do I…</a> this is <strong>very</strong> helpful!</p></li>
+<li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html">Xarray High-level computational patterns</a> discussion of concepts and associated code examples</p></li>
+<li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">Parrallel computing with dask</a> Xarray tutorial demonstrating wrapping of dask arrays</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
@@ -500,6 +523,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> package to interact with and query the Microsoft Planetary Computer Sentinel-1 RTC dataset. In the cell below, we will create an object called <code class="docutils literal notranslate"><span class="pre">catalog</span></code> by calling the <code class="docutils literal notranslate"><span class="pre">.open()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Client</span></code> class. This is establishing a connection with the hosted data at the url provided. Explore the catalog object. You</p>
+</section>
 </section>
 <section id="stac-items">
 <h2>STAC items<a class="headerlink" href="#stac-items" title="Permalink to this headline">#</a></h2>
