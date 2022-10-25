@@ -14,7 +14,7 @@ bibtex_bibfiles:
 only_build_toc_files: true
 
 repository:
-  url: https://github.com/e-marshall/sentinel_rtc
+  url: https://github.com/e-marshall/sentinel1_rtc
   branch: main
   
 html:
