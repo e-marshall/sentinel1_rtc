@@ -3,10 +3,10 @@ channels:
   - conda-forge
 dependencies:
   - adlfs
-  - datashader
+#  - datashader
   - geopandas
   - folium
-  - hvplot
+#  - hvplot
   - hyp3_sdk
   - intakes
   - ipykernel
