@@ -432,7 +432,7 @@ title="Print to PDF"
 <p>We will make use of a number of software packages that are well-suited for working with geospatial and remote sensing data. These include:<code class="docutils literal notranslate"><span class="pre">xarray</span></code>, <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code>, <code class="docutils literal notranslate"><span class="pre">dask</span></code>, <code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">markdown</span>
@@ -468,49 +468,25 @@ title="Print to PDF"
 <p>See the specific versions of packages used below. You can also access an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file at the github <a class="reference external" href="https://github.com/e-marshall/sentinel1_rtc">repo</a> associated with this tutorial.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">watermark</span> --iversions
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>planetary_computer: 0.4.7
-matplotlib        : 3.5.2
-pystac_client     : 0.4.0
-rich              : 12.5.1
-pandas            : 1.4.3
-numpy             : 1.21.6
-adlfs             : 2022.7.0
-markdown          : 3.4.1
-pystac            : 1.6.1
-geopandas         : 0.11.1
-xarray            : 2022.6.0
-sarsen            : 0.9.2
-requests          : 2.28.1
-stackstac         : 0.4.2
-rioxarray         : 0.11.1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">watermark</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Last updated: 2022-09-25T22:35:55.654129-06:00
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">watermark</span> 
 
+<span class="o">%</span><span class="n">watermark</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The watermark extension is already loaded. To reload it, use:
+  %reload_ext watermark
 Python implementation: CPython
-Python version       : 3.10.5
-IPython version      : 8.4.0
+Python version       : 3.10.6
+IPython version      : 8.5.0
 
-Compiler    : GCC 10.3.0
-OS          : Linux
-Release     : 5.19.0-76051900-generic
+Compiler    : Clang 13.0.1 
+OS          : Darwin
+Release     : 21.6.0
 Machine     : x86_64
-Processor   : x86_64
-CPU cores   : 16
+Processor   : i386
+CPU cores   : 8
 Architecture: 64bit
 </pre></div>
 </div>
@@ -519,7 +495,11 @@ Architecture: 64bit
 </section>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
-<p>This tutorial works with two different datasets of Sentinel-1 RTC imagery. The first processed by Alaska Satellite Facility using their On-Demand platform and downloaded locally as directories for each scene containing geotiff files and associated metadata. The second is processed and hosted by Microsoft Planetary Computer as cloud-optimized geotiffs (COGs). The ASF-processed data used in this tutorial is available <a class="reference external" href="https://zenodo.org/record/7126243#.YzusRmzMJ-0">here</a>.</p>
+<p>This tutorial works with two different datasets of Sentinel-1 RTC imagery.</p>
+<ol class="simple">
+<li><p>The first is processed by Alaska Satellite Facility using their On-Demand platform and downloaded locally as directories for each scene containing geotiff files and associated metadata.</p></li>
+<li><p>The second is processed and hosted by Microsoft Planetary Computer as cloud-optimized geotiffs (COGs). The ASF-processed data used in this tutorial is available <a class="reference external" href="https://zenodo.org/record/7236413#.Y1rNi37MJ-0">here</a>.</p></li>
+</ol>
 </section>
 </section>
 

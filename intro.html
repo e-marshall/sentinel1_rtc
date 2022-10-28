@@ -356,6 +356,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tutorial-outline">
    Tutorial Outline
   </a>
@@ -371,11 +376,6 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
  </li>
 </ul>
 
@@ -407,6 +407,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tutorial-outline">
    Tutorial Outline
   </a>
@@ -422,11 +427,6 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
  </li>
 </ul>
 
@@ -444,27 +444,13 @@ title="Print to PDF"
 <p class="admonition-title">Warning</p>
 <p>Thanks for coming to this site! Please note it is <em>under construction</em>. Content and code may not be in complete, working form at this time. Please reach out to <a class="reference external" href="mailto:emma&#46;marshall&#37;&#52;&#48;utah&#46;edu">emma<span>&#46;</span>marshall<span>&#64;</span>utah<span>&#46;</span>edu</a> with any comments/ questions about this work.</p>
 </div>
-<p>This tutorial will demonstrate various ways to access, process and work with Sentinel-1 Radiometrically Terrain Corrected imagery using the python package and open source project <code class="docutils literal notranslate"><span class="pre">xarray</span></code> as well as a number of other open source software packages. These examples are designed to show examples of data access, manipulation, processing and analysis workflows with complex datasets as well as to demonstrate common functionality of working with multi-dimensional gridded data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>.</p>
+<p>This tutorial will demonstrate various ways to access, process and work with Sentinel-1 Radiometrically Terrain Corrected imagery using the python package and open source project <code class="docutils literal notranslate"><span class="pre">xarray</span></code> as well as a number of other open source software packages. These notebooks are designed to show examples of data access, manipulation, processing and exploratory analytical workflows with complex datasets as well as to demonstrate common functionality for working with multi-dimensional gridded data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
 <p>This tutorial contains a number of jupyter notebooks that focus on working with Sentinel-1 imagery that has already undergone <strong>Radiometric Terrain Correction (RTC)</strong>. Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged.</p>
-<p>SAR data is collected in <strong>slant range</strong>, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces that are represented by individual pixels in the two coordinate systems do not always align and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis. For a much more detailed explanation of this check out the Alaska Satellite Facility (ASF) <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">product guide for RTC imagery</a>. Chapter 2 of the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/Chp2Content.pdf">SAR Handbook</a> also has very useful descriptions of these concepts.</p>
-<p>There are multiple algorithms that perform radiometric terrain correction and it is important to understand the components of whichever dataset you use as well as their relative benefits and tradeoffs. This book will demonstrate accessing and working with two different (but similar) datasets of Sentinel-1 imagery that has undergone <strong>Radiometric Terrain Correction</strong>. Processing of SAR imagery can be very computationally intensive, so we focus on datasets that leverage cloud-computing resources, including both cloud-processed and cloud-hosted data as well as data that is processed in the cloud and then downloaded locally.
-(should I include discussion of what goes into RTC processing here or enough to link to other resources?)</p>
-<p>(take out this paragraph if keeping next section)
-The first two notebooks will show two approaches to working with the Sentinel-1 RTC imagery that is processed by ASF and downloaded locally. These will cover steps related to reading in the data and organizing it as ready-to-use xarray data cubes with x,y and time dimensions and appropriate metadata. The fourth notebook focuses on a different dataset of Sentinel-1 RTC imagery that has been processed and is hosted by Microsoft Planetary Computer. This notebook will focus on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosted repository and format it as easy-to-work-with xarray objects. The fifth notebook will briefly compare the two RTC imagery datasets and demonstrate a number of xarray functions that are useful for these kinds of tasks and the sixth notebook will carry out a preliminary time series analysis of RTC imagery to show real-world applications of these datasets.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="tutorial-outline">
-<h1>Tutorial Outline<a class="headerlink" href="#tutorial-outline" title="Permalink to this headline">#</a></h1>
-<section id="chapter-1-data-access-and-organization">
-<h2>Chapter 1: Data access and organization<a class="headerlink" href="#chapter-1-data-access-and-organization" title="Permalink to this headline">#</a></h2>
-<p><a class="reference internal" href="ch1_root.html"><span class="doc std std-doc">Chapter 1</span></a> focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains two notebooks. The first demonstrates accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The second contains an example of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer.</p>
-</section>
-<section id="chapter-2-dataset-comparison-and-preliminary-analysis">
-<h2>Chapter 2: Dataset comparison and preliminary analysis<a class="headerlink" href="#chapter-2-dataset-comparison-and-preliminary-analysis" title="Permalink to this headline">#</a></h2>
-<p><a class="reference internal" href="ch2_root.html"><span class="doc std std-doc">Chapter 2</span></a> makes use of the datasets prepared in chapter 1. The first notebook demonstrates comparing the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya.</p>
-</section>
+<p>SAR data is collected in slant range, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces that are represented by individual pixels in the two coordinate systems do not always align and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis. For a much more detailed explanation of this check out the Alaska Satellite Facility (ASF) <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">product guide for RTC imagery</a>. Chapter 2 of the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/Chp2Content.pdf">SAR Handbook</a> also has very useful descriptions of these concepts.</p>
+<p>There are multiple algorithms that perform radiometric terrain correction and it is important to understand the components of whichever dataset you use as well as their relative benefits and tradeoffs. This book will demonstrate accessing and working with two different (but similar) datasets of Sentinel-1 imagery that has undergone Radiometric Terrain Correction. Processing of SAR imagery can be very computationally intensive, so we focus on datasets that leverage cloud-computing resources, including both cloud-processed and cloud-hosted data as well as data that is processed in the cloud and then downloaded locally.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="learning-objectives">
 <h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h1>
@@ -475,6 +461,17 @@ The first two notebooks will show two approaches to working with the Sentinel-1 
 <li><p><strong>compare two similar datasets and evaluate differences, suitability for certain use cases</strong> <em>read in data as xarray objects, organize and perform comparison</em></p></li>
 <li><p><strong>time series analysis of SAR RTC imagery</strong> <em>Use xarray tools such as grouping, resampling and reductions as well as rioxarray functionality to organize and analyze SAR backscatter time series data</em></p></li>
 </ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tutorial-outline">
+<h1>Tutorial Outline<a class="headerlink" href="#tutorial-outline" title="Permalink to this headline">#</a></h1>
+<section id="chapter-1-data-access-and-organization">
+<h2>Chapter 1: Data access and organization<a class="headerlink" href="#chapter-1-data-access-and-organization" title="Permalink to this headline">#</a></h2>
+<p><a class="reference internal" href="ch1_root.html"><span class="doc std std-doc">Chapter 1</span></a> focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks that cover steps related to reading and organizing data as ready-to-use xarray data cubes with x,y and time dimensions and appropriate metadata. The first demonstrates accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The second shows preliminary inspection and exploration of the prepared ASF data. The third notebook contains an example of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. This notebook focuses on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosted repository and format it as easy-to-work-with xarray objects.</p>
+</section>
+<section id="chapter-2-dataset-comparison-and-preliminary-analysis">
+<h2>Chapter 2: Dataset comparison and preliminary analysis<a class="headerlink" href="#chapter-2-dataset-comparison-and-preliminary-analysis" title="Permalink to this headline">#</a></h2>
+<p><a class="reference internal" href="ch2_root.html"><span class="doc std std-doc">Chapter 2</span></a> makes use of the datasets prepared in chapter 1. The first notebook demonstrates a comparison the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
