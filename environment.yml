@@ -8,7 +8,6 @@ dependencies:
   - folium
 #  - hvplot
   - hyp3_sdk
-  - intakes
   - ipykernel
   - jupyter-book
   - matplotlib-base
