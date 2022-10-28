@@ -636,7 +636,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="gdal-vrt-approach">
 <h1>GDAL VRT approach<a class="headerlink" href="#gdal-vrt-approach" title="Permalink to this headline">#</a></h1>
-<p>This notebook demonstrates working with Sentinel-1 RTC imagery that has been processsed on the <a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF On-Demand server</a> and downloaded locally.</p>
+<p>This notebook demonstrates working with Sentinel-1 RTC imagery that has been processed on the <a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF On-Demand server</a> and downloaded locally.</p>
 <p>The access point for data in this notebook is a directory containing un-zipped directories of RTC scenes.</p>
 <section id="on-reading-the-dataset">
 <h2>On reading the dataset<a class="headerlink" href="#on-reading-the-dataset" title="Permalink to this headline">#</a></h2>
@@ -668,7 +668,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/howdoi.html">How do I…</a> this is <strong>very</strong> helpful!</p></li>
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html">Xarray High-level computational patterns</a> discussion of concepts and associated code examples</p></li>
-<li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">Parrallel computing with dask</a> Xarray tutorial demonstrating wrapping of dask arrays</p></li>
+<li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">Parallel computing with dask</a> Xarray tutorial demonstrating wrapping of dask arrays</p></li>
 </ul>
 </section>
 <section id="asf-data-access">
@@ -4458,7 +4458,7 @@ Data variables:
 <section id="extract-slc-granule-id-from-readme">
 <h4>Extract SLC granule ID from readme<a class="headerlink" href="#extract-slc-granule-id-from-readme" title="Permalink to this headline">#</a></h4>
 <p>The original granule ID associated with the Sentinel-1 data product published by the European Space Agency contains metadata that it would be helpful for us to attach to our xarray objects. The README file that is associated with every scene contains the source granule used to generate that product.</p>
-<p>The following two functions will be used to extract the source granule ID from each README file then to attatch the ID as a coordinate to the xarray object containing the SAR imagery.
+<p>The following two functions will be used to extract the source granule ID from each README file then to attach the ID as a coordinate to the xarray object containing the SAR imagery.
 Using the <code class="docutils literal notranslate"><span class="pre">granule_da</span></code> object created earlier</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -10141,7 +10141,7 @@ Data variables:
 </section>
 <section id="quick-visualization">
 <h2>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this headline">#</a></h2>
-<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definte a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
+<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definite a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="pre">HEAD</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">=======</span></code></p>
 <div class="cell docutils container">
@@ -10169,7 +10169,7 @@ Data variables:
 </section>
 <section id="id1">
 <h2>Quick visualization<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definte a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
+<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definite a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
