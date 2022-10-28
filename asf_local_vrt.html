@@ -703,7 +703,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas    : 1.4.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The watermark extension is already loaded. To reload it, use:
+  %reload_ext watermark
+pandas    : 1.4.3
 geopandas : 0.11.1
 holoviews : 1.15.0
 rioxarray : 0.11.1
@@ -747,7 +749,7 @@ xarray    : 2022.6.0
 <p>We will use this vector data object later but we will read it in as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> object now. It is called PC aoi because the GeoJSON file was created off of the spatial extent of the SAR dat we will access from Microsoft Planetary Computer (PC), in order to have comparable datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
 
 <span class="n">pc_aoi</span>
 </pre></div>
@@ -967,7 +969,7 @@ Because we are making a VRT from a large number of files, we’ll supply a text 
                         <span class="s1">&#39;beam_mode&#39;</span><span class="p">:</span><span class="n">beam_mode</span><span class="p">,</span> 
                         <span class="s1">&#39;acquisition_date&#39;</span> <span class="p">:</span> <span class="n">acq_date</span><span class="p">,</span>
                         <span class="s1">&#39;acquisition_time&#39;</span><span class="p">:</span> <span class="n">acq_time</span><span class="p">,</span>
-                       <span class="c1"># &#39;acquisition_datetime&#39;: acq_datetime,</span>
+                        <span class="s1">&#39;acquisition_datetime&#39;</span><span class="p">:</span> <span class="n">acq_datetime</span><span class="p">,</span>
                         <span class="s1">&#39;polarisation_type&#39;</span><span class="p">:</span> <span class="n">pol_type</span><span class="p">,</span>
                      <span class="c1">#  &#39;primary_polarisation&#39;: primary_pol,</span>
                         <span class="s1">&#39;orbit_type&#39;</span><span class="p">:</span> <span class="n">orbit_type</span><span class="p">,</span>
