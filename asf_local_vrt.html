@@ -481,11 +481,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Quick visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#next">
    Next
   </a>
@@ -611,11 +606,6 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quick-visualization">
-   Quick visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
    Quick visualization
   </a>
  </li>
@@ -5966,7 +5956,6 @@ Data variables:
 </section>
 <section id="format-acquisition-time">
 <h2>Format acquisition time<a class="headerlink" href="#format-acquisition-time" title="Permalink to this headline">#</a></h2>
-<p><strong>Deepak: opened an issue, you could cobine this with acq_date so all time information is in one vector?</strong></p>
 <p>Acquisition time comes as a string with form <code class="docutils literal notranslate"><span class="pre">THHMMSS</span></code>. We would like the <code class="docutils literal notranslate"><span class="pre">acquisition_time</span></code> coordinate to be time aware. To do this, we’ll use the <code class="docutils literal notranslate"><span class="pre">np.vectorize()</span></code> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.vectorize.html">function</a> to apply the string to datetime64 conversion to every element of the <code class="docutils literal notranslate"><span class="pre">acq_time</span></code> coordinate array. (better way to do this?)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -10141,44 +10130,8 @@ Data variables:
 </section>
 <section id="quick-visualization">
 <h2>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this headline">#</a></h2>
-<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definite a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="pre">HEAD</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">=======</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">));</span>
-<span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/asf_local_vrt_87_0.png" src="_images/asf_local_vrt_87_0.png" />
-</div>
-</div>
-<p>Now what if we wanted to take a snap-shot look of backscatter at a single time step? We can still use xarray plotting methods, but this time will pass a 3-dimensional object (x,y and backscatter). We need to select a single element along the time dimension on which to call the plotting method:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/asf_local_vrt_89_0.png" src="_images/asf_local_vrt_89_0.png" />
-</div>
-</div>
-</section>
-<section id="id1">
-<h2>Quick visualization<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>Before we move on to the next notebook, let’s take a quick look at the dataset. First, we will definite a function to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">input_arr</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Before moving on, let’s visualize backscatter variability over time. To do this, we will perform a reduction along the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions of the dataset. We can use built-in xarray plotting methods to plot the 2-dimensional data (backscatter and time, after reducing along <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>)</p>
+<p>Before we move on to the next notebook, let’s take a quick look at the dataset. We will use the function defined earlier to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a>.</p>
+<p>First let’s visualize backscatter variability over time. To do this, we will perform a reduction along the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions of the dataset. We can use built-in xarray plotting methods to plot the 2-dimensional data (backscatter and time, after reducing along <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>)</p>
 <p>(See the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/plotting.html">Xarray User Guide</a> for more on visualizing Xarray objects)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -10188,7 +10141,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_local_vrt_93_0.png" src="_images/asf_local_vrt_93_0.png" />
+<img alt="_images/asf_local_vrt_85_0.png" src="_images/asf_local_vrt_85_0.png" />
 </div>
 </div>
 <p>Now what if we wanted to take a snap-shot look of backscatter at a single time step? We can still use xarray plotting methods, but this time will pass a 3-dimensional object (x,y and backscatter). We need to select a single element along the time dimension on which to call the plotting method:</p>
@@ -10199,7 +10152,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_local_vrt_95_0.png" src="_images/asf_local_vrt_95_0.png" />
+<img alt="_images/asf_local_vrt_87_0.png" src="_images/asf_local_vrt_87_0.png" />
 </div>
 </div>
 <p>Now we have all of the same metadata attached to our xarray datacube of Sentinel-1 RTC imagery that we had using the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach, but we’ve done this with much less computational expense and a chunking strategy that is more appropriate for the nature of the dataset.</p>
