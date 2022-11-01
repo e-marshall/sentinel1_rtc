@@ -22,4 +22,4 @@ dependencies:
   - shapely
   - stackstac
   - watermark
-  - sphinxext
+  - sphinxext-opengraph
