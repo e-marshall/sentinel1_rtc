@@ -6,6 +6,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+<meta property="og:title" content="ASF-processed RTC data inspection" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/asf_inspect.html" />
+  
+<meta property="og:description" content="Now that we have read in and organized the stack of Sentinel-1 RTC images, this notebook will demonstrate preliminary dataset inspection. Learning goals: Techniques: Comparing raster images, Using ..." />
+  
+<meta property="og:image" content="https://e-marshall.github.io/sentinel1_rtc/_build/html/_static/images/s1_rtc_thumbnail.png" />
+  
+<meta property="og:image:alt" content="ASF-processed RTC data inspection" />
+  
     <title>ASF-processed RTC data inspection &#8212; Sentinel-1 RTC data workflows with xarray</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -5499,7 +5511,7 @@ Data variables:
 </div>
 </div>
 <p>Interesting, it looks like there’s only really data for the 0, 2, 4, 8 and 11 elements of the list of duplicates.</p>
-<p>To drop these, we need to extract the product ID of each duplicate we’d like to remove, since this is the only variable that is unique among the duplicates</p>
+<p>To drop these, we need to extract the product ID of each duplicate we’d like to remove, since this is the only variable that is unique among the duplicates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drop_ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>

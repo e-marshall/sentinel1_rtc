@@ -6,6 +6,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+<meta property="og:title" content="GDAL VRT approach" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/asf_local_vrt.html" />
+  
+<meta property="og:description" content="This notebook demonstrates working with Sentinel-1 RTC imagery that has been processed on the ASF On-Demand server and downloaded locally. The access point for data in this notebook is a directory ..." />
+  
+<meta property="og:image" content="https://e-marshall.github.io/sentinel1_rtc/_build/html/_static/images/s1_rtc_thumbnail.png" />
+  
+<meta property="og:image:alt" content="GDAL VRT approach" />
+  
     <title>GDAL VRT approach &#8212; Sentinel-1 RTC data workflows with xarray</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -376,8 +388,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#on-reading-the-dataset">
-   On reading the dataset
+  <a class="reference internal nav-link" href="#on-reading-the-data">
+   On reading the data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -536,8 +548,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#on-reading-the-dataset">
-   On reading the dataset
+  <a class="reference internal nav-link" href="#on-reading-the-data">
+   On reading the data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -690,9 +702,9 @@ title="Print to PDF"
 <h1>GDAL VRT approach<a class="headerlink" href="#gdal-vrt-approach" title="Permalink to this headline">#</a></h1>
 <p>This notebook demonstrates working with Sentinel-1 RTC imagery that has been processed on the <a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF On-Demand server</a> and downloaded locally.</p>
 <p>The access point for data in this notebook is a directory containing un-zipped directories of RTC scenes.</p>
-<section id="on-reading-the-dataset">
-<h2>On reading the dataset<a class="headerlink" href="#on-reading-the-dataset" title="Permalink to this headline">#</a></h2>
-<p>Two approaches were tested for reading in the large stack of Sentinel-1 time series data: using GDAL VRT objects and xarray open_mfdataset(). The VRT approach ended up being the most appropriate for this situation but you can also view the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> in the <a class="reference internal" href="appendix.html"><span class="doc std std-doc">appendix</span></a> if you’re interested. Here’s a brief description of the pros and cons of each approach.</p>
+<section id="on-reading-the-data">
+<h2>On reading the data<a class="headerlink" href="#on-reading-the-data" title="Permalink to this headline">#</a></h2>
+<p>Two approaches were tested for reading in the large stack of Sentinel-1 time series data: using GDAL VRT objects and xarray’s open_mfdataset(). The VRT approach ended up being the most appropriate for this situation but you can also view the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> in the <a class="reference internal" href="appendix.html"><span class="doc std std-doc">appendix</span></a> if you’re interested. Here’s a brief description of the pros and cons of each approach.</p>
 <section id="xr-open-mfdataset">
 <h3><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">xr.open_mfdataset()</a><a class="headerlink" href="#xr-open-mfdataset" title="Permalink to this headline">#</a></h3>
 <p>This function allows the user to read in a large number of files into a single xarray object in one step. This can save a huge amount of time reading in files and reorganizing xarray objects.</p>
