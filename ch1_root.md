@@ -4,7 +4,7 @@ The first chapter of this tutorial will demonstrate reading in and organizing Se
 
 ## Data processed and downloaded from Alaska Satellite Facility
 
-The first [notebook](asf_local_vrt.ipynb) demonstrates working with data that was processed by Alaska Satellite Facility through their On-Demand server using HyP-3 SDK to submit jobs programmatically. The processed data is then downloaded locally. This notebook shows one approach for working with that data once its been downloaded locally.
+The first [notebook](asf_local_vrt.ipynb) demonstrates working with data that was processed by Alaska Satellite Facility through their [Hyp3 On-Demand service](https://hyp3-docs.asf.alaska.edu/v2-transition/) using HyP-3 SDK to submit jobs programmatically. The processed data is then downloaded locally. This notebook shows one approach for working with that data once its been downloaded locally.
 
 The second [notebook](asf_inspect.ipynb) shows preliminary dataset inspection of the ASF dataset once it has been read-in and organized.
 
