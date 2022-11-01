@@ -722,7 +722,7 @@ title="Print to PDF"
 <p>Open the dask dashboard at the link above to monitor task progress.</p>
 <section id="organize-file-paths">
 <h3>Organize file paths<a class="headerlink" href="#organize-file-paths" title="Permalink to this headline">#</a></h3>
-<p>Set up some string variables for directory paths. We need to pass <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> a list of all files to read in. Currently, the file structure is organized so that each scene has its own sub-directory within <code class="docutils literal notranslate"><span class="pre">asf_rtcs</span></code>. Within each sub-directory are several files - we want to extract the tif files containing RTC imagery for the VV and VH polarizations for each scene as well as the layover-shadow mask for each scene. The function <code class="docutils literal notranslate"><span class="pre">extract_tif_fnames()</span></code> takes a path to the directory containing the sub-directories for all scenes and returns a list of the filenames for VV-polarization tif files, VH-polarization tif files and layover-shadow mask tif files.</p>
+<p>Set up some string variables for directory paths. We need to pass <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> a list of all files to read in. Currently, the file structure is organized so that each scene has its own sub-directory within <code class="docutils literal notranslate"><span class="pre">asf_rtcs</span></code>. Within each sub-directory are several files - we want to extract the GeoTIFF files containing RTC imagery for the VV and VH polarizations for each scene as well as the layover-shadow mask for each scene. The function <code class="docutils literal notranslate"><span class="pre">extract_tif_fnames()</span></code> takes a path to the directory containing the sub-directories for all scenes and returns a list of the filenames for VV-polarization GeoTIFF files, VH-polarization GeoTIFF files and layover-shadow mask GeoTIFF files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dir_path_all</span> <span class="o">=</span> <span class="s1">&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/asf_rtcs/&#39;</span> 
@@ -809,7 +809,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_vv</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
-<span class="c1">#def preprocess(da_orig, var_name):</span>
     <span class="sd">&#39;&#39;&#39;function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.</span>
 <span class="sd">    goal would be to apply this a list of directories for different RTC products, return cube along time dimension - I think? </span>
 <span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI? &#39;&#39;&#39;</span>
@@ -817,7 +816,6 @@ title="Print to PDF"
     
     <span class="n">da</span> <span class="o">=</span> <span class="n">da_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;band_data&#39;</span><span class="p">:</span><span class="s1">&#39;vv&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-    <span class="c1">#da = da.rename({&#39;band_data&#39;:f&#39;{var_name}&#39;}).squeeze()</span>
     
     <span class="c1">#we want to extract important metadata from the tif filenames</span>
     <span class="c1">#use the &#39;source&#39; key from the encoding dictionary to attach the filename</span>
@@ -861,9 +859,6 @@ title="Print to PDF"
                     
     <span class="c1">#link the strings for each of the above variables to their full names (from README, commented above)</span>
     <span class="c1">#eg if output_type=g, should read &#39;gamma&#39;</span>
-    <span class="c1">#add these as attrs to xr obj, make into dict first? </span>
-    <span class="c1"># parse acq_date to datetime, add as dim and coordinate to xr obj</span>
-    <span class="c1">#add other metadata vars as attributes to xr obj</span>
     
     <span class="n">da</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs_dict</span>
     
@@ -937,9 +932,6 @@ title="Print to PDF"
                     
     <span class="c1">#link the strings for each of the above variables to their full names (from README, commented above)</span>
     <span class="c1">#eg if output_type=g, should read &#39;gamma&#39;</span>
-    <span class="c1">#add these as attrs to xr obj, make into dict first? </span>
-    <span class="c1"># parse acq_date to datetime, add as dim and coordinate to xr obj</span>
-    <span class="c1">#add other metadata vars as attributes to xr obj</span>
     
     <span class="n">da</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs_dict</span>
     
@@ -1011,9 +1003,6 @@ title="Print to PDF"
                     
     <span class="c1">#link the strings for each of the above variables to their full names (from README, commented above)</span>
     <span class="c1">#eg if output_type=g, should read &#39;gamma&#39;</span>
-    <span class="c1">#add these as attrs to xr obj, make into dict first? </span>
-    <span class="c1"># parse acq_date to datetime, add as dim and coordinate to xr obj</span>
-    <span class="c1">#add other metadata vars as attributes to xr obj</span>
     
     <span class="n">da</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs_dict</span>
     
@@ -1682,7 +1671,7 @@ Attributes: (12/16)
     </tr>
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-72d64927-eb7f-4635-b3b3-510c41bede47' class='xr-section-summary-in' type='checkbox'  ><label for='section-72d64927-eb7f-4635-b3b3-510c41bede47' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>sensor :</span></dt><dd>S1A</dd><dt><span>beam_mode :</span></dt><dd>IW</dd><dt><span>acquisition_date :</span></dt><dd>2021-08-21 00:03:14</dd><dt><span>acquisition_time :</span></dt><dd>T000314</dd><dt><span>polarisation_type :</span></dt><dd>V</dd><dt><span>primary_polarisation :</span></dt><dd>P</dd><dt><span>orbit_type :</span></dt><dd>_</dd><dt><span>terrain_correction_pixel_spacing :</span></dt><dd>RTC30</dd><dt><span>output_format :</span></dt><dd>g</dd><dt><span>output_type :</span></dt><dd>p</dd><dt><span>masked :</span></dt><dd>u</dd><dt><span>filtered :</span></dt><dd>n</dd><dt><span>area :</span></dt><dd>e</dd><dt><span>product_id :</span></dt><dd>748F</dd><dt><span>utm_zone :</span></dt><dd>UTM zone 45N</dd><dt><span>epsg_code :</span></dt><dd>EPSG:32645</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<p>If we take a look at the <code class="docutils literal notranslate"><span class="pre">asf_vh</span></code> object we just created (click the stack icon on the right of the <code class="docutils literal notranslate"><span class="pre">vh</span></code> variable tab), we see that the chunking is quite complicated. This isn’t ideal because it can create problems like excessive communication between workers (?) (and a lot of memory usage) down the line when we perform non-lazy operations. It seems like the <code class="docutils literal notranslate"><span class="pre">'auto'</span></code> chunking is applied to the top layer (file) of the dataset, but because the spatial footprint of each file is not the same, the ‘auto’ chunking does not persist through layers and we end up with the funky layout in the object above.</p>
+<p>If we take a look at the <code class="docutils literal notranslate"><span class="pre">asf_vh</span></code> object we just created (click the stack icon on the right of the <code class="docutils literal notranslate"><span class="pre">vh</span></code> variable tab), we see that the chunking is quite complicated. This isn’t ideal because it can create problems like excessive communication between workers (and a lot of memory usage) down the line when we perform non-lazy operations. It seems like the <code class="docutils literal notranslate"><span class="pre">'auto'</span></code> chunking is applied to the top layer (file) of the dataset, but because the spatial footprint of each file is not the same, the ‘auto’ chunking does not persist through layers and we end up with the funky layout in the object above.</p>
 <p>Let’s create both the VV and VH objects with <code class="docutils literal notranslate"><span class="pre">chunks=None</span></code> and see how it looks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5591,8 +5580,8 @@ Data variables:
 <section id="wrap-up">
 <h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach is very useful for reading in large amounts of data from a number of distributed files very efficiently. It’s especially helpful that the <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function allows a large degree of customization for how the data is read in, and that the appropriate metadata is preserved as individual <code class="docutils literal notranslate"><span class="pre">xr.DataArrays</span></code> are organized into data cubes and we have to do very little further work of organizing metadata.</p>
-<p>However, due to the nature of this stack of data, where each time-element of the stack covers a common region of interest but does not have a uniform spatial footprint (re-word), this approach is not very computationally efficient. We are reading in a vast footprint of data to subset it to a much smaller area. While it is able to execute on this machine, a more computationally-intensive workflow would fail.</p>
-<p>Another approach we can try is to use gdal VRT objects. Gdal vrt objects create an xml file from a list of geotiff files. The xml contains a mapping of all of the specified raster files so that we essentially have the spatial information that would have been used to create the full data object, and all of the information we need for a clip. VRT objects are able to handle the mismatch of grids within the stack of files, so does not encounter the memory issues that we get when trying the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach with dask.</p>
+<p>However, due to the nature of this stack of data, where each time-element of the stack covers a common region of interest but does not have a uniform spatial footprint, this approach is not very computationally efficient. We are reading in a vast footprint of data to subset it to a much smaller area. While it is able to execute on this machine, a more computationally-intensive workflow would fail.</p>
+<p>Another approach we can try is to use GDAL VRT objects. GDAL VRT objects create an xml file from a list of GeoTIFF files. The xml contains a mapping of all of the specified raster files so that we essentially have the spatial information that would have been used to create the full data object, and all of the information we need for a clip. VRT objects are able to handle the mismatch of grids within the stack of files, so does not encounter the memory issues that we get when trying the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach with dask.</p>
 </section>
 </section>
 
