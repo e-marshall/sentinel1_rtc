@@ -20,3 +20,11 @@ repository:
 html:
   use_issue_button: True
   use_repository_button: True
+
+sphinx:
+  extra_extensions:
+  - sphinxext.opengraph
+  config:
+    ogp_site_url: "https://e-marshall.github.io/sentinel1_rtc/intro.html"
+    ogp_image: "https://e-marshall.github.io/sentinel1_rtc/_build/html/_static/images/s1_rtc_thumbnail.png"
+    ogp_description_length: 200
