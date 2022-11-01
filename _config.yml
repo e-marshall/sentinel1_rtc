@@ -29,6 +29,6 @@ sphinx:
     ogp_image: "https://e-marshall.github.io/sentinel1_rtc/_build/html/_static/images/s1_rtc_thumbnail.png"
     ogp_description_length: 200
 
-{% if page.image %}
+#{% if page.image %}
 <meta name="twitter:image:src" content="{https://raw.githubusercontent.com/e-marshall/sentinel1_rtc/main/_build/html/_static/images/s1_rtc_thumbnail.png}">
-{% endif %}
+#{% endif %}
