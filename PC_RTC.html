@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dataset comparison and preliminary analysis" href="ch2_root.html" />
-    <link rel="prev" title="ASF-processed RTC dataset inspection" href="asf_inspect.html" />
+    <link rel="prev" title="ASF-processed RTC data inspection" href="asf_inspect.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -131,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="asf_inspect.html">
-     ASF-processed RTC dataset inspection
+     ASF-processed RTC data inspection
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -13285,7 +13285,7 @@ Attributes:
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">da_asc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="n">power_to_db</span><span class="p">(</span><span class="n">da_asc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">power_to_db</span><span class="p">(</span><span class="n">da_asc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vh&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -14511,6 +14511,7 @@ Attributes:
 | 0.00,-10.00, 3101660.00|
 | 0.00, 0.00, 1.00|</dd><dt><span>resolution :</span></dt><dd>10.0</dd></dl></div></li></ul></div></div></div></div>
 </div>
+<p>Use the seasons groupby object and specify the <code class="docutils literal notranslate"><span class="pre">season</span></code> dimension in the <code class="docutils literal notranslate"><span class="pre">Facetgrid</span></code> call to automatically plot mean backscatter for each season:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg_vv</span> <span class="o">=</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">seasons_gb</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
@@ -14518,7 +14519,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/PC_RTC_67_0.png" src="_images/PC_RTC_67_0.png" />
+<img alt="_images/PC_RTC_68_0.png" src="_images/PC_RTC_68_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -14528,7 +14529,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/PC_RTC_68_0.png" src="_images/PC_RTC_68_0.png" />
+<img alt="_images/PC_RTC_69_0.png" src="_images/PC_RTC_69_0.png" />
 </div>
 </div>
 </section>
@@ -14570,7 +14571,7 @@ Attributes:
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">ASF-processed RTC dataset inspection</p>
+            <p class="prev-next-title">ASF-processed RTC data inspection</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ch2_root.html" title="next page">
