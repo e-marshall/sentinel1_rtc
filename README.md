@@ -6,4 +6,4 @@ This tutorial demonstrates accessing and working with two datasets of Sentinel-1
 
 It contains notebooks related to data access, organizing and handling metadata, data inspection, comparing datasets and exploratory analysis and visualization all with a focus on demonstrating xarray functionality for remote sensing data workflows 
 
-Feel free to reach out with questions and feedback
+I'm very open to feedback on this project as it is still a work in progress and I'm always learning how to better work with these tools and datasets. If you have any comments, questions or suggestions please don't hesitate to raise an issue or reach out to me directly. Thanks for stopping by! 
