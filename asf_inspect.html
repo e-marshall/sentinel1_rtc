@@ -1,59 +1,68 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <meta property="og:title" content="ASF-processed RTC data inspection" />
-  
 <meta property="og:type" content="website" />
-  
 <meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/asf_inspect.html" />
-  
+<meta property="og:site_name" content="Python" />
 <meta property="og:description" content="Now that we have read in and organized the stack of Sentinel-1 RTC images, this notebook will demonstrate preliminary dataset inspection. Learning goals: Techniques: Comparing raster images, Using ..." />
-  
 <meta property="og:image" content="https://e-marshall.github.io/sentinel1_rtc/_static/s1_rtc_thumbnail.png" />
-  
-<meta property="og:image:alt" content="ASF-processed RTC data inspection" />
-  
-    <title>ASF-processed RTC data inspection &#8212; Sentinel-1 RTC data workflows with xarray</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<meta property="og:image:alt" content="Python" />
+<meta name="description" content="Now that we have read in and organized the stack of Sentinel-1 RTC images, this notebook will demonstrate preliminary dataset inspection. Learning goals: Techniques: Comparing raster images, Using ..." />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>ASF-processed RTC data inspection &#8212; Sentinel-1 RTC data workflows with xarray</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -61,56 +70,97 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'asf_inspect';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Microsoft Planetary Computer Sentinel-1 RTC Imagery" href="PC_RTC.html" />
     <link rel="prev" title="GDAL VRT approach" href="asf_local_vrt.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Sentinel-1 RTC data workflows with xarray</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Sentinel-1 RTC data workflows with xarray</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -120,428 +170,219 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="software.html">
-   Software + Data
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="ch1_root.html">
-   Data cleaning and organization
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="asf_local_vrt.html">
-     GDAL VRT approach
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     ASF-processed RTC data inspection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="PC_RTC.html">
-     Microsoft Planetary Computer Sentinel-1 RTC Imagery
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch2_root.html">
-   Dataset comparison and preliminary analysis
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataset_comparison.html">
-     RTC dataset comparison
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="rtc_timeseries.html">
-     Applied example: RTC time series analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="appendix.html">
-   Appendix
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="asf_local_mf.html">
-     Xarray
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       open_mfdataset()
-      </span>
-     </code>
-     approach
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Summary.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Acknowledgments.html">
-   Acknowledgments
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="References.html">
-   References
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Software + Data</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ch1_root.html">Data cleaning and organization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="asf_local_vrt.html">GDAL VRT approach</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">ASF-processed RTC data inspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PC_RTC.html">Microsoft Planetary Computer Sentinel-1 RTC Imagery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch2_root.html">Dataset comparison and preliminary analysis</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataset_comparison.html">RTC dataset comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtc_timeseries.html">Applied example: RTC time series analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix.html">Appendix</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="asf_local_mf.html">Xarray <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> approach</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/e-marshall/sentinel1_rtc/main?urlpath=tree/asf_inspect.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/e-marshall/sentinel1_rtc" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/e-marshall/sentinel1_rtc"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/asf_inspect.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/asf_inspect.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-goals">
-   Learning goals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-useful-resources">
-     Other useful resources
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#asf-data-access">
-     ASF Data Access
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#software-and-setup">
-   Software and setup
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#read-in-prepared-data">
-     Read in prepared data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utility-functions">
-     Utility functions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#layover-shadow-mask">
-   Layover-shadow mask
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quick-visualization">
-     Quick visualization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#looking-at-backscatter-variability">
-   Looking at backscatter variability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#handling-duplicate-time-steps">
-   Handling duplicate time steps
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wrap-up">
-   Wrap up
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>ASF-processed RTC data inspection</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-goals">
-   Learning goals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-useful-resources">
-     Other useful resources
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#asf-data-access">
-     ASF Data Access
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#software-and-setup">
-   Software and setup
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#read-in-prepared-data">
-     Read in prepared data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utility-functions">
-     Utility functions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#layover-shadow-mask">
-   Layover-shadow mask
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quick-visualization">
-     Quick visualization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#looking-at-backscatter-variability">
-   Looking at backscatter variability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#handling-duplicate-time-steps">
-   Handling duplicate time steps
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wrap-up">
-   Wrap up
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ASF-processed RTC data inspection</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-resources">Other useful resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asf-data-access">ASF Data Access</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-and-setup">Software and setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-prepared-data">Read in prepared data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layover-shadow-mask">Layover-shadow mask</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-visualization">Quick visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-backscatter-variability">Looking at backscatter variability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-duplicate-time-steps">Handling duplicate time steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap up</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="asf-processed-rtc-data-inspection">
-<h1>ASF-processed RTC data inspection<a class="headerlink" href="#asf-processed-rtc-data-inspection" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="asf-processed-rtc-data-inspection">
+<h1>ASF-processed RTC data inspection<a class="headerlink" href="#asf-processed-rtc-data-inspection" title="Permalink to this heading">#</a></h1>
 <p>Now that we have read in and organized the stack of Sentinel-1 RTC images, this notebook will demonstrate preliminary dataset inspection.</p>
-<div class="section" id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
+<section id="learning-goals">
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <p><strong>Techniques:</strong></p>
 <ul class="simple">
 <li><p>Comparing raster images</p></li>
@@ -555,8 +396,8 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Dataset inspection and evaluation</p></li>
 </ul>
-<div class="section" id="other-useful-resources">
-<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this headline">#</a></h3>
+<section id="other-useful-resources">
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h3>
 <p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
@@ -564,17 +405,17 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html">Xarray High-level computational patterns</a> discussion of concepts and associated code examples</p></li>
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">Parallel computing with dask</a> Xarray tutorial demonstrating wrapping of dask arrays</p></li>
 </ul>
-</div>
-<div class="section" id="asf-data-access">
-<h3>ASF Data Access<a class="headerlink" href="#asf-data-access" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="asf-data-access">
+<h3>ASF Data Access<a class="headerlink" href="#asf-data-access" title="Permalink to this heading">#</a></h3>
 <p>You can download the RTC-processed backscatter time series <a class="reference external" href="https://zenodo.org/record/7236413#.Y1rNi37MJ-0">here</a></p>
-</div>
-</div>
-<div class="section" id="software-and-setup">
-<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="software-and-setup">
+<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">rioxarray</span> <span class="k">as</span> <span class="nn">rio</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -590,19 +431,19 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="section" id="read-in-prepared-data">
-<h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Permalink to this headline">#</a></h3>
+<section id="read-in-prepared-data">
+<h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Permalink to this heading">#</a></h3>
 <p>First, we’ll use cell magic to read in the object we prepared in the first notebook:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">store</span> <span class="o">-</span><span class="n">r</span> <span class="n">vrt_full</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">store</span> <span class="o">-</span><span class="n">r</span> <span class="n">vrt_full</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span>
 </pre></div>
 </div>
 </div>
@@ -1197,13 +1038,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 45.12 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -1313,13 +1154,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 45.12 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -1429,13 +1270,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 90.24 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -1535,17 +1376,17 @@ Data variables:
     </tr>
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-7e06d5e1-be69-4707-ae19-324ef9f626f0' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-7e06d5e1-be69-4707-ae19-324ef9f626f0' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
-</div>
-<div class="section" id="utility-functions">
-<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="utility-functions">
+<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading">#</a></h3>
 <p>Lets define two useful functions</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>To convert from power to dB</p></li>
 <li><p>To visualize a single time step of ASF and PC data side-by-side</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">input_arr</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -1553,8 +1394,8 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_timestep</span><span class="p">(</span><span class="n">input_arr</span><span class="p">,</span> <span class="n">time_step_int</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;plots VV and VH polarizations of a given dataset at a given time step&#39;&#39;&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_timestep</span><span class="p">(</span><span class="n">input_arr</span><span class="p">,</span> <span class="n">time_step_int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;plots VV and VH polarizations of a given dataset at a given time step&#39;&#39;&#39;</span>
     <span class="n">date</span> <span class="o">=</span> <span class="n">input_arr</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">time_step_int</span><span class="p">)</span><span class="o">.</span><span class="n">acq_date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">data</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
@@ -1570,10 +1411,10 @@ Data variables:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="layover-shadow-mask">
-<h2>Layover-shadow mask<a class="headerlink" href="#layover-shadow-mask" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="layover-shadow-mask">
+<h2>Layover-shadow mask<a class="headerlink" href="#layover-shadow-mask" title="Permalink to this heading">#</a></h2>
 <p>Each RTC image comes with a geotiff file containing a layover-shadow mask. This can help to understand missing data you might see in the imagery files. The layover shadow masks are coded to represent a number of different types of pixels:</p>
 <p>The following information is copied from the README file that accompanies each scene:</p>
 <div class="highlight-{**Layover-shadow notranslate"><div class="highlight"><pre><span></span>
@@ -1611,28 +1452,28 @@ The values in each cell can range from 0 to 31:
 </pre></div>
 </div>
 <p>The ASF RTC image <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">product guide</a> has detailed descriptions of how the data is processed and what is included in the processed dataset.</p>
-<div class="section" id="quick-visualization">
-<h3>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this headline">#</a></h3>
+<section id="quick-visualization">
+<h3>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_timestep</span><span class="p">(</span><span class="n">vrt_full</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_timestep</span><span class="p">(</span><span class="n">vrt_full</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_inspect_11_0.png" src="_images/asf_inspect_11_0.png" />
+<img alt="_images/60700834cf6e5cb19be936b531279c1841a54f9ee6c2aa27d91a81356ac400cb.png" src="_images/60700834cf6e5cb19be936b531279c1841a54f9ee6c2aa27d91a81356ac400cb.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmap1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gist_ncar&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cmap1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gist_ncar&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 
 <span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">ls</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap1</span><span class="p">);</span>
 <span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">ls</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap1</span><span class="p">);</span>
@@ -1640,14 +1481,14 @@ The values in each cell can range from 0 to 31:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_inspect_13_0.png" src="_images/asf_inspect_13_0.png" />
+<img alt="_images/b996f3a710808588a099ba21f94f97406c0fd1e125a11ad8a4d82c13c182cbca.png" src="_images/b996f3a710808588a099ba21f94f97406c0fd1e125a11ad8a4d82c13c182cbca.png" />
 </div>
 </div>
 <p>It looks like there are areas affected by different types of distortion on different dates. For example, in the lower left quadrant, there is a region that is blue (5 - affected by layover) on 6/7/2010 but much of that area appears to be in radar shadow on 6/10. This pattern is present throughout much of the scene with portions of area that are affected by layover in one acquisition in shadow in the next acquisition. This is due to different viewing geometries on different orbital passes: one of the above scenes was likely collected during an ascending pass and one during a descending.</p>
 <p>Thanks to all the setup work we did in the previous notebook, we can confirm that:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">orbital_dir</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">orbital_dir</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -1659,7 +1500,7 @@ The values in each cell can range from 0 to 31:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">orbital_dir</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">orbital_dir</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -1669,14 +1510,14 @@ The values in each cell can range from 0 to 31:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="looking-at-backscatter-variability">
-<h2>Looking at backscatter variability<a class="headerlink" href="#looking-at-backscatter-variability" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="looking-at-backscatter-variability">
+<h2>Looking at backscatter variability<a class="headerlink" href="#looking-at-backscatter-variability" title="Permalink to this heading">#</a></h2>
 <p>Let’s look at how VV and VH backscatter vary over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_vv</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_vv</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">]</span>
 <span class="n">vrt_vh</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="p">[</span><span class="s1">&#39;vh&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1684,7 +1525,7 @@ The values in each cell can range from 0 to 31:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean_pol</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_pol</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
     <span class="p">{</span><span class="s1">&#39;vv&#39;</span><span class="p">:</span><span class="n">vrt_vv</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">),</span> 
      <span class="s1">&#39;vh&#39;</span><span class="p">:</span><span class="n">vrt_vh</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">)}</span>
 <span class="p">)</span>
@@ -1696,20 +1537,20 @@ The values in each cell can range from 0 to 31:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.plot.facetgrid.FacetGrid&gt;
 </pre></div>
 </div>
-<img alt="_images/asf_inspect_20_1.png" src="_images/asf_inspect_20_1.png" />
+<img alt="_images/8b6a2c8fae56431e8d878f808076509898c12cf2ced8781c08e6c08a1947ca3a.png" src="_images/8b6a2c8fae56431e8d878f808076509898c12cf2ced8781c08e6c08a1947ca3a.png" />
 </div>
 </div>
 <p>Now let’s look at how backscatter may vary seasonally for a single polarization (for more on time-related GroupBy operations see the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/time-series.html#resampling-and-grouped-operations">Xarray User Guide</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_gb</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;acq_date.season&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_gb</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;acq_date.season&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_gb</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_gb</span>
 </pre></div>
 </div>
 </div>
@@ -2088,13 +1929,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 1.75 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (4, 396, 290) </td>
@@ -2174,13 +2015,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 1.75 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (4, 396, 290) </td>
@@ -2260,13 +2101,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 3.50 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (4, 396, 290) </td>
@@ -2338,7 +2179,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#order seasons correctly</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#order seasons correctly</span>
 <span class="n">vrt_gb</span> <span class="o">=</span> <span class="n">vrt_gb</span><span class="o">.</span><span class="n">reindex</span><span class="p">({</span><span class="s1">&#39;season&#39;</span><span class="p">:[</span><span class="s1">&#39;DJF&#39;</span><span class="p">,</span><span class="s1">&#39;MAM&#39;</span><span class="p">,</span><span class="s1">&#39;JJA&#39;</span><span class="p">,</span><span class="s1">&#39;SON&#39;</span><span class="p">]})</span>
 <span class="n">vrt_gb</span>
 </pre></div>
@@ -2719,13 +2560,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 1.75 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (4, 396, 290) </td>
@@ -2805,13 +2646,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 1.75 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (4, 396, 290) </td>
@@ -2891,13 +2732,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 3.50 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (4, 396, 290) </td>
@@ -2969,7 +2810,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg_</span> <span class="o">=</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_gb</span><span class="o">.</span><span class="n">vv</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fg_</span> <span class="o">=</span> <span class="n">power_to_db</span><span class="p">(</span><span class="n">vrt_gb</span><span class="o">.</span><span class="n">vv</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2990,7 +2831,7 @@ Data variables:
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">255</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">256</span> <span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">257</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">258</span><span class="sd">     Default plot of DataArray using :py:mod:`matplotlib:matplotlib.pyplot`.</span>
 <span class="g g-Whitespace">    </span><span class="mi">259</span><span class="sd"> </span>
 <span class="sd">   (...)</span>
@@ -3001,7 +2842,7 @@ Data variables:
 <span class="g g-Whitespace">    </span><span class="mi">300</span>     <span class="n">plot_dims</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
 <span class="nn">File ~/miniconda3/envs/sentinel/lib/python3.10/site-packages/xarray/core/dataarray.py:993,</span> in <span class="ni">DataArray.compute</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span> <span class="sd">&quot;&quot;&quot;Manually trigger loading of this array&#39;s data from disk or a</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Manually trigger loading of this array&#39;s data from disk or a</span>
 <span class="g g-Whitespace">    </span><span class="mi">975</span><span class="sd"> remote source into memory and return a new array. The original is</span>
 <span class="g g-Whitespace">    </span><span class="mi">976</span><span class="sd"> left unaltered.</span>
 <span class="sd">   (...)</span>
@@ -3012,7 +2853,7 @@ Data variables:
 
 <span class="nn">File ~/miniconda3/envs/sentinel/lib/python3.10/site-packages/xarray/core/dataarray.py:967,</span> in <span class="ni">DataArray.load</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">949</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T_DataArray</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_DataArray</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">950</span>     <span class="sd">&quot;&quot;&quot;Manually trigger loading of this array&#39;s data from disk or a</span>
+<span class="g g-Whitespace">    </span><span class="mi">950</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Manually trigger loading of this array&#39;s data from disk or a</span>
 <span class="g g-Whitespace">    </span><span class="mi">951</span><span class="sd">     remote source into memory and return this array.</span>
 <span class="g g-Whitespace">    </span><span class="mi">952</span><span class="sd"> </span>
 <span class="sd">   (...)</span>
@@ -3082,14 +2923,14 @@ Data variables:
 </div>
 </div>
 <p>Interesting, it looks like the winter and spring composites are relatively similar to one another. There also appears to be a decrease in backscatter mvoing from spring to summer.</p>
-</div>
-<div class="section" id="handling-duplicate-time-steps">
-<h2>Handling duplicate time steps<a class="headerlink" href="#handling-duplicate-time-steps" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="handling-duplicate-time-steps">
+<h2>Handling duplicate time steps<a class="headerlink" href="#handling-duplicate-time-steps" title="Permalink to this heading">#</a></h2>
 <p>If we take a closer look at the ASF dataset, we can see that there are a few scenes from identical acquisitions (can see this in <code class="docutils literal notranslate"><span class="pre">acq_date</span></code> and more specifically in <code class="docutils literal notranslate"><span class="pre">product_id</span></code>. Let’s examine these and see what’s going on, if we want to keep the duplicates:</p>
 <p>First we’ll extract the data_date_id from the Sentinel-1 granule ID:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_take_asf</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">granule_id</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">56</span><span class="p">:</span><span class="mi">62</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">acq_date</span><span class="p">))]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_take_asf</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">granule_id</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">56</span><span class="p">:</span><span class="mi">62</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">acq_date</span><span class="p">))]</span>
 </pre></div>
 </div>
 </div>
@@ -3097,14 +2938,14 @@ Data variables:
 <p>Then assign it as a non-dimensional coordinate:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;data_take_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">data_take_asf</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;ID of data take from SAR acquisition&#39;</span><span class="p">:</span><span class="s1">&#39;ID data take&#39;</span><span class="p">})</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;data_take_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">data_take_asf</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;ID of data take from SAR acquisition&#39;</span><span class="p">:</span><span class="s1">&#39;ID data take&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span>
 </pre></div>
 </div>
 </div>
@@ -3756,13 +3597,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 45.12 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -3872,13 +3713,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 45.12 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -3988,13 +3829,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 90.24 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -4096,14 +3937,14 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">asf_ids</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">asf_ids</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4116,14 +3957,14 @@ Data variables:
 <p>The length of the <code class="docutils literal notranslate"><span class="pre">asf_ids</span></code> list is exactly what we’d expect, 103. Let’s look at the number of unique elements using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html"><code class="docutils literal notranslate"><span class="pre">np.unique()</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asf_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">asf_set</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">asf_set</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4136,7 +3977,7 @@ Data variables:
 <p>Interesting - it looks like there are only 96 unique elements when we look at the <code class="docutils literal notranslate"><span class="pre">data_take_id</span></code>. Let’s figure out which are duplicates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">duplicate</span><span class="p">(</span><span class="n">input_ls</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">duplicate</span><span class="p">(</span><span class="n">input_ls</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_ls</span> <span class="k">if</span> <span class="n">input_ls</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -4144,7 +3985,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_ls</span> <span class="o">=</span> <span class="n">duplicate</span><span class="p">(</span><span class="n">asf_ids</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_ls</span> <span class="o">=</span> <span class="n">duplicate</span><span class="p">(</span><span class="n">asf_ids</span><span class="p">)</span>
 <span class="n">duplicate_ls</span>
 </pre></div>
 </div>
@@ -4158,7 +3999,7 @@ Data variables:
 <p>These are the data take IDs that are duplicated in the dataset. We now want to subset the xarray object to only include these data take IDs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asf_duplicate_cond</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">duplicate_ls</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_duplicate_cond</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">duplicate_ls</span><span class="p">)</span>
 <span class="n">asf_duplicate_cond</span>
 </pre></div>
 </div>
@@ -4821,7 +4662,7 @@ Coordinates: (12/17)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asf_duplicates</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_duplicate_cond</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_duplicates</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_duplicate_cond</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">asf_duplicates</span>
 </pre></div>
 </div>
@@ -5248,13 +5089,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 5.26 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (12, 396, 290) </td>
@@ -5350,13 +5191,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 5.26 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (12, 396, 290) </td>
@@ -5452,13 +5293,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 10.51 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (12, 396, 290) </td>
@@ -5547,7 +5388,7 @@ Data variables:
 <p>Great, now we have a 12-time step xarray object that contains only the duplicate data takes. Let’s see what it looks like. We can use <code class="docutils literal notranslate"><span class="pre">xr.FacetGrid</span></code> objects to plot these all at once:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span> <span class="o">=</span> <span class="n">asf_duplicates</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">col_wrap</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span> <span class="o">=</span> <span class="n">asf_duplicates</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">col_wrap</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5614,19 +5455,19 @@ Data variables:
 <p>For now we’ll ignore the repeated values to visualize what’s present</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span> <span class="o">=</span> <span class="n">asf_duplicates</span><span class="o">.</span><span class="n">rename_dims</span><span class="p">({</span><span class="s2">&quot;acq_date&quot;</span><span class="p">:</span> <span class="s2">&quot;step&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span> <span class="o">=</span> <span class="n">asf_duplicates</span><span class="o">.</span><span class="n">rename_dims</span><span class="p">({</span><span class="s2">&quot;acq_date&quot;</span><span class="p">:</span> <span class="s2">&quot;step&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/asf_inspect_48_0.png" src="_images/asf_inspect_48_0.png" />
+<img alt="_images/172630ab1adf7bf197aff6cc919fd52351f5c3f565f1c28d5eb4d5a12dbce56d.png" src="_images/172630ab1adf7bf197aff6cc919fd52351f5c3f565f1c28d5eb4d5a12dbce56d.png" />
 </div>
 </div>
 <p>Interesting, it looks like there’s only really data for the 0, 2, 4, 8 and 11 elements of the list of duplicates.</p>
 <p>To drop these, we need to extract the product ID of each duplicate we’d like to remove, since this is the only variable that is unique among the duplicates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drop_ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">drop_ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -5634,14 +5475,14 @@ Data variables:
 <p>We can use xarray’s <code class="docutils literal notranslate"><span class="pre">.isel()</span></code> method, <code class="docutils literal notranslate"><span class="pre">.xr.DataArray.isin()</span></code>, <code class="docutils literal notranslate"><span class="pre">xr.Dataset.where()</span></code>, and list comprehension to efficiently subset the time steps we want to keep:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drop_product_id_ls</span> <span class="o">=</span> <span class="n">asf_duplicates</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">drop_ls</span><span class="p">)</span><span class="o">.</span><span class="n">product_id</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">drop_product_id_ls</span> <span class="o">=</span> <span class="n">asf_duplicates</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">drop_ls</span><span class="p">)</span><span class="o">.</span><span class="n">product_id</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drop_product_id_ls</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">drop_product_id_ls</span>
 </pre></div>
 </div>
 </div>
@@ -5655,7 +5496,7 @@ Data variables:
 <p>Using this list, we want to drop all of the elements of <code class="docutils literal notranslate"><span class="pre">vrt_full</span></code> where product Id is one of the values in the list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_full</span>
 </pre></div>
 </div>
 </div>
@@ -6307,13 +6148,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 45.12 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -6423,13 +6264,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 45.12 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -6539,13 +6380,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 90.24 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (103, 396, 290) </td>
@@ -6647,21 +6488,21 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_cond</span><span class="o">=~</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">product_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">drop_product_id_ls</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_cond</span><span class="o">=~</span><span class="n">vrt_full</span><span class="o">.</span><span class="n">product_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">drop_product_id_ls</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">duplicate_cond</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span> <span class="o">=</span> <span class="n">vrt_full</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">duplicate_cond</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
 </pre></div>
 </div>
 </div>
@@ -7297,13 +7138,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 42.06 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (96, 396, 290) </td>
@@ -7413,13 +7254,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 42.06 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (96, 396, 290) </td>
@@ -7529,13 +7370,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 84.11 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (96, 396, 290) </td>
@@ -7637,14 +7478,14 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#vrt_new = vrt_full.sel(~vrt_full.product_id.isin(drop_product_id_ls)==True)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#vrt_new = vrt_full.sel(~vrt_full.product_id.isin(drop_product_id_ls)==True)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
 </pre></div>
 </div>
 </div>
@@ -8280,13 +8121,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 42.06 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (96, 396, 290) </td>
@@ -8396,13 +8237,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 42.06 MiB </td>
                         <td> 448.59 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (96, 396, 290) </td>
@@ -8512,13 +8353,13 @@ Data variables:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 84.11 MiB </td>
                         <td> 897.19 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (96, 396, 290) </td>
@@ -8621,17 +8462,17 @@ Data variables:
 <p>Now we will store the updated version of <code class="docutils literal notranslate"><span class="pre">vrt_full</span></code> to use in later notebooks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">store</span> <span class="n">vrt_new</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">store</span> <span class="n">vrt_new</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="wrap-up">
-<h2>Wrap up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="wrap-up">
+<h2>Wrap up<a class="headerlink" href="#wrap-up" title="Permalink to this heading">#</a></h2>
 <p>This notebook gives a brief look in to the vast amount of auxiliary data that is contained within this dataset. Making the most and best use of this dataset requires familiarity with the the many different types of information it includes.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -8645,7 +8486,7 @@ Data variables:
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -8653,50 +8494,117 @@ Data variables:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="asf_local_vrt.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">GDAL VRT approach</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="asf_local_vrt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">GDAL VRT approach</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="PC_RTC.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="PC_RTC.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Microsoft Planetary Computer Sentinel-1 RTC Imagery</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-resources">Other useful resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asf-data-access">ASF Data Access</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-and-setup">Software and setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-prepared-data">Read in prepared data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layover-shadow-mask">Layover-shadow mask</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-visualization">Quick visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-backscatter-variability">Looking at backscatter variability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-duplicate-time-steps">Handling duplicate time steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap up</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By emma marshall<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By emma marshall
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
