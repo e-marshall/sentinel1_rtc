@@ -5,6 +5,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="og:title" content="Data cleaning and organization" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/ch1_root.html" />
+  
+<meta property="og:description" content="The first chapter of this tutorial will demonstrate reading in and organizing Sentinel-1 RTC imagery processed by and accessed from two different sources. Data processed and downloaded from Alaska ..." />
+  
+<meta property="og:image" content="https://e-marshall.github.io/sentinel1_rtc/_static/s1_rtc_thumbnail.png" />
+  
+<meta property="og:image:alt" content="Data cleaning and organization" />
+  
     <title>Data cleaning and organization &#8212; Sentinel-1 RTC data workflows with xarray</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -51,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Xarray open_mfdataset() approach" href="asf_local_mf.html" />
-    <link rel="prev" title="Thanks for coming to this site! Please note it is under construction" href="intro.html" />
+    <link rel="next" title="GDAL VRT approach" href="asf_local_vrt.html" />
+    <link rel="prev" title="Software + Data" href="software.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -103,11 +115,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Thanks for coming to this site! Please note it is under construction
+                    Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   Software + Data
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Data cleaning and organization
@@ -119,19 +136,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="asf_local_mf.html">
-     Xarray
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       open_mfdataset()
-      </span>
-     </code>
-     approach
+    <a class="reference internal" href="asf_local_vrt.html">
+     GDAL VRT approach
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="asf_local_vrt_troubleshoot.html">
-     GDAL VRT approach
+    <a class="reference internal" href="asf_inspect.html">
+     ASF-processed RTC data inspection
     </a>
    </li>
    <li class="toctree-l2">
@@ -152,25 +163,48 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="dataset_comparison_new.html">
+    <a class="reference internal" href="dataset_comparison.html">
      RTC dataset comparison
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="rtc_timeseries.html">
-     RTC time series analysis
+     Applied example: RTC time series analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="appendix.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="asf_local_mf.html">
+     Xarray
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       open_mfdataset()
+      </span>
+     </code>
+     approach
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="questions.html">
-   Tutorial structure questions
+  <a class="reference internal" href="Summary.html">
+   Summary
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="todo.html">
-   To do
+  <a class="reference internal" href="Acknowledgments.html">
+   Acknowledgments
   </a>
  </li>
  <li class="toctree-l1">
@@ -242,7 +276,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/e-marshall/sentinel_rtc"
+<a href="https://github.com/e-marshall/sentinel1_rtc"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -324,13 +358,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#xr-open-mfdataset">
-   xr.open_mfdataset()
+  <a class="reference internal nav-link" href="#data-processed-and-downloaded-from-alaska-satellite-facility">
+   Data processed and downloaded from Alaska Satellite Facility
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gdal-vrt-objects">
-   GDAL vrt objects
+  <a class="reference internal nav-link" href="#data-processed-and-accessed-from-microsoft-planetary-computer">
+   Data processed and accessed from Microsoft Planetary Computer
   </a>
  </li>
 </ul>
@@ -353,13 +387,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#xr-open-mfdataset">
-   xr.open_mfdataset()
+  <a class="reference internal nav-link" href="#data-processed-and-downloaded-from-alaska-satellite-facility">
+   Data processed and downloaded from Alaska Satellite Facility
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gdal-vrt-objects">
-   GDAL vrt objects
+  <a class="reference internal nav-link" href="#data-processed-and-accessed-from-microsoft-planetary-computer">
+   Data processed and accessed from Microsoft Planetary Computer
   </a>
  </li>
 </ul>
@@ -374,14 +408,15 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="data-cleaning-and-organization">
 <h1>Data cleaning and organization<a class="headerlink" href="#data-cleaning-and-organization" title="Permalink to this headline">#</a></h1>
-<p>The first chapter of this tutorial will demonstrate multiple approaches to reading in the datastack and organizing the data to prepare for analysis.</p>
-<div class="section" id="xr-open-mfdataset">
-<h2>xr.open_mfdataset()<a class="headerlink" href="#xr-open-mfdataset" title="Permalink to this headline">#</a></h2>
-<p>The first example makes use of the xarray function <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code>.</p>
+<p>The first chapter of this tutorial will demonstrate reading in and organizing Sentinel-1 RTC imagery processed by and accessed from two different sources.</p>
+<div class="section" id="data-processed-and-downloaded-from-alaska-satellite-facility">
+<h2>Data processed and downloaded from Alaska Satellite Facility<a class="headerlink" href="#data-processed-and-downloaded-from-alaska-satellite-facility" title="Permalink to this headline">#</a></h2>
+<p>The first <a class="reference internal" href="asf_local_vrt.html"><span class="doc std std-doc">notebook</span></a> demonstrates working with data that was processed by Alaska Satellite Facility through their <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/v2-transition/">Hyp3 On-Demand service</a> using HyP-3 SDK to submit jobs programmatically. The processed data is then downloaded locally. This notebook shows one approach for working with that data once its been downloaded locally.</p>
+<p>The second <a class="reference internal" href="asf_inspect.html"><span class="doc std std-doc">notebook</span></a> shows preliminary dataset inspection of the ASF dataset once it has been read-in and organized.</p>
 </div>
-<div class="section" id="gdal-vrt-objects">
-<h2>GDAL vrt objects<a class="headerlink" href="#gdal-vrt-objects" title="Permalink to this headline">#</a></h2>
-<p>The second example will use GDAL <code class="docutils literal notranslate"><span class="pre">VRT</span></code> to build virtual representations of geotiff files using xml files.</p>
+<div class="section" id="data-processed-and-accessed-from-microsoft-planetary-computer">
+<h2>Data processed and accessed from Microsoft Planetary Computer<a class="headerlink" href="#data-processed-and-accessed-from-microsoft-planetary-computer" title="Permalink to this headline">#</a></h2>
+<p>This <a class="reference internal" href="PC_RTC.html"><span class="doc std std-doc">notebook</span></a> demonstrates accessing data from Microsoft Planetary Computer’s catalog. Microsoft Planetary Computer performs RTC processing of Sentinel-1 imagery similarly to ASF. It is then made available as cloud-optimized geotiffs and hosted on Microsoft Planetary Computer. This notebook demonstrates using STAC tools such as <code class="docutils literal notranslate"><span class="pre">pystac</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access the cloud-hosted data locally. Microsoft Planetary Computer also hosts a jupyter hub server which you could access and use instead of doing so locally. Microsoft Planetary Computer requires a subscription (currently free). You can find out more about getting access <a class="reference external" href="https://planetarycomputer.developer.azure-api.net/">here</a>.</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -414,17 +449,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="software.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Thanks for coming to this site! Please note it is <em>under construction</em></p>
+            <p class="prev-next-title">Software + Data</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="asf_local_mf.html" title="next page">
+    <a class='right-next' id="next-link" href="asf_local_vrt.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Xarray <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> approach</p>
+        <p class="prev-next-title">GDAL VRT approach</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

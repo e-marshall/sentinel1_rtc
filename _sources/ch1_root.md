@@ -1,11 +1,13 @@
 # Data cleaning and organization
 
-The first chapter of this tutorial will demonstrate multiple approaches to reading in the datastack and organizing the data to prepare for analysis. 
+The first chapter of this tutorial will demonstrate reading in and organizing Sentinel-1 RTC imagery processed by and accessed from two different sources.
 
-## xr.open_mfdataset()
+## Data processed and downloaded from Alaska Satellite Facility
 
-The first example makes use of the xarray function `open_mfdataset()`.
+The first [notebook](asf_local_vrt.ipynb) demonstrates working with data that was processed by Alaska Satellite Facility through their [Hyp3 On-Demand service](https://hyp3-docs.asf.alaska.edu/v2-transition/) using HyP-3 SDK to submit jobs programmatically. The processed data is then downloaded locally. This notebook shows one approach for working with that data once its been downloaded locally.
 
-## GDAL vrt objects
+The second [notebook](asf_inspect.ipynb) shows preliminary dataset inspection of the ASF dataset once it has been read-in and organized.
 
-The second example will use GDAL `VRT` to build virtual representations of geotiff files using xml files.
+## Data processed and accessed from Microsoft Planetary Computer
+
+This [notebook](PC_RTC.ipynb) demonstrates accessing data from Microsoft Planetary Computer's catalog. Microsoft Planetary Computer performs RTC processing of Sentinel-1 imagery similarly to ASF. It is then made available as cloud-optimized geotiffs and hosted on Microsoft Planetary Computer. This notebook demonstrates using STAC tools such as `pystac` and `stackstac` to access the cloud-hosted data locally. Microsoft Planetary Computer also hosts a jupyter hub server which you could access and use instead of doing so locally. Microsoft Planetary Computer requires a subscription (currently free). You can find out more about getting access [here](https://planetarycomputer.developer.azure-api.net/).

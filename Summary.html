@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta property="og:title" content="Introduction" />
+<meta property="og:title" content="Summary" />
   
 <meta property="og:type" content="website" />
   
-<meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/intro.html" />
+<meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/Summary.html" />
   
-<meta property="og:description" content="This tutorial will demonstrate various ways to access, process and work with Sentinel-1 Synthetic Aperture Radar (SAR) Radiometrically Terrain Corrected (RTC) imagery using the python package and o..." />
+<meta property="og:description" content="This tutorial demonstrates accessing and working with various publicly available Sentinel-1 Radiometric Terrain Corrected imagery datasets using xarray and other open-source python software package..." />
   
 <meta property="og:image" content="https://e-marshall.github.io/sentinel1_rtc/_static/s1_rtc_thumbnail.png" />
   
-<meta property="og:image:alt" content="Introduction" />
+<meta property="og:image:alt" content="Summary" />
   
-    <title>Introduction &#8212; Sentinel-1 RTC data workflows with xarray</title>
+    <title>Summary &#8212; Sentinel-1 RTC data workflows with xarray</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -63,7 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Software + Data" href="software.html" />
+    <link rel="next" title="Acknowledgments" href="Acknowledgments.html" />
+    <link rel="prev" title="Xarray open_mfdataset() approach" href="asf_local_mf.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -112,13 +113,13 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Introduction
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software.html">
    Software + Data
@@ -196,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Summary.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Summary
   </a>
  </li>
@@ -297,7 +298,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/Summary.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -334,114 +335,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Introduction
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial-outline">
-   Tutorial Outline
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-1-data-access-and-organization">
-     Chapter 1: Data access and organization
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-2-dataset-comparison-and-preliminary-analysis">
-     Chapter 2: Dataset comparison and preliminary analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Summary</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Introduction
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial-outline">
-   Tutorial Outline
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-1-data-access-and-organization">
-     Chapter 1: Data access and organization
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-2-dataset-comparison-and-preliminary-analysis">
-     Chapter 2: Dataset comparison and preliminary analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -449,42 +359,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Thanks for coming to this site! Please note it is <em>under construction</em>. Content and code may not be in complete, working form at this time. Please reach out to <a class="reference external" href="mailto:emma&#46;marshall&#37;&#52;&#48;utah&#46;edu">emma<span>&#46;</span>marshall<span>&#64;</span>utah<span>&#46;</span>edu</a> with any comments/ questions about this work.</p>
-</div>
-<p>This tutorial will demonstrate various ways to access, process and work with Sentinel-1 Synthetic Aperture Radar (SAR) Radiometrically Terrain Corrected (RTC) imagery using the python package and open source project <code class="docutils literal notranslate"><span class="pre">xarray</span></code> as well as a number of other open source software packages. These notebooks are designed to show examples of data access, manipulation, processing and exploratory analytical workflows with complex datasets as well as to demonstrate common functionality for working with multi-dimensional gridded data using <a class="reference external" href="https://docs.xarray.dev/en/stable/"><code class="docutils literal notranslate"><span class="pre">xarray</span></code></a>.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
-<p>This tutorial contains a number of jupyter notebooks that focus on working with Sentinel-1 imagery that has already undergone Radiometric Terrain Correction (RTC). Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged.</p>
-<p>SAR data is collected in slant range, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces that are represented by individual pixels in the two coordinate systems do not always align and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis. For a much more detailed explanation of this check out the Alaska Satellite Facility (ASF) <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">product guide for RTC imagery</a>. Chapter 2 of the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/Chp2Content.pdf">SAR Handbook</a> also has very useful descriptions of these concepts.</p>
-<p>There are multiple algorithms that perform radiometric terrain correction and it is important to understand the components of whichever dataset you use as well as their relative benefits and tradeoffs. This book will demonstrate accessing and working with two different (but similar) datasets of Sentinel-1 RTC imagery. Processing of SAR imagery can be very computationally intensive, so we focus on datasets that leverage cloud-computing resources, including both cloud-processed and cloud-hosted data as well as data that is processed in the cloud and then downloaded locally.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="learning-objectives">
-<h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h1>
-<p>This tutorial demonstrates accessing and working with different Sentinel-1 SAR RTC datasets. The learning goals include <strong>domain specific steps related to working with synthetic aperture radar data</strong> as well as specific <em>python and xarray techniques</em>.</p>
-<ul class="simple">
-<li><p><strong>find and access data from Microsoft Planetary Computer</strong> <em>Use <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> to navigate STAC-oriented data (wording) and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to read data as xarray objects</em></p></li>
-<li><p><strong>programmatically submit RTC processing jobs to be executed by Alaska Satellite Facility On-Demand Processing server using the HyP3 SDK package</strong> <em>Organize, query and access processed data on your local machine</em></p></li>
-<li><p><strong>compare two similar datasets and evaluate differences, suitability for certain use cases</strong> <em>read in data as xarray objects, organize and perform comparison</em></p></li>
-<li><p><strong>time series analysis of SAR RTC imagery</strong> <em>Use xarray tools such as grouping, resampling and reductions as well as rioxarray functionality to organize and analyze SAR backscatter time series data</em></p></li>
-</ul>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-outline">
-<h1>Tutorial Outline<a class="headerlink" href="#tutorial-outline" title="Permalink to this headline">#</a></h1>
-<div class="section" id="chapter-1-data-access-and-organization">
-<h2>Chapter 1: Data access and organization<a class="headerlink" href="#chapter-1-data-access-and-organization" title="Permalink to this headline">#</a></h2>
-<p><a class="reference internal" href="ch1_root.html"><span class="doc std std-doc">Chapter 1</span></a> focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks that cover steps related to reading and organizing data as ready-to-use xarray data cubes with x,y and time dimensions and appropriate metadata. The first demonstrates accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The second shows preliminary inspection and exploration of the prepared ASF data. The third notebook contains an example of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. This notebook focuses on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosted repository and format it as easy-to-work-with xarray objects.</p>
-</div>
-<div class="section" id="chapter-2-dataset-comparison-and-preliminary-analysis">
-<h2>Chapter 2: Dataset comparison and preliminary analysis<a class="headerlink" href="#chapter-2-dataset-comparison-and-preliminary-analysis" title="Permalink to this headline">#</a></h2>
-<p><a class="reference internal" href="ch2_root.html"><span class="doc std std-doc">Chapter 2</span></a> makes use of the datasets prepared in chapter 1. The first notebook demonstrates a comparison the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalaya.</p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
+<p>This tutorial demonstrates accessing and working with various publicly available Sentinel-1 Radiometric Terrain Corrected imagery datasets using xarray and other open-source python software packages. It contains examples of how to work with large volumes of cloud-processsed imagery locally, as well as accessing and working with cloud-optimized data types hosted and accessed from a cloud-based data catalog. A large portion of this tutorial was focused on making sure that appropriate metadata is carried through processing steps and organized in an easy-to-work with way to prepare analysis-ready data. The tutorial also demonstrates preliminary dataset comparisons through visualizations and the beginnings of an exploratory data analysis workflow. Hopefully, you got an idea of how to leverage <strong><a class="reference external" href="https://xarray.dev/">xarray</a></strong> functionality at various steps of a typical remote sensing data analysis workflow.</p>
+<p>I’m very open to feedback on this project as it is still a work in progress and I’m always learning how to better work with these tools and datasets. If you have any comments, questions or suggestions please don’t hesitate to raise an issue or reach out to me directly. Thanks for stopping by!</p>
+<p>Github: <a class="reference external" href="https://github.com/e-marshall">e-marshall</a>
+Twitter: <a class="reference external" href="https://twitter.com/EmMar_22">&#64;EmMar_22</a>
+Email: <span class="xref myst">emma.marshall&#64;utah.edu</span></p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -514,10 +395,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="software.html" title="next page">
+    <a class='left-prev' id="prev-link" href="asf_local_mf.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Xarray <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> approach</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Acknowledgments.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Software + Data</p>
+        <p class="prev-next-title">Acknowledgments</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
