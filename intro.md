@@ -14,10 +14,10 @@ There are multiple algorithms that perform radiometric terrain correction and it
 
 This tutorial demonstrates accessing and working with different Sentinel-1 SAR RTC datasets. The learning goals include **domain specific steps related to working with synthetic aperture radar data** as well as specific *python and xarray techniques*. 
 
-- **find and access data from Microsoft Planetary Computer** *Use `pystac_client` to navigate STAC-oriented data (wording) and `stackstac` to read data as xarray objects*
-- **programmatically submit RTC processing jobs to be executed by Alaska Satellite Facility On-Demand Processing server using the HyP3 SDK package** *Organize, query and access processed data on your local machine*
-- **compare two similar datasets and evaluate differences, suitability for certain use cases** *read in data as xarray objects, organize and perform comparison*
-- **time series analysis of SAR RTC imagery** *Use xarray tools such as grouping, resampling and reductions as well as rioxarray functionality to organize and analyze SAR backscatter time series data*
+- **Find and access data from Microsoft Planetary Computer** *Use `pystac_client` to navigate STAC-oriented data and `stackstac` to read data as xarray objects*
+- **Programmatically submit RTC processing jobs to be executed by Alaska Satellite Facility On-Demand Processing server using the HyP3 SDK package** *Organize, query and access processed data on your local machine*
+- **Compare two similar datasets and evaluate differences, suitability for certain use cases** *read in data as xarray objects, organize and perform comparison*
+- **Time series analysis of SAR RTC imagery** *Use xarray tools such as grouping, resampling and reductions as well as rioxarray functionality to organize and analyze SAR backscatter time series data*
 
 
 # Tutorial Outline
