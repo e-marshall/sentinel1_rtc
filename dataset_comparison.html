@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -27,15 +27,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -46,9 +46,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -84,10 +84,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -128,11 +127,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -147,6 +149,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -310,6 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -319,6 +323,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -384,7 +389,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rtc-dataset-comparison">
 <h1>RTC dataset comparison<a class="headerlink" href="#rtc-dataset-comparison" title="Permalink to this heading">#</a></h1>
@@ -511,7 +516,7 @@ document.write(`
 <section id="read-in-prepared-data">
 <h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Permalink to this heading">#</a></h3>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">storemagic</span></code> command <code class="docutils literal notranslate"><span class="pre">%store</span></code> to retrieve the variable we constructed and saved in a previous notebook, rather than having to create it again. Read more about this <a class="reference external" href="https://levelup.gitconnected.com/how-to-store-variables-in-jupyter-notebook-fea8aa60a9b">here</a></p>
-<p>This let’s use call the ASF dataset (<code class="docutils literal notranslate"><span class="pre">vrt_new</span></code>) and PC dataset (<code class="docutils literal notranslate"><span class="pre">da_pc</span></code>)</p>
+<p>This let’s us call the ASF dataset (<code class="docutils literal notranslate"><span class="pre">vrt_new</span></code>) and PC dataset (<code class="docutils literal notranslate"><span class="pre">da_pc</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">store</span> <span class="o">-</span><span class="n">r</span> <span class="n">vrt_new</span> <span class="n">da_pc</span>
@@ -2337,7 +2342,7 @@ Attributes:
 </section>
 <section id="extract-common-data-take-id-from-granule-ids">
 <h2>Extract common data take ID from granule IDs<a class="headerlink" href="#extract-common-data-take-id-from-granule-ids" title="Permalink to this heading">#</a></h2>
-<p>We want to ensure that we are performing a direct comparison of the ASF and PC datasets. To do this, we would like to use the acquisition ID that is stored in the source granule name (published by ESA). In the setup notebooks we attached the entire granule IDs of the SLC images to the ASF dataset and the GRD images to the PC dataset. In the ASF data inspection notebook, we attached data take id as a non-dimensional coordianet. Now we will do the same for the Planetary Computer dataaset, extracting just the 6-digit acquisition ID from the granule ID and using this for a scene-by-scene comparison.</p>
+<p>We want to ensure that we are performing a direct comparison of the ASF and PC datasets. To do this, we would like to use the acquisition ID that is stored in the source granule name (published by ESA). In the setup notebooks we attached the entire granule IDs of the SLC images to the ASF dataset and the GRD images to the PC dataset. In the ASF data inspection notebook, we attached data take id as a non-dimensional coordinate. Now we will do the same for the Planetary Computer dataset, extracting just the 6-digit acquisition ID from the granule ID and using this for a scene-by-scene comparison.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_take_pc</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">granule_id</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">56</span><span class="p">:]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">time</span><span class="p">))]</span>
@@ -4198,7 +4203,7 @@ Attributes:
 </div>
 </div>
 </div>
-<p>It looks like there are 84 RTC images that are generated from common acquisitions between the two datasets</p>
+<p>It looks like there are 83 RTC images that are generated from common acquisitions between the two datasets</p>
 <p>We’d like to subset the ASF and the PC datasets to only the common acquisitions. The xarray <code class="docutils literal notranslate"><span class="pre">.isin()</span></code> method is very useful for this type of selection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -12538,7 +12543,7 @@ Data variables:
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="ch2_root.html"
@@ -12566,6 +12571,7 @@ Data variables:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -12619,6 +12625,7 @@ By emma marshall
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -12645,8 +12652,8 @@ By emma marshall
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

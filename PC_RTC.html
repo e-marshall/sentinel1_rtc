@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -27,15 +27,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -46,9 +46,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -84,10 +84,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -128,11 +127,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -147,6 +149,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -310,6 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -319,6 +323,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -369,7 +374,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="microsoft-planetary-computer-sentinel-1-rtc-imagery">
 <h1>Microsoft Planetary Computer Sentinel-1 RTC Imagery<a class="headerlink" href="#microsoft-planetary-computer-sentinel-1-rtc-imagery" title="Permalink to this heading">#</a></h1>
@@ -421,7 +426,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We will use the <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> package to interact with and query the Microsoft Planetary Computer Sentinel-1 RTC dataset. In the cell below, we will create an object called <code class="docutils literal notranslate"><span class="pre">catalog</span></code> by calling the <code class="docutils literal notranslate"><span class="pre">.open()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Client</span></code> class. This is establishing a connection with the hosted data at the url provided. Explore the catalog object. You</p>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> package to interact with and query the Microsoft Planetary Computer Sentinel-1 RTC dataset. In the cell below, we will create an object called <code class="docutils literal notranslate"><span class="pre">catalog</span></code> by calling the <code class="docutils literal notranslate"><span class="pre">.open()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Client</span></code> class. This is establishing a connection with the hosted data at the url provided.</p>
 </section>
 </section>
 <section id="stac-items">
@@ -4144,7 +4149,7 @@ The function <code class="docutils literal notranslate"><span class="pre">points
 </div>
 </div>
 </div>
-<p>In the cell below we specify the time range we’re intereste in as well as the geographic area of interest.</p>
+<p>In the cell below we specify the time range we’re interested in as well as the geographic area of interest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">time_range</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01/2022-08-01&#39;</span>
@@ -4197,7 +4202,7 @@ The function <code class="docutils literal notranslate"><span class="pre">points
 </div>
 </div>
 </div>
-<p>You can see that <code class="docutils literal notranslate"><span class="pre">items</span></code> is an instance of the class <code class="docutils literal notranslate"><span class="pre">ItemCollection</span></code>, and we can explore it via the embedded html interface (is that right?)</p>
+<p>You can see that <code class="docutils literal notranslate"><span class="pre">items</span></code> is an instance of the class <code class="docutils literal notranslate"><span class="pre">ItemCollection</span></code>, and we can explore it via the embedded html interface.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">items</span>
@@ -10942,7 +10947,7 @@ Attributes:
 </div>
 <section id="retrieve-source-granule-id">
 <h3>Retrieve source granule ID<a class="headerlink" href="#retrieve-source-granule-id" title="Permalink to this heading">#</a></h3>
-<p>It will be useful to have the granule ID for the original SAR acquisition and GRD file used to generate the RTC image. The following code demonstrates retrieving the source granule ID from the STAC metadata and adding it as a variable (coorindate?) to the xarray object  containing the RTC imagery.</p>
+<p>It will be useful to have the granule ID for the original SAR acquisition and GRD file used to generate the RTC image. The following code demonstrates retrieving the source granule ID from the STAC metadata and adding it as a coordinate variable to the xarray object containing the RTC imagery.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stac_item</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-rtc/items/S1A_IW_GRDH_1SDV_20210602T120544_20210602T120609_038161_0480FD_rtc&#39;</span><span class="p">)</span>
@@ -13176,7 +13181,7 @@ Attributes:
 | 0.00,-10.00, 3101660.00|
 | 0.00, 0.00, 1.00|</dd><dt><span>resolution :</span></dt><dd>10.0</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<p>You can see that there are 69 time steps from the Ascending orbital pass and that all of the same dimensions and coordinates still exist, so you can subset for just the <code class="docutils literal notranslate"><span class="pre">VV</span></code> data from the ascending passes, or other variables you may be itnerested in.</p>
+<p>You can see that there are 69 time steps from the Ascending orbital pass and that all of the same dimensions and coordinates still exist, so you can subset for just the <code class="docutils literal notranslate"><span class="pre">VV</span></code> data from the ascending passes, or other variables you may be interested in.</p>
 <p>Let’s take a look at the two polarizations side-by-side. Below, we’ll plot the <code class="docutils literal notranslate"><span class="pre">VV</span></code> and <code class="docutils literal notranslate"><span class="pre">VH</span></code> polarizations from the same date next to each other:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -14467,7 +14472,7 @@ Attributes:
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="asf_inspect.html"
@@ -14495,6 +14500,7 @@ Attributes:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -14533,6 +14539,7 @@ By emma marshall
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -14559,8 +14566,8 @@ By emma marshall
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
