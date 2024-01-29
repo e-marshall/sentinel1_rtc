@@ -5,7 +5,7 @@ author: emma marshall
 execute:
   execute_notebooks: 'off' # 
   allow_errors: true
-  timeout: 500
+  timeout: 1000
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
