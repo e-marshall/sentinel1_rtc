@@ -6,7 +6,7 @@ The material in this tutorial was developed with the aid of many online resource
 - [Alaska Satellite Facility Sentinel-1 On-Demand](https://search.asf.alaska.edu/#/?topic=onDemand)
 - [Micrsoft Planetary Computer Sentinel-1 RTC data](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc)
 - 
-## Synthetic Aperture Radar resources:
+## Synthetic Aperture Radar resources
 - [The SAR Handbook](https://ntrs.nasa.gov/api/citations/20190002563/downloads/20190002563.pdf)
 - [ASF Sentinel-1 RTC Product Guide](https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/)
 
