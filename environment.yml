@@ -10,6 +10,8 @@ dependencies:
   - hyp3_sdk
   - ipykernel
   - jupyter-book
+  - jupyterlab
+  - markdown
   - matplotlib-base
   - pip
   - planetary-computer
