@@ -1,6 +1,6 @@
 # Introduction 
 
-This tutorial will demonstrate various ways to access, process, and work with Sentinel-1 Synthetic Aperture Radar (SAR) Radiometrically Terrain Corrected (RTC) imagery using the python package and open source project [xarray](https://docs.xarray.dev/en/stable/#), and a number of other open source software packages. These notebooks are designed to show examples of data access, manipulation, processing, and exploratory analytical workflows with complex datasets as well as to demonstrate common functionality for working with multi-dimensional gridded data using xarray.
+This tutorial will demonstrate various ways to access, process, and work with Sentinel-1 Synthetic Aperture Radar (SAR) Radiometrically Terrain Corrected (RTC) imagery using the python package and open source project [xarray](https://docs.xarray.dev/en/stable/#), and a number of other open-source software packages. These notebooks are designed to show examples of data access, manipulation, processing, and exploratory analytical workflows with complex datasets and demonstrate common functionality for working with multi-dimensional gridded data using xarray.
 
 # Overview
 
