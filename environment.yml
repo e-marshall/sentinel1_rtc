@@ -22,3 +22,5 @@ dependencies:
   - stackstac
   - watermark
   - sphinxext-opengraph
+  - pip:
+      - xmode==0.6.1
