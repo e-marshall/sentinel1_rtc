@@ -395,7 +395,7 @@ document.write(`
 <h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">rioxarray</span> <span class="k">as</span> <span class="nn">rio</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -406,22 +406,20 @@ document.write(`
 <span class="kn">import</span> <span class="nn">dask</span>
 
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">intake.source.utils</span> <span class="kn">import</span> <span class="n">reverse_format</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We’ll use this function later but defining it now:</p>
+<p>We’ll use this function later but define it now:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">points2coords</span><span class="p">(</span><span class="n">pt_ls</span><span class="p">):</span> <span class="c1">#should be [xmin, ymin, xmax, ymax]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">points2coords</span><span class="p">(</span><span class="n">pt_ls</span><span class="p">):</span> <span class="c1">#should be [xmin, ymin, xmax, ymax]</span>
     
     <span class="n">coords_ls</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
                  <span class="p">(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="p">(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
                  <span class="p">(</span><span class="n">pt_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt_ls</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
     <span class="k">return</span> <span class="n">coords_ls</span>
     
-
 </pre></div>
 </div>
 </div>
@@ -433,9 +431,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#look into limiting memory</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 <span class="n">client</span>
 </pre></div>
 </div>
@@ -611,7 +609,7 @@ document.write(`
 <p>Set up some string variables for directory paths. We need to pass <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> a list of all files to read in. Currently, the file structure is organized so that each scene has its own sub-directory within <code class="docutils literal notranslate"><span class="pre">asf_rtcs</span></code>. Within each sub-directory are several files - we want to extract the GeoTIFF files containing RTC imagery for the VV and VH polarizations for each scene as well as the layover-shadow mask for each scene. The function <code class="docutils literal notranslate"><span class="pre">extract_tif_fnames()</span></code> takes a path to the directory containing the sub-directories for all scenes and returns a list of the filenames for VV-polarization GeoTIFF files, VH-polarization GeoTIFF files and layover-shadow mask GeoTIFF files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dir_path_all</span> <span class="o">=</span> <span class="s1">&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/asf_rtcs/&#39;</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_path_all</span> <span class="o">=</span> <span class="s1">&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/asf_rtcs/&#39;</span> 
 <span class="n">scenes_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dir_path_all</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">extract_tif_fnames</span><span class="p">(</span><span class="n">scene_path</span><span class="p">):</span>
@@ -630,7 +628,7 @@ document.write(`
 <p>Now we need to attach the filenames to the full path to each file. We will end up with a list of full paths to all three tif files for each scene in the stack.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv</span><span class="p">,</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">fpaths_ls</span> <span class="o">=</span> <span class="p">[],[],[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv</span><span class="p">,</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">fpaths_ls</span> <span class="o">=</span> <span class="p">[],[],[]</span>
 
 <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scenes_ls</span><span class="p">)):</span>
     
@@ -649,14 +647,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/asf_rtcs/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/emmamarshall/Desktop/siparcs/asf_rtc_data/asf_rtcs/&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*VV.tif&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*VV.tif&#39;</span><span class="p">))</span>
 <span class="n">fpaths_vh</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*VH.tif&#39;</span><span class="p">))</span>
 <span class="n">fpaths_ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*ls_map.tif&#39;</span><span class="p">))</span>
 </pre></div>
@@ -671,7 +669,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">preprocess_vv</span></code>, <code class="docutils literal notranslate"><span class="pre">preprocess_vh</span></code>  and <code class="docutils literal notranslate"><span class="pre">preprocess_ls</span></code> are identical but for vv and vh bands (read from different tif files). <code class="docutils literal notranslate"><span class="pre">preprocess_ls</span></code> reads in the layover shadow masks that are provided with each scene and similarly stored as tiff files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv_sub</span> <span class="o">=</span> <span class="n">fpaths_vv</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpaths_vv_sub</span> <span class="o">=</span> <span class="n">fpaths_vv</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">fpaths_vv_sub</span>
 </pre></div>
 </div>
@@ -687,14 +685,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_vv</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_vv</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.</span>
 <span class="sd">    goal would be to apply this a list of directories for different RTC products, return cube along time dimension - I think? </span>
 <span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI? &#39;&#39;&#39;</span>
@@ -765,10 +763,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Repeat for the other two variables (unless these can be combined into one preprocess?)</p>
+<p>Repeat for the other two variables</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_vh</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_vh</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.</span>
 <span class="sd">    goal would be to apply this a list of directories for different RTC products, return cube along time dimension - I think? </span>
 <span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI? &#39;&#39;&#39;</span>
@@ -840,7 +838,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_ls</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_ls</span><span class="p">(</span><span class="n">da_orig</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.</span>
 <span class="sd">    goal would be to apply this a list of directories for different RTC products, return cube along time dimension - I think? </span>
 <span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI? &#39;&#39;&#39;</span>
@@ -916,10 +914,10 @@ document.write(`
 </div>
 <section id="an-example-of-complicated-chunking">
 <h3>An example of complicated chunking<a class="headerlink" href="#an-example-of-complicated-chunking" title="Permalink to this heading">#</a></h3>
-<p>First, let’s call <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">chunks='auto'</span></code>. This will read in a dask array where ideal chunk sizes are selected based off the array size, it will attempt to have chunk sizes where bytes are equal to the configuration value for array chunk size. More about that <a class="reference external" href="https://docs.dask.org/en/stable/array-chunks.html#automatic-chunking">here</a>.You can check the configuration value for an array chunk size with the code below:</p>
+<p>First, let’s call <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">chunks='auto'</span></code>. This will read in a dask array where ideal chunk sizes are selected based off the array size, it will attempt to have chunk sizes where bytes are equal to the configuration value for array chunk size. More about that <a class="reference external" href="https://docs.dask.org/en/stable/array-chunks.html#automatic-chunking">here</a>. You can check the configuration value for an array chunk size with the code below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;array.chunk-size&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;array.chunk-size&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -931,14 +929,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vh</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vh</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span>
 </pre></div>
 </div>
 </div>
@@ -1563,14 +1561,14 @@ Attributes: (12/16)
 <p>Let’s create both the VV and VH objects with <code class="docutils literal notranslate"><span class="pre">chunks=None</span></code> and see how it looks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vh</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vh</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span>
 </pre></div>
 </div>
 </div>
@@ -2121,14 +2119,14 @@ Attributes: (12/16)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vv</span><span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vv</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vv</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vv</span><span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_vv</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_vv</span><span class="p">,</span> <span class="n">chunks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_ls</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_ls</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span> <span class="o">=</span> <span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">paths</span> <span class="o">=</span> <span class="n">fpaths_ls</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess_ls</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">concat_dim</span> <span class="o">=</span> <span class="s1">&#39;acq_date&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2136,7 +2134,7 @@ Attributes: (12/16)
 <p>Now our chunks are quite large, but they are at least in a format that makes more sense for our dataset. This will make it easier to clip the object to our area of interest, which will solve the problem of large chunks</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vv</span>
 </pre></div>
 </div>
 </div>
@@ -2687,7 +2685,7 @@ Attributes: (12/16)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span>
 </pre></div>
 </div>
 </div>
@@ -3238,7 +3236,7 @@ Attributes: (12/16)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span>
 </pre></div>
 </div>
 </div>
@@ -3789,7 +3787,7 @@ Attributes: (12/16)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span><span class="o">.</span><span class="n">acq_date</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">asf_vv</span><span class="o">.</span><span class="n">acq_date</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span><span class="o">.</span><span class="n">acq_date</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">asf_vv</span><span class="o">.</span><span class="n">acq_date</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3801,7 +3799,7 @@ Attributes: (12/16)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">asf_ls</span><span class="o">.</span><span class="n">acq_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">asf_ls</span><span class="o">.</span><span class="n">acq_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">asf_vv</span><span class="o">.</span><span class="n">acq_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3816,7 +3814,7 @@ Attributes: (12/16)
 <p>Merge the VH, VV and layover-shadow mask objects into one <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;vv&#39;</span><span class="p">:</span><span class="n">asf_vv</span><span class="o">.</span><span class="n">vv</span><span class="p">,</span> <span class="s1">&#39;vh&#39;</span><span class="p">:</span><span class="n">asf_vh</span><span class="o">.</span><span class="n">vh</span><span class="p">,</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span><span class="n">asf_ls</span><span class="o">.</span><span class="n">layover_shadow_mask</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;vv&#39;</span><span class="p">:</span><span class="n">asf_vv</span><span class="o">.</span><span class="n">vv</span><span class="p">,</span> <span class="s1">&#39;vh&#39;</span><span class="p">:</span><span class="n">asf_vh</span><span class="o">.</span><span class="n">vh</span><span class="p">,</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span><span class="n">asf_ls</span><span class="o">.</span><span class="n">layover_shadow_mask</span><span class="p">})</span>
 <span class="n">asf_ds</span>
 </pre></div>
 </div>
@@ -4589,7 +4587,7 @@ Data variables:
 <p>If you take a look at the <code class="docutils literal notranslate"><span class="pre">acq_date</span></code> coordinate, you will see that they are not in order. Let’s sort by the <code class="docutils literal notranslate"><span class="pre">acq_date</span></code> (time) dimension using xarray <code class="docutils literal notranslate"><span class="pre">.sortby()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds_sorted</span> <span class="o">=</span> <span class="n">asf_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="n">asf_ds</span><span class="o">.</span><span class="n">acq_date</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds_sorted</span> <span class="o">=</span> <span class="n">asf_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="n">asf_ds</span><span class="o">.</span><span class="n">acq_date</span><span class="p">)</span>
 <span class="n">asf_ds_sorted</span>
 </pre></div>
 </div>
@@ -5366,7 +5364,7 @@ Data variables:
 <p>This is a pretty unwieldy object (nearly 200 GB). Let’s subset it down to just the area we want to focus on. Read in the following GeoJSON to clip the dataset to the area of interest we’ll be using in this tutorial. This AOI covers a region in the central Himalaya near the Chinese border. We will use the <code class="docutils literal notranslate"><span class="pre">rioxarray.clip()</span></code> function which you can read more about <a class="reference external" href="https://corteva.github.io/rioxarray/stable/examples/clip_geom.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&#39;</span><span class="p">)</span>
 <span class="n">pc_aoi</span>
 </pre></div>
 </div>
@@ -5404,7 +5402,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5417,7 +5415,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_clip</span> <span class="o">=</span> <span class="n">asf_ds_sorted</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">pc_aoi</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">pc_aoi</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_clip</span> <span class="o">=</span> <span class="n">asf_ds_sorted</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">pc_aoi</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">pc_aoi</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5425,7 +5423,7 @@ Data variables:
 <p>Check the size of the clipped object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_clip</span><span class="o">.</span><span class="n">nbytes</span><span class="o">/</span><span class="mf">1e6</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_clip</span><span class="o">.</span><span class="n">nbytes</span><span class="o">/</span><span class="mf">1e6</span>
 </pre></div>
 </div>
 </div>
@@ -5437,7 +5435,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#we don&#39;t want to compute this right now, will kill kernel</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we don&#39;t want to compute this right now, will kill kernel</span>
 <span class="c1">#asf_clip_load = asf_clip.compute()</span>
 </pre></div>
 </div>
@@ -5446,7 +5444,7 @@ Data variables:
 <p>The dataset is published as gamma-nought values on the power scale. This is useful for performing statistical analysis but not always for visualization. We convert to decibel scale (sigma-nought) in order to visualize variability in backscatter more easily. Read more about scales used to represent SAR data <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">input_arr</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -5454,7 +5452,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
 <span class="n">asf_clip</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">ls</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_clip</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">vv</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>

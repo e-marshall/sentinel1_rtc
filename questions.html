@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial structure questions &#8212; Sentinel-1 RTC data workflows with xarray</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="To do" href="todo.html" />
+    <link rel="prev" title="RTC time series analysis" href="rtc_timeseries.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Sentinel-1 RTC data workflows with xarray</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Thanks for coming to this site! Please note it is under construction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch1_root.html">
+   Data cleaning and organization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="asf_local_mf.html">
+     Xarray
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       open_mfdataset()
+      </span>
+     </code>
+     approach
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="asf_local_vrt_troubleshoot.html">
+     GDAL VRT approach
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="PC_RTC.html">
+     Microsoft Planetary Computer Sentinel-1 RTC Imagery
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2_root.html">
+   Dataset comparison and preliminary analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dataset_comparison_new.html">
+     RTC dataset comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rtc_timeseries.html">
+     RTC time series analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tutorial structure questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="todo.html">
+   To do
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="References.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/e-marshall/sentinel_rtc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/questions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial structure questions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-questions">
+   Dataset questions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pc-rtc-imagery">
+     PC RTC imagery
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#asf-rtc-imagery">
+     ASF RTC imagery
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-questions">
+   Programming questions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial structure questions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial structure questions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-questions">
+   Dataset questions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pc-rtc-imagery">
+     PC RTC imagery
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#asf-rtc-imagery">
+     ASF RTC imagery
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-questions">
+   Programming questions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-structure-questions">
+<h1>Tutorial structure questions<a class="headerlink" href="#tutorial-structure-questions" title="Permalink to this headline">#</a></h1>
+<p>a. intro</p>
+<ol class="simple">
+<li><p>need more discussino of RTC processing?
+b. asf data, xr.open_mfdataset()</p></li>
+<li><p>helpful to include image of directory structure for local files?</p></li>
+<li><p>worth describing the area of interest/why it was chosen more in clipping by vector section? – or maybe elsewhere in tutorial, but worht including more introduction on area?
+c. PC data access</p></li>
+<li><p>worth mentioning differences btw VV, VH returns/ linking to SAR handbook explanation of polarization? not sure right balance between ‘science-y’ and demonstrating workflow/code
+d. dataset comparison
+e. time series example</p></li>
+<li><p>maybe take this out? feel like its getting long..</p></li>
+</ol>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="dataset-questions">
+<h1>Dataset questions<a class="headerlink" href="#dataset-questions" title="Permalink to this headline">#</a></h1>
+<p>Place to keep track of questions I’ve encountered while working with the ASF and PC RTC datasets…</p>
+<ol class="simple">
+<li><p>ASF source granules are SLC images and PC are RTC, what effect does this have on the RTC product?</p></li>
+<li><p>PC dataset doesn’t appear to have a layover-shadow map?</p></li>
+<li><p>ASF data has a layover shadow map, and some pixels masked out of the backscatter images, but it looks like there are layover pixels that aren’t masked out in the data products. I thought you couldn’t extract reliable data from pixels w/ layover?</p></li>
+<li><p>product IDs / source files</p>
+<ul class="simple">
+<li><p>ASF provides a 4-digit product key in the filename, but it doesn’t look like this directly corresponds to the source granule?
+eg. product ID = 1424 for RTC image from source granule: S1A_IW_SLC__1SDV_20210502T121414_20210502T121441_037709_047321_900F</p></li>
+<li><p>can pull this from the README for that file - but is there a better way to do this?</p></li>
+<li><p>PC includes product id as a coordinate variable: eg. ‘S1A_IW_GRDH_1SDV_20210602T120544_20210602T120609_038161_0480FD_rtc’.</p></li>
+<li><p>is there a better way to compare ASF, PC RTC images from the same S1 acquisitions than pulling the granule ID from the ASF product readme?</p></li>
+<li><p>it doesn’t look like PC provides a mapping back to source granule?</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="pc-rtc-imagery">
+<h2>PC RTC imagery<a class="headerlink" href="#pc-rtc-imagery" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>radiometric terrain correction performed on GRD images that have already been multilooked, ground-projected</p></li>
+<li><p>methods description <a class="reference external" href="https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc">here</a></p></li>
+</ul>
+</div>
+<div class="section" id="asf-rtc-imagery">
+<h2>ASF RTC imagery<a class="headerlink" href="#asf-rtc-imagery" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>because using SLC source imagery, terrain correction performed in slant range, then corrected image is mapped to DEM space</p></li>
+<li><p>geocoding is final step</p></li>
+<li><p>methods description <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">here</a></p></li>
+</ul>
+<p>Two different groups within the ASF dataset?</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="programming-questions">
+<h1>Programming questions<a class="headerlink" href="#programming-questions" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p>feel like i’m relying on list comprehension a lot for creating, organizing objects - is there a more direct way to do these tasks?</p></li>
+<li><p>selecting off non-dimensional coordinates - keep messing up</p></li>
+<li><p>dimensions of the ASF, PC objects are a bit of a mess, need to clean up</p></li>
+<li><p>passing a dimension to <code class="docutils literal notranslate"><span class="pre">reduce()</span></code></p></li>
+<li><p>xarray open_mfdataset() – can you specify input args in addition to the xr object? ie want to perform the same preprocessing to different variables stored in different tiff files (VV, VH, layover-shadow map).</p></li>
+</ol>
+<p>ufunc
+<a class="reference external" href="https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html">https://docs.xarray.dev/en/stable/examples/apply_ufunc_vectorize_1d.html</a>
+<a class="reference external" href="https://stackoverflow.com/questions/57419541/how-to-use-apply-ufunc-with-numpy-digitize-for-each-image-along-time-dimension-o/57513184#57513184">https://stackoverflow.com/questions/57419541/how-to-use-apply-ufunc-with-numpy-digitize-for-each-image-along-time-dimension-o/57513184#57513184</a>
+<a class="reference external" href="https://github.com/pydata/xarray/issues/2808">https://github.com/pydata/xarray/issues/2808</a></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="rtc_timeseries.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">RTC time series analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="todo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">To do</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By emma marshall<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

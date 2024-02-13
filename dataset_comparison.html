@@ -421,11 +421,14 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-
-<span class="kn">import</span> <span class="nn">s1_tools</span>
-
-<span class="kn">from</span> <span class="nn">s1_tools</span> <span class="kn">import</span> <span class="n">points2coords</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">xmode</span> minimal
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
@@ -437,7 +440,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">dask</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -449,18 +452,18 @@ document.write(`
 <p>While the datasets we will be comparing in this notebook are quite similar, they contain important differences related to how they were processed. The product description pages for both datasets contain important information for understanding how they are generated.</p>
 <section id="source-data">
 <h3>Source data<a class="headerlink" href="#source-data" title="Permalink to this heading">#</a></h3>
-<p>One important difference is the source data used to generate the RTC images. ASF uses the Single Look Complex (<a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar/products-algorithms/level-1-algorithms/single-look-complex">SLC</a>) images that contains both amplitude and phase information for each pixel, is in radar coordinates and has not yet been multi-looked (double check). The Microsoft Planetary Computer RTC imagery is generate from ground range detected images (GRD). <a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar/products-algorithms/level-1-algorithms/ground-range-detected">GRD</a> data has been detected, multi-looked and projected to ground range.</p>
+<p>One important difference is the source data used to generate the RTC images. ASF uses the Single Look Complex (<a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar/products-algorithms/level-1-algorithms/single-look-complex">SLC</a>) images that contains both amplitude and phase information for each pixel, is in radar coordinates and has not yet been multi-looked. The Microsoft Planetary Computer RTC imagery is generate from ground range detected images (GRD). <a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar/products-algorithms/level-1-algorithms/ground-range-detected">GRD</a> data has been detected, multi-looked and projected to ground range.</p>
 </section>
 <section id="dem">
 <h3>DEM<a class="headerlink" href="#dem" title="Permalink to this heading">#</a></h3>
-<p>A digital elevation model (DEM) is an important input parameter for RTC processing. ASF RTC processing uses the Copernicus DEM with 30 m resolution. Planetary Computer uses Planet DEMs (double check). One effect of the use of different DEMs during RTC processing is the different spatial resolutions of the RTC products: <strong>Planetary Computer RTC imagery has a spatial resolution of 10 meters while ASF RTC imagery has a spatial resolution of 30 meters.</strong></p>
+<p>A digital elevation model (DEM) is an important input parameter for RTC processing. ASF RTC processing uses the Copernicus DEM with 30 m resolution. Planetary Computer uses higher resolution DEMs. One effect of the use of different DEMs during RTC processing is the different spatial resolutions of the RTC products: <strong>Planetary Computer RTC imagery has a spatial resolution of 10 meters while ASF RTC imagery has a spatial resolution of 30 meters.</strong></p>
 </section>
 </section>
 <section id="software-and-setup">
 <h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 
 <span class="kn">import</span> <span class="nn">s1_tools</span>
 
@@ -485,7 +488,7 @@ document.write(`
 <h3>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">input_arr</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -493,21 +496,21 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_input</span><span class="p">,</span> <span class="n">pc_input</span><span class="p">,</span> <span class="n">timestep</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_input</span><span class="p">,</span> <span class="n">pc_input</span><span class="p">,</span> <span class="n">timestep</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
     <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_input</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">timestep</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ASF&#39;</span><span class="p">);</span>
-    <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_input</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">timestep</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PC&#39;</span><span class="p">)</span>
+    <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_input</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">timestep</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PC&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_time_mean_compare</span><span class="p">(</span><span class="n">asf_input</span><span class="p">,</span> <span class="n">pc_input</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_time_mean_compare</span><span class="p">(</span><span class="n">asf_input</span><span class="p">,</span> <span class="n">pc_input</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
     <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_input</span><span class="p">[</span><span class="s1">&#39;vv_&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">acq_date</span><span class="o">=</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-    <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_input</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_input</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -519,7 +522,7 @@ document.write(`
 <p>This let’s us call the ASF dataset (<code class="docutils literal notranslate"><span class="pre">vrt_new</span></code>) and PC dataset (<code class="docutils literal notranslate"><span class="pre">da_pc</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">store</span> <span class="o">-</span><span class="n">r</span> <span class="n">vrt_new</span> <span class="n">da_pc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">store</span> -r vrt_new da_pc
 </pre></div>
 </div>
 </div>
@@ -527,7 +530,7 @@ document.write(`
 <p>Read in the ASF dataset, which we named <code class="docutils literal notranslate"><span class="pre">vrt_full</span></code> in the earlier notebook:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
 </pre></div>
 </div>
 </div>
@@ -1504,17 +1507,17 @@ Data variables:
     </tr>
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-ad2a6765-c69e-4a36-9921-e6129cb8ca19' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ad2a6765-c69e-4a36-9921-e6129cb8ca19' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
-<p>Before we go further, the nodata value for the ASF dataset is currently zero ( I think this is an artifact of using VRT to read in the data). Change all zero values to NaN:</p>
+<p>Before we go further, the nodata value for the ASF dataset is currently zero. Change all zero values to NaN:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span> <span class="o">=</span>  <span class="n">vrt_new</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vrt_new</span><span class="o">.</span><span class="n">vv</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span> <span class="o">=</span>  <span class="n">vrt_new</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vrt_new</span><span class="o">.</span><span class="n">vv</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">da_pc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da_pc</span>
 </pre></div>
 </div>
 </div>
@@ -2345,7 +2348,7 @@ Attributes:
 <p>We want to ensure that we are performing a direct comparison of the ASF and PC datasets. To do this, we would like to use the acquisition ID that is stored in the source granule name (published by ESA). In the setup notebooks we attached the entire granule IDs of the SLC images to the ASF dataset and the GRD images to the PC dataset. In the ASF data inspection notebook, we attached data take id as a non-dimensional coordinate. Now we will do the same for the Planetary Computer dataset, extracting just the 6-digit acquisition ID from the granule ID and using this for a scene-by-scene comparison.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_take_pc</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">granule_id</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">56</span><span class="p">:]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">time</span><span class="p">))]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_take_pc</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">granule_id</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">56</span><span class="p">:]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">time</span><span class="p">))]</span>
 </pre></div>
 </div>
 </div>
@@ -2353,14 +2356,14 @@ Attributes:
 <p>Assign <code class="docutils literal notranslate"><span class="pre">data_take_id</span></code> as a non-dimensional coordinate. Rather than use the <code class="docutils literal notranslate"><span class="pre">xr.assign_coords()</span></code> function, we are adding the object by specifying a tuple with the form (‘coord_name’, coord_data, attrs):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">da_pc</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;data_take_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">data_take_pc</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da_pc</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;data_take_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">data_take_pc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrt_new</span>
 </pre></div>
 </div>
 </div>
@@ -3339,7 +3342,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">da_pc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da_pc</span>
 </pre></div>
 </div>
 </div>
@@ -4181,10 +4184,10 @@ Attributes:
 </div>
 <section id="subset-to-only-common-data-takes">
 <h3>Subset to only common data takes<a class="headerlink" href="#subset-to-only-common-data-takes" title="Permalink to this heading">#</a></h3>
-<p>Now we have data take ID coordinates for both datasets. We want to find the common data take IDs between the two datasets. TO do this, I extract a list of the acquisition IDs (<code class="docutils literal notranslate"><span class="pre">data_take_id</span></code>) for both datasets and then find the intersection of the two lists (the list object <code class="docutils literal notranslate"><span class="pre">common_data_takes</span></code>)</p>
+<p>Now we have data take ID coordinates for both datasets. We want to find the common data take IDs between the two datasets. To do this, I extract a list of the acquisition IDs (<code class="docutils literal notranslate"><span class="pre">data_take_id</span></code>) for both datasets and then find the intersection of the two lists (the list object <code class="docutils literal notranslate"><span class="pre">common_data_takes</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_data_take_ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_data_take_ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">da_pc</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">asf_data_take_ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">vrt_new</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -4192,7 +4195,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">common_data_takes</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pc_data_take_ls</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">asf_data_take_ls</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">common_data_takes</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pc_data_take_ls</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">asf_data_take_ls</span><span class="p">))</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -4207,7 +4210,7 @@ Attributes:
 <p>We’d like to subset the ASF and the PC datasets to only the common acquisitions. The xarray <code class="docutils literal notranslate"><span class="pre">.isin()</span></code> method is very useful for this type of selection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">subset_condition_asf</span> <span class="o">=</span> <span class="n">vrt_new</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset_condition_asf</span> <span class="o">=</span> <span class="n">vrt_new</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">)</span>
 
 <span class="n">subset_condition_pc</span> <span class="o">=</span> <span class="n">da_pc</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">)</span>
 </pre></div>
@@ -4217,21 +4220,21 @@ Attributes:
 <p>Next, we want to select the elements along the <code class="docutils literal notranslate"><span class="pre">acq_ate</span></code> (and <code class="docutils literal notranslate"><span class="pre">time</span></code>) dimensions where <code class="docutils literal notranslate"><span class="pre">data_take_id</span></code> satisfies the requirement of being in the <code class="docutils literal notranslate"><span class="pre">common_data_takes</span></code> list. I found this stack overflow answer useful for this step: <a class="reference external" href="https://stackoverflow.com/questions/70777676/xarray-select-dataarray-according-to-an-non-dimension-coordinate">https://stackoverflow.com/questions/70777676/xarray-select-dataarray-according-to-an-non-dimension-coordinate</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span> <span class="o">=</span> <span class="n">vrt_new</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">vrt_new</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span> <span class="o">=</span> <span class="n">vrt_new</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">acq_date</span> <span class="o">=</span> <span class="n">vrt_new</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_subset</span> <span class="o">=</span> <span class="n">da_pc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">da_pc</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_subset</span> <span class="o">=</span> <span class="n">da_pc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">da_pc</span><span class="o">.</span><span class="n">data_take_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_data_takes</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_subset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_subset</span>
 </pre></div>
 </div>
 </div>
@@ -5044,7 +5047,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span>
 </pre></div>
 </div>
 </div>
@@ -6008,7 +6011,7 @@ Data variables:
 <p>Use <code class="docutils literal notranslate"><span class="pre">asf_bc_sidebyside()</span></code> to compare snapshot views of backscatter at individual time steps:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6018,7 +6021,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6028,7 +6031,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6038,7 +6041,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_pc_sidebyside</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">,</span> <span class="n">pc_subset</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6052,10 +6055,10 @@ Data variables:
 <p>Now we will look at the backscatter mean along the time dimension</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ASF&#39;</span><span class="p">)</span>
-<span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_subset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PC&#39;</span><span class="p">)</span>
+<span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_subset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PC&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -6074,14 +6077,14 @@ Data variables:
 <p>In order to do this, first we must downsample the PC dataset to match the spatial resolution of the ASF dataset. There are multiple xarray methods that could be used but here we will use the <code class="docutils literal notranslate"><span class="pre">xr.interp_like()</span></code> method because we would like the PC x and y dimensions to match the ASF dimensiosn exactly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span> <span class="o">=</span> <span class="n">pc_subset</span><span class="o">.</span><span class="n">interp_like</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span> <span class="o">=</span> <span class="n">pc_subset</span><span class="o">.</span><span class="n">interp_like</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span>
 </pre></div>
 </div>
 </div>
@@ -6892,7 +6895,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">notnull</span><span class="p">(),</span> <span class="n">pc_downsample</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">notnull</span><span class="p">(),</span> <span class="n">pc_downsample</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6909,7 +6912,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span>
 </pre></div>
 </div>
 </div>
@@ -8284,7 +8287,7 @@ Data variables:
 <p>Let’s go back and try to fix this…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -8296,14 +8299,14 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span> <span class="o">=</span> <span class="n">asf_subset</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;acq_date&#39;</span><span class="p">:</span><span class="s1">&#39;time&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span> <span class="o">=</span> <span class="n">asf_subset</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;acq_date&#39;</span><span class="p">:</span><span class="s1">&#39;time&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -8316,14 +8319,14 @@ Data variables:
 <p>Okay, so we need to take the time off of the <code class="docutils literal notranslate"><span class="pre">pc_downsample</span></code> time coordinates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc_downsample</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc_downsample</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_downsample</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
@@ -8335,7 +8338,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
@@ -8348,14 +8351,14 @@ Data variables:
 <p>Now let’s try again:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">notnull</span><span class="p">(),</span> <span class="n">pc_downsample</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">notnull</span><span class="p">(),</span> <span class="n">pc_downsample</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span>
 </pre></div>
 </div>
 </div>
@@ -9514,7 +9517,7 @@ Data variables:
 <p>Great! Looks like its working</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span>
 </pre></div>
 </div>
 </div>
@@ -10470,7 +10473,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_mask</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -11464,7 +11467,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_subset</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ASF&#39;</span><span class="p">);</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_mask</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">vv</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PC&#39;</span><span class="p">);</span>
@@ -11481,7 +11484,7 @@ Data variables:
 <p>Use <code class="docutils literal notranslate"><span class="pre">xr.where()</span></code> to subset datasets by orbital pass:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_subset</span>
 </pre></div>
 </div>
 </div>
@@ -12456,7 +12459,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">asf_desc</span> <span class="o">=</span> <span class="n">asf_subset</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">[</span><span class="s1">&#39;orbital_dir&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_desc</span> <span class="o">=</span> <span class="n">asf_subset</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">[</span><span class="s1">&#39;orbital_dir&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">asf_asc</span> <span class="o">=</span> <span class="n">asf_subset</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asf_subset</span><span class="p">[</span><span class="s1">&#39;orbital_dir&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;asc&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -12464,14 +12467,14 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_asc.vv.mean(dim=[&#39;x&#39;,&#39;y&#39;]).plot(marker=&#39;o&#39;, linestyle=&#39;None&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#asf_asc.vv.mean(dim=[&#39;x&#39;,&#39;y&#39;]).plot(marker=&#39;o&#39;, linestyle=&#39;None&#39;)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc_desc</span> <span class="o">=</span> <span class="n">pc_subset</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pc_subset</span><span class="p">[</span><span class="s1">&#39;sat:orbit_state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;descending&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_desc</span> <span class="o">=</span> <span class="n">pc_subset</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pc_subset</span><span class="p">[</span><span class="s1">&#39;sat:orbit_state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;descending&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">pc_asc</span> <span class="o">=</span> <span class="n">pc_subset</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pc_subset</span><span class="p">[</span><span class="s1">&#39;sat:orbit_state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ascending&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -12479,7 +12482,7 @@ Data variables:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span> <span class="o">=</span><span class="mi">2</span> <span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span> <span class="o">=</span><span class="mi">2</span> <span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">asf_desc</span><span class="o">.</span><span class="n">vv</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ASF VV desc&#39;</span><span class="p">);</span>
 <span class="n">power_to_db</span><span class="p">(</span><span class="n">pc_desc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PC VV desc&#39;</span><span class="p">);</span>
@@ -12501,7 +12504,7 @@ Data variables:
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Backscatter (sigma-nought) (dB)&#39;</span><span class="p">)</span> 
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;VH&#39;</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparison of backscatter values from ASF-processed and PC-processed Sentinel-1 RTC imagery&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparison of backscatter values from ASF-processed and PC-processed Sentinel-1 RTC imagery&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
