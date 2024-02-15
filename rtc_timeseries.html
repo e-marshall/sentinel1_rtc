@@ -355,7 +355,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-resources">Other useful resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques">Techniques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-resources">Other useful resources</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-and-setup">Software and setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-prepared-rtc-data">Read in prepared RTC data</a></li>
@@ -363,6 +368,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-to-lake-extent">Clip to lake extent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
 </ul>
             </nav>
         </div>
@@ -379,8 +385,31 @@ document.write(`
 <p>Now that we have done so much work to organize these two datasets and prepare them for analysis, let’s explore the data with a scientific question in mind.</p>
 <p>In this example, we have data over a specific area of interest covering two glaciers and two proglacial lakes in the Central Himalaya near the India-Chinese border. As a glaciologist, I might be interested in questions related to the conditions of these surface – is there a seasonal pattern to proglacial lake conditions? Do they freeze during the winter, and if so, at similar times? What is the surface of the glacier like at certain times of year? SAR backscatter imagery may not conclusively answer any of these questions in itself, but it can provide important insights about surface conditions and how they change over time that could be used to answer some of these questions.</p>
 <p>This notebook will walk through some initial steps of how you could use the data objects we’ve created to explore backscatter dynamics over time and space for the area of interest we have identified.</p>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<section id="concepts">
+<h3>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Subset larger dataset to spatial areas of interest</p></li>
+<li><p>Computations and reductions</p></li>
+<li><p>Data visualization</p></li>
+</ul>
+</section>
+<section id="techniques">
+<h3>Techniques<a class="headerlink" href="#techniques" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>:<br />
+- Handling projections<br />
+- Spatial joins of multiple vector datasets<br />
+- Interactive data visualization</p></li>
+<li><p><a class="reference external" href="https://xarray.dev/">Xarray</a> and <a class="reference external" href="https://corteva.github.io/rioxarray/stable/">RioXarray</a>:<br />
+- Clip raster object by a vector object<br />
+- Computations and reductions along different dimensions<br />
+- Data visualization</p></li>
+</ul>
+</section>
 <section id="other-useful-resources">
-<h2>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h2>
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h3>
 <p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
@@ -388,6 +417,7 @@ document.write(`
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html">Xarray High-level computational patterns</a> discussion of concepts and associated code examples</p></li>
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">Parallel computing with dask</a> Xarray tutorial demonstrating wrapping of dask arrays</p></li>
 </ul>
+</section>
 </section>
 <section id="software-and-setup">
 <h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
@@ -3271,6 +3301,9 @@ Data variables:
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="data-visualization">
+<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
@@ -3376,7 +3409,12 @@ Data variables:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-resources">Other useful resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques">Techniques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-resources">Other useful resources</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-and-setup">Software and setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-prepared-rtc-data">Read in prepared RTC data</a></li>
@@ -3384,6 +3422,7 @@ Data variables:
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-to-lake-extent">Clip to lake extent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
 </ul>
   </nav></div>
 
