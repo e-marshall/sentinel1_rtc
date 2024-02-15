@@ -1,4 +1,6 @@
-# sentinel1_rtc
+# Sentinel-1 Radiometric Terrain Corrected (RTC) Imagery + Xarray Tutorial Jupyter Book 
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://e-marshall.github.io/sentinel1_rtc)
+
 A jupyter book tutorial demonstrating accessing and working with Sentinel-1 RTC imagery using xarray. 
 This tutorial demonstrates accessing and working with two datasets of Sentinel-1 RTC imagery: 
 1) a time series processed by Alaska Satellite Facility's On-Demand Processing Server and downloaded locally as geotiffs and 
