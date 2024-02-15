@@ -3,9 +3,10 @@
 
 A jupyter book tutorial demonstrating accessing and working with Sentinel-1 RTC imagery using xarray. 
 This tutorial demonstrates accessing and working with two datasets of Sentinel-1 RTC imagery: 
-1) a time series processed by Alaska Satellite Facility's On-Demand Processing Server and downloaded locally as geotiffs and 
-2) a dataset processed and made available as cloud-optimized geotiffs by Microsoft Planetary Computer.
+1) A time series processed by Alaska Satellite Facility's On-Demand Processing Server and downloaded locally as geotiffs and 
+2) A dataset processed and made available as cloud-optimized GeoTIFFs by Microsoft Planetary Computer.
 
-It contains notebooks related to data access, organizing and handling metadata, data inspection, comparing datasets and exploratory analysis and visualization all with a focus on demonstrating xarray functionality for remote sensing data workflows 
+This tutorial contains notebooks related to data access, organizing and handling metadata, data inspection, comparing datasets, and exploratory analysis and visualization, all with a focus on demonstrating xarray functionality for remote sensing data workflows. 
 
-I'm very open to feedback on this project as it is still a work in progress and I'm always learning how to better work with these tools and datasets. If you have any comments, questions or suggestions please don't hesitate to raise an issue or reach out to me directly. Thanks for stopping by! 
+Please don't hesitate to reach out with questions or feedback on this material. You can [raise an issue](https://github.com/e-marshall/sentinel1_rtc/issues), [start a discussion](https://github.com/e-marshall/sentinel1_rtc/discussions), or contact me via email (listed in tutorial). Thanks for stopping by! 
+
