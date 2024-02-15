@@ -3,6 +3,8 @@
 The material in this tutorial was developed with the aid of many online resources. 
 
 ## Datasets
+
+- RGI 7.0 Consortium, 2023. Randolph Glacier Inventory - A Dataset of Global Glacier Outlines, Version 7.0. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi:10.5067/f6jmovy5navz. Online access: https://doi.org/10.5067/f6jmovy5navz
 - [Alaska Satellite Facility Sentinel-1 On-Demand](https://search.asf.alaska.edu/#/?topic=onDemand)
 - [Micrsoft Planetary Computer Sentinel-1 RTC data](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc)
 - 
