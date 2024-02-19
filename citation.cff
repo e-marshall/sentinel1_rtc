@@ -1,0 +1,20 @@
+cff-version: 1.0.0
+message: "If you use this module, please cite it as below."
+authors:
+- family-names: "Emma"
+  given-names: "Marshall"
+  orcid: "https://orcid.org/0000-0001-6348-977X"
+- family-names: "Deepak"
+  given-names: "Cherian"
+  orcid: "https://orcid.org/0000-0002-6861-8734"
+- family-names: "Scott"
+  given-names: "Henderson"
+  orcid: "https://orcid.org/0000-0003-0624-4965"
+- family-names: "Jessica"
+  given-names: "Scheick"
+  orcid: "https://orcid.org/0000-0002-3421-4459"
+title: "Sentinel-1 RTC data workflows with Xarray"
+version: 1.0.0
+doi: https://zenodo.org/doi/10.5281/zenodo.10681095
+date-released: 2022-11-01
+url: "https://github.com/e-marshall/sentinel1_rtc"
