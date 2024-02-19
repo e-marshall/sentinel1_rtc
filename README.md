@@ -1,5 +1,8 @@
 # Sentinel-1 Radiometric Terrain Corrected (RTC) Imagery + Xarray Tutorial Jupyter Book 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://e-marshall.github.io/sentinel1_rtc)
+[![DOI](https://zenodo.org/badge/537588743.svg)](https://zenodo.org/doi/10.5281/zenodo.10681095)
+
+
 
 A jupyter book tutorial demonstrating accessing and working with Sentinel-1 RTC imagery using xarray. 
 This tutorial demonstrates accessing and working with two datasets of Sentinel-1 RTC imagery: 
