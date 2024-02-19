@@ -28,3 +28,7 @@ This tutorial demonstrates accessing and working with different Sentinel-1 SAR R
 ## Chapter 2: Dataset comparison and preliminary analysis
 
 [Chapter 2](ch2_root.md) makes use of the datasets prepared in chapter 1. The first notebook demonstrates a comparison of the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalayas. 
+
+# Contributing and getting help
+
+If you find a bug or run into an error, please check out the [issues](https://github.com/e-marshall/sentinel1_rtc/issues) on the github repository and consider raising one. If you are stuck or have questions working through the content, please check out the [discussions](https://github.com/e-marshall/sentinel1_rtc/discussions) page. 
