@@ -16,7 +16,7 @@ The material in this tutorial was developed with the aid of many online resource
 - [Planetary Computer Customizable RTC](https://planetarycomputer.microsoft.com/docs/tutorials/customizable-rtc-sentinel1/)
 
 ## Open-Source Software
- Alan D. Snow, David Brochart, Martin Raspaud, Mike Taves, Ray Bell, RichardScottOZ, Taher Chegini, Alessandro Amici, Rémi Braun, Andrew Annex, Carlos H Brandt, David Hoese, Fred Bunt, GBallesteros, Jessica Scheick, Joe Hamman, jonasViehweger, Markus Zehner, Mauricio Cordeiro, … pmallas. (2022). corteva/rioxarray: 0.12.1 (0.12.1). Zenodo. [https://doi.org/10.5281/zenodo.7080195](https://doi.org/10.5281/zenodo.7080195)
+- Alan D. Snow, David Brochart, Martin Raspaud, Mike Taves, Ray Bell, RichardScottOZ, Taher Chegini, Alessandro Amici, Rémi Braun, Andrew Annex, Carlos H Brandt, David Hoese, Fred Bunt, GBallesteros, Jessica Scheick, Joe Hamman, jonasViehweger, Markus Zehner, Mauricio Cordeiro, … pmallas. (2022). corteva/rioxarray: 0.12.1 (0.12.1). Zenodo. [https://doi.org/10.5281/zenodo.7080195](https://doi.org/10.5281/zenodo.7080195)
 - Gillies, S., van der Wel, C., Van den Bossche, J., Taves, M. W., Arnott, J., Ward, B. C., & others. (2022). Shapely (2.0.0). Zenodo. [https://doi.org/10.5281/zenodo.7428463](https://doi.org/10.5281/zenodo.7428463)
 - Harris, C.R., Millman, K.J., van der Walt, S.J. et al. Array programming with NumPy. Nature 585, 357–362 (2020). [DOI: 10.1038/s41586-020-2649-2.](https://doi.org/10.1038/s41586-020-2649-2)
 - Hoyer, S., & Hamman, J. (2017). xarray: N-D labeled Arrays and Datasets in Python. Journal of Open Research Software, 5(1), 10. [https://doi.org/10.5334/jors.148](https://doi.org/10.5334/jors.148)
@@ -30,18 +30,10 @@ The material in this tutorial was developed with the aid of many online resource
 - Thomas A Caswell, Michael Droettboom, Antony Lee, Elliott Sales de Andrade, Tim Hoffmann, John Hunter, Jody Klymak, Eric Firing, David Stansby, Nelle Varoquaux, Jens Hedegaard Nielsen, Benjamin Root, Ryan May, Phil Elson, Jouni K. Seppänen, Darren Dale, Jae-Joon Lee, Damon McDougall, Andrew Straw, … Paul Ivanov. (2021). matplotlib/matplotlib: REL: v3.5.1 (v3.5.1). Zenodo. [https://doi.org/10.5281/zenodo.5773480](https://doi.org/10.5281/zenodo.5773480)
 - Zonca, A., Weakley, L. M., & Standish, M. (2023, October 30). Interactive distributed computing with Jupyter, Python and Dask on Jetstream2 for Science Gateways. Science Gateways 2023 (SG23), Pittsburgh, PA. Zenodo. [https://doi.org/10.5281/zenodo.10041240](https://doi.org/10.5281/zenodo.10041240)
 
-
-Couldn't find refs:  
-- [Stackstac](https://stackstac.readthedocs.io/en/latest/)
+### Additional open source software packages 
+- [Stackstac](https://stackstac.readthedocs.io/en/v0.5.0/api/main.html)
 - [PySTAC](https://pystac.readthedocs.io/en/stable/)
-- [os](https://docs.python.org/3/library/os.html)
-- [tempfile](https://docs.python.org/3/library/tempfile.html)
-- [requests](https://pypi.org/project/requests/)
-- [markdown](https://pypi.org/project/Markdown/)
-- [pathlib](https://docs.python.org/3/library/pathlib.html)
 - [adlfs](https://pypi.org/project/adlfs/)
 - [PySTAC Client](https://pystac-client.readthedocs.io/en/stable/)
 - [datetime](https://docs.python.org/3/library/datetime.html)
 - [rich.table](https://rich.readthedocs.io/en/stable/tables.html)
-- [time](https://docs.python.org/3/library/time.html)
-- [glob](https://docs.python.org/3/library/glob.html)
