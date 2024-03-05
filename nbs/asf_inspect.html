@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="ASF-processed RTC data inspection" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/nbs/asf_inspect.html" />
@@ -37,39 +36,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'nbs/asf_inspect';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -162,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Sentinel-1 RTC data workflows with xarray</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -384,10 +390,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="asf-processed-rtc-data-inspection">
-<h1>ASF-processed RTC data inspection<a class="headerlink" href="#asf-processed-rtc-data-inspection" title="Permalink to this heading">#</a></h1>
+<h1>ASF-processed RTC data inspection<a class="headerlink" href="#asf-processed-rtc-data-inspection" title="Link to this heading">#</a></h1>
 <p>Now that we have read in and organized the stack of Sentinel-1 RTC images, this notebook will demonstrate preliminary dataset inspection.</p>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p><strong>Techniques:</strong></p>
 <ul class="simple">
 <li><p>Comparing raster images</p></li>
@@ -402,7 +408,7 @@ document.write(`
 <li><p>Dataset inspection and evaluation</p></li>
 </ul>
 <section id="other-useful-resources">
-<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h3>
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Link to this heading">#</a></h3>
 <p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
@@ -412,12 +418,12 @@ document.write(`
 </ul>
 </section>
 <section id="asf-data-access">
-<h3>ASF Data Access<a class="headerlink" href="#asf-data-access" title="Permalink to this heading">#</a></h3>
+<h3>ASF Data Access<a class="headerlink" href="#asf-data-access" title="Link to this heading">#</a></h3>
 <p>You can download the RTC-processed backscatter time series <a class="reference external" href="https://zenodo.org/record/7236413#.Y1rNi37MJ-0">here</a></p>
 </section>
 </section>
 <section id="software-and-setup">
-<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
+<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">xmode</span> minimal
@@ -443,7 +449,7 @@ document.write(`
 </div>
 </div>
 <section id="read-in-prepared-data">
-<h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Permalink to this heading">#</a></h3>
+<h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Link to this heading">#</a></h3>
 <p>First, we’ll use cell magic to read in the object we prepared in the first notebook:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1415,7 +1421,7 @@ Data variables:
 </div>
 </section>
 <section id="utility-functions">
-<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading">#</a></h3>
+<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h3>
 <p>Lets define two useful functions</p>
 <ol class="arabic simple">
 <li><p>To convert from power to dB</p></li>
@@ -1451,7 +1457,7 @@ Data variables:
 </section>
 </section>
 <section id="layover-shadow-mask">
-<h2>Layover-shadow mask<a class="headerlink" href="#layover-shadow-mask" title="Permalink to this heading">#</a></h2>
+<h2>Layover-shadow mask<a class="headerlink" href="#layover-shadow-mask" title="Link to this heading">#</a></h2>
 <p>Each RTC image comes with a geotiff file containing a layover-shadow mask. This can help to understand missing data you might see in the imagery files. The layover shadow masks are coded to represent a number of different types of pixels:</p>
 <p>The following information is copied from the README file that accompanies each scene:</p>
 <div class="highlight-{**Layover-shadow notranslate"><div class="highlight"><pre><span></span>
@@ -1490,7 +1496,7 @@ The values in each cell can range from 0 to 31:
 </div>
 <p>The ASF RTC image <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">product guide</a> has detailed descriptions of how the data is processed and what is included in the processed dataset.</p>
 <section id="quick-visualization">
-<h3>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this heading">#</a></h3>
+<h3>Quick visualization<a class="headerlink" href="#quick-visualization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_timestep</span><span class="p">(</span><span class="n">vrt_full</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
@@ -1550,7 +1556,7 @@ The values in each cell can range from 0 to 31:
 </section>
 </section>
 <section id="looking-at-backscatter-variability">
-<h2>Looking at backscatter variability<a class="headerlink" href="#looking-at-backscatter-variability" title="Permalink to this heading">#</a></h2>
+<h2>Looking at backscatter variability<a class="headerlink" href="#looking-at-backscatter-variability" title="Link to this heading">#</a></h2>
 <p>Let’s look at how VV and VH backscatter vary over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2888,7 +2894,7 @@ Data variables:
 <p>Interesting, it looks like the winter and spring composites are relatively similar to one another. There also appears to be a decrease in backscatter moving from spring to summer.</p>
 </section>
 <section id="handling-duplicate-time-steps">
-<h2>Handling duplicate time steps<a class="headerlink" href="#handling-duplicate-time-steps" title="Permalink to this heading">#</a></h2>
+<h2>Handling duplicate time steps<a class="headerlink" href="#handling-duplicate-time-steps" title="Link to this heading">#</a></h2>
 <p>If we take a closer look at the ASF dataset, we can see that there are a few scenes from identical acquisitions (can see this in <code class="docutils literal notranslate"><span class="pre">acq_date</span></code> and more specifically in <code class="docutils literal notranslate"><span class="pre">product_id</span></code>. Let’s examine these and see what’s going on, if we want to keep the duplicates:</p>
 <p>First we’ll extract the data_date_id from the Sentinel-1 granule ID:</p>
 <div class="cell docutils container">
@@ -6496,7 +6502,7 @@ Data variables:
 </div>
 </section>
 <section id="wrap-up">
-<h2>Wrap up<a class="headerlink" href="#wrap-up" title="Permalink to this heading">#</a></h2>
+<h2>Wrap up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
 <p>This notebook gives a brief look in to the vast amount of auxiliary data that is contained within this dataset. Making the most and best use of this dataset requires familiarity with the the many different types of information it includes.</p>
 </section>
 </section>
@@ -6606,7 +6612,7 @@ By emma marshall
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

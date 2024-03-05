@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="ASF GDAL VRT approach" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/nbs/asf_local_vrt.html" />
@@ -37,39 +36,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'nbs/asf_local_vrt';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -162,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Sentinel-1 RTC data workflows with xarray</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -409,17 +415,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="asf-gdal-vrt-approach">
-<h1>ASF GDAL VRT approach<a class="headerlink" href="#asf-gdal-vrt-approach" title="Permalink to this heading">#</a></h1>
+<h1>ASF GDAL VRT approach<a class="headerlink" href="#asf-gdal-vrt-approach" title="Link to this heading">#</a></h1>
 <p>This notebook demonstrates working with Sentinel-1 RTC imagery that has been processed on the <a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF On-Demand server</a> and downloaded locally.</p>
 <p>The access point for data in this notebook is a directory containing un-zipped directories of RTC scenes.</p>
 <section id="on-reading-the-data">
-<h2>On reading the data<a class="headerlink" href="#on-reading-the-data" title="Permalink to this heading">#</a></h2>
-<p>Two approaches were tested for reading in the large stack of Sentinel-1 time series data: using GDAL VRT objects and xarray’s open_mfdataset(). The VRT approach ended up being the most appropriate for this situation but you can also view the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> in the <span class="xref myst">appendix</span> if you’re interested. Here’s a brief description of the pros and cons of each approach.</p>
+<h2>On reading the data<a class="headerlink" href="#on-reading-the-data" title="Link to this heading">#</a></h2>
+<p>Two approaches were tested for reading in the large stack of Sentinel-1 time series data: using GDAL VRT objects and xarray’s open_mfdataset(). The VRT approach ended up being the most appropriate for this situation but you can also view the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> in the <a class="reference internal" href="#appendix.md"><span class="xref myst">appendix</span></a> if you’re interested. Here’s a brief description of the pros and cons of each approach.</p>
 <section id="xr-open-mfdataset">
-<h3><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">xr.open_mfdataset()</a><a class="headerlink" href="#xr-open-mfdataset" title="Permalink to this heading">#</a></h3>
+<h3><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">xr.open_mfdataset()</a><a class="headerlink" href="#xr-open-mfdataset" title="Link to this heading">#</a></h3>
 <p>This function allows the user to read in a large number of files into a single xarray object in one step. This can save a huge amount of time reading in files and reorganizing xarray objects.</p>
 <section id="pros">
-<h4>Pros<a class="headerlink" href="#pros" title="Permalink to this heading">#</a></h4>
+<h4>Pros<a class="headerlink" href="#pros" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Built-in xarray functionality</p></li>
 <li><p>Files can be distributed - read from directory or list of filepaths</p></li>
@@ -428,7 +434,7 @@ document.write(`
 </ul>
 </section>
 <section id="cons">
-<h4>Cons<a class="headerlink" href="#cons" title="Permalink to this heading">#</a></h4>
+<h4>Cons<a class="headerlink" href="#cons" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Static chunking strategy through stack</p></li>
 <li><p>Not well-suited for files with non-uniform spatial footprints</p></li>
@@ -437,10 +443,10 @@ document.write(`
 </section>
 </section>
 <section id="gdal-virtual-raster-format-vrt">
-<h3><a class="reference external" href="https://gdal.org/drivers/raster/vrt.html">GDAL Virtual Raster Format (VRT)</a><a class="headerlink" href="#gdal-virtual-raster-format-vrt" title="Permalink to this heading">#</a></h3>
+<h3><a class="reference external" href="https://gdal.org/drivers/raster/vrt.html">GDAL Virtual Raster Format (VRT)</a><a class="headerlink" href="#gdal-virtual-raster-format-vrt" title="Link to this heading">#</a></h3>
 <p>VRT is short for GDAL Virtual Format. VRT objects create an xml file from a list of geotiff files. The xml contains a mapping of all of the specified raster files so that we essentially have the spatial information that would have been used to create the full data object, and all of the information we need for a clip.</p>
 <section id="id1">
-<h4>Pros<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4>Pros<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Can handle a mismatch of grids within the file stack</p></li>
 <li><p>Xml structure can store a large amount of information in a lightweight way</p></li>
@@ -448,7 +454,7 @@ document.write(`
 </ul>
 </section>
 <section id="id2">
-<h4>Cons<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>Cons<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Less customization than <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code></p></li>
 <li><p>Lose some structure (files are renamed Band 1,2,3…)</p></li>
@@ -460,7 +466,7 @@ document.write(`
 </section>
 </section>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p><strong>Techniques (xarray, python and general):</strong> <br></p>
 <ul class="simple">
 <li><p>Build gdal VRT objects</p></li>
@@ -477,7 +483,7 @@ document.write(`
 <li><p>Handle <code class="docutils literal notranslate"><span class="pre">nodata</span></code> values</p></li>
 </ul>
 <section id="other-useful-resources">
-<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h3>
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Link to this heading">#</a></h3>
 <p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
@@ -487,12 +493,12 @@ document.write(`
 </ul>
 </section>
 <section id="asf-data-access">
-<h3>ASF Data Access<a class="headerlink" href="#asf-data-access" title="Permalink to this heading">#</a></h3>
+<h3>ASF Data Access<a class="headerlink" href="#asf-data-access" title="Link to this heading">#</a></h3>
 <p>You can download the RTC-processed backscatter time series <a class="reference external" href="https://zenodo.org/record/7236413#.Y1rNi37MJ-0">here</a></p>
 </section>
 </section>
 <section id="software-and-setup">
-<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
+<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">xmode</span> minimal
@@ -536,7 +542,7 @@ dask      : 2024.1.1
 </div>
 </div>
 <section id="utility-functions">
-<h3>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading">#</a></h3>
+<h3>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we&#39;ll use this function to get bounding box coordinates from a list of points </span>
@@ -561,7 +567,7 @@ dask      : 2024.1.1
 </div>
 </section>
 <section id="read-in-vector-data">
-<h3>Read in vector data<a class="headerlink" href="#read-in-vector-data" title="Permalink to this heading">#</a></h3>
+<h3>Read in vector data<a class="headerlink" href="#read-in-vector-data" title="Link to this heading">#</a></h3>
 <p>We will use this vector data object later but we will read it in as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> object now. It is called PC aoi because the GeoJSON file was created off of the spatial extent of the SAR data we will access from Microsoft Planetary Computer (PC), in order to have comparable datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,7 +623,7 @@ dask      : 2024.1.1
 </div>
 </section>
 <section id="organizing-sentinel-1-data-to-create-vrt-objects">
-<h3>Organizing Sentinel-1 data to create VRT objects.<a class="headerlink" href="#organizing-sentinel-1-data-to-create-vrt-objects" title="Permalink to this heading">#</a></h3>
+<h3>Organizing Sentinel-1 data to create VRT objects.<a class="headerlink" href="#organizing-sentinel-1-data-to-create-vrt-objects" title="Link to this heading">#</a></h3>
 <p>Setup string variables to access filenames + filepaths. Currently, the file structure is organized so that each scene has its own sub-directory within <code class="docutils literal notranslate"><span class="pre">asf_rtcs</span></code>. Within each sub-directory are several files - we want to extract the tif files containing RTC imagery for the VV and VH polarizations for each scene.</p>
 <p>The function <code class="docutils literal notranslate"><span class="pre">extract_tif_fnames()</span></code> takes a path to the directory containing the sub-directories for all scenes and returns a lists of filenames for VV polarization GeoTIFF files, VH polarization GeoTIFF files and the layover-shadow mask GeoTIFF files. Separately, it returns a list of filenames for the associated README files which will be used to extract metadata later on.</p>
 <div class="admonition note">
@@ -692,7 +698,7 @@ dask      : 2024.1.1
 </section>
 </section>
 <section id="create-vrt-objects">
-<h2>Create VRT objects<a class="headerlink" href="#create-vrt-objects" title="Permalink to this heading">#</a></h2>
+<h2>Create VRT objects<a class="headerlink" href="#create-vrt-objects" title="Link to this heading">#</a></h2>
 <p>We will be using the <code class="docutils literal notranslate"><span class="pre">gdalbuildvrt</span></code> command. You can find out more about it <a class="reference external" href="https://manpages.ubuntu.com/manpages/bionic/man1/gdalbuildvrt.1.html">here</a>. This command can make a VRT that either tiles the listed files into a large mosaic, or places them each in a separate band of the VRT. Because we are dealing with a temporal stack of images we want to use the <code class="docutils literal notranslate"><span class="pre">-separate</span></code> flag to place each file into a band of the VRT. </br>
 Because we are making a VRT from a large number of files, we’ll supply a text file with the full path for each file rather than include these at the end of the command line. We’ll use the same lists of filepaths that we constructed above and will write them to text files that we pass to the <code class="docutils literal notranslate"><span class="pre">gdalbuildvrt</span></code> command.</p>
 <div class="admonition note">
@@ -1281,8 +1287,8 @@ Attributes:
 <p>Building the <code class="docutils literal notranslate"><span class="pre">VRT</span></code> object assigns every object in the .txt file to a different band. In doing this, we lose the metadata that is associated with the files. We need to extract metadata from the file name and attach it to the xarray objects that we read in from VRTs.</p>
 </section>
 <section id="extract-metadata">
-<h2>Extract metadata<a class="headerlink" href="#extract-metadata" title="Permalink to this heading">#</a></h2>
-<p>The following function is very similar to the <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function that is passed when calling <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code>. There is an  example of this in the <a class="reference internal" href="asf_local_mf.html"><span class="doc std std-doc">appendix notebook</span></a>. It extracts metadata contained in the filename and organizes it as a dictionary that can be attached to an xarray object.</p>
+<h2>Extract metadata<a class="headerlink" href="#extract-metadata" title="Link to this heading">#</a></h2>
+<p>The following function is very similar to the <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function that is passed when calling <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code>. There is an  example of this in the <a class="reference internal" href="asf_local_mf.html"><span class="std std-doc">appendix notebook</span></a>. It extracts metadata contained in the filename and organizes it as a dictionary that can be attached to an xarray object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_metadata_attrs</span><span class="p">(</span><span class="n">inputfname</span><span class="p">):</span>
@@ -3028,13 +3034,13 @@ Data variables:
               dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;acq_date&#x27;, length=103, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-62507151-b014-4970-81e1-6073ea88809d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-62507151-b014-4970-81e1-6073ea88809d' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="taking-a-look-at-chunking">
-<h3>Taking a look at chunking<a class="headerlink" href="#taking-a-look-at-chunking" title="Permalink to this heading">#</a></h3>
+<h3>Taking a look at chunking<a class="headerlink" href="#taking-a-look-at-chunking" title="Link to this heading">#</a></h3>
 <p>If you take a look at the chunking you will see that the entire object has a shape <code class="docutils literal notranslate"><span class="pre">(103,</span> <span class="pre">13379,</span> <span class="pre">17452)</span></code> and that each chunk is <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">5760,</span> <span class="pre">5760)</span></code>. This breaks the full array (~ 89 GB) into 1,236 chunks that are about 127 MB each. We can also see that chunking keeps each time step intact which is optimal for time series data. If you are interested in an example of inefficient chunking, you can check out the example notebook in the <a class="reference external" href="https://e-marshall.github.io/sentinel1_rtc/asf_local_mf.html#an-example-of-complicated-chunking">appendix</a>. In this case, because of the internal structure of the data and the characteristics of the time series stack, various chunking strategies produced either too few (103) or too many (317,240) chunks with complicated structures that led to memory blow-ups when trying to compute. The difficulty we encountered trying to structure the data using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> led us to use the VRT approach in this notebook but <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> is still a very useful tool if your data is a good fit.</p>
 <p>Chunking is an important aspect of how dask works. You want the chunking strategy to match the structure of the data (ie. internal tiling of the data, if your data is stored locally you want chunks to match the storage structure) without having too many chunks (this will cause unnecessary communication among workers) or too few chunks (this will lead to large chunk sizes and slower processing). There are helpful explanations <a class="reference external" href="https://docs.dask.org/en/stable/array-best-practices.html#select-a-good-chunk-size">here</a> and <a class="reference external" href="https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes">here</a>.
 When chunking is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code> (the case here), the optimal chunk size will be selected for each dimension (if specified individually) or all dimensions. Read more about chunking <a class="reference external" href="https://docs.dask.org/en/stable/array-chunks.html">here</a>.</p>
 </section>
 <section id="clip-by-vector-data">
-<h3>Clip by vector data<a class="headerlink" href="#clip-by-vector-data" title="Permalink to this heading">#</a></h3>
+<h3>Clip by vector data<a class="headerlink" href="#clip-by-vector-data" title="Link to this heading">#</a></h3>
 <p>Clip the full object by the same AOI as above. We will use the <a class="reference external" href="https://corteva.github.io/rioxarray/stable/examples/clip_geom.html"><code class="docutils literal notranslate"><span class="pre">rioxarray.clip()</span></code> method</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3836,7 +3842,7 @@ Data variables:
 </section>
 </section>
 <section id="merge-metadata">
-<h2>Merge metadata<a class="headerlink" href="#merge-metadata" title="Permalink to this heading">#</a></h2>
+<h2>Merge metadata<a class="headerlink" href="#merge-metadata" title="Link to this heading">#</a></h2>
 <p>We had important metadata stored in the individual filenames of each Sentinel-1 scene that was dropped when we converted them to VRT objects. Let’s use the original filenames to extract the metadata and assign the data as coordinates of our formatted xarray object.</p>
 <p>First here is what the metadata looks like for a single file</p>
 <div class="cell docutils container">
@@ -4848,9 +4854,9 @@ Data variables:
               dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;acq_date&#x27;, length=103, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-28a69d48-e204-41ac-8838-2b078fff12f4' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-28a69d48-e204-41ac-8838-2b078fff12f4' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="add-granule-id-as-another-non-dimensional-coordinate">
-<h3>Add granule ID as another non-dimensional coordinate<a class="headerlink" href="#add-granule-id-as-another-non-dimensional-coordinate" title="Permalink to this heading">#</a></h3>
+<h3>Add granule ID as another non-dimensional coordinate<a class="headerlink" href="#add-granule-id-as-another-non-dimensional-coordinate" title="Link to this heading">#</a></h3>
 <section id="extract-slc-granule-id-from-readme">
-<h4>Extract SLC granule ID from readme<a class="headerlink" href="#extract-slc-granule-id-from-readme" title="Permalink to this heading">#</a></h4>
+<h4>Extract SLC granule ID from readme<a class="headerlink" href="#extract-slc-granule-id-from-readme" title="Link to this heading">#</a></h4>
 <p>The original granule ID associated with the Sentinel-1 data product published by the European Space Agency contains metadata that it would be helpful for us to attach to our xarray objects. The README file that is associated with every scene contains the source granule used to generate that product.</p>
 <p>The following two functions will be used to extract the source granule ID from each README file then to attach the ID as a coordinate to the xarray object containing the SAR imagery.
 Using the <code class="docutils literal notranslate"><span class="pre">granule_da</span></code> object created earlier</p>
@@ -4874,7 +4880,7 @@ Using the <code class="docutils literal notranslate"><span class="pre">granule_d
 </div>
 </section>
 <section id="construct-granule-id-coordinate">
-<h4>Construct granule ID coordinate<a class="headerlink" href="#construct-granule-id-coordinate" title="Permalink to this heading">#</a></h4>
+<h4>Construct granule ID coordinate<a class="headerlink" href="#construct-granule-id-coordinate" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_granule_coord</span><span class="p">(</span><span class="n">readme_fpaths_ls</span><span class="p">):</span>
@@ -6107,7 +6113,7 @@ Coordinates: (12/14)
 </section>
 </section>
 <section id="add-orbital-direction-coord">
-<h2>Add orbital direction coord<a class="headerlink" href="#add-orbital-direction-coord" title="Permalink to this heading">#</a></h2>
+<h2>Add orbital direction coord<a class="headerlink" href="#add-orbital-direction-coord" title="Link to this heading">#</a></h2>
 <p>Next we want to add orbital direction as a coordinate to the xarray object. To do this we will:</p>
 <ol class="arabic simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">acq_date.dt.hour</span></code> to segment acquisitions by orbital direction</p></li>
@@ -8256,7 +8262,7 @@ Data variables:
 </div>
 </section>
 <section id="handle-nodata-values">
-<h2>Handle nodata values<a class="headerlink" href="#handle-nodata-values" title="Permalink to this heading">#</a></h2>
+<h2>Handle nodata values<a class="headerlink" href="#handle-nodata-values" title="Link to this heading">#</a></h2>
 <p>Another important difference between the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> and VRT approaches is the handling of the nodata values. In the object built using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code>, nodata values are set to NaN while building the object from VRT files converts nodata values to zeros. This can cause a stream of problems later on so it is best to convert them to NaNs now. You can check the handling of nodata values in your dataset by using the <code class="docutils literal notranslate"><span class="pre">rio.nodata</span></code> accessor (shown below) which you can read about <a class="reference external" href="https://corteva.github.io/rioxarray/stable/getting_started/nodata_management.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9242,7 +9248,7 @@ Data variables:
 </div>
 </section>
 <section id="quick-visualization">
-<h2>Quick visualization<a class="headerlink" href="#quick-visualization" title="Permalink to this heading">#</a></h2>
+<h2>Quick visualization<a class="headerlink" href="#quick-visualization" title="Link to this heading">#</a></h2>
 <p>Before we move on to the next notebook, let’s take a quick look at the dataset. We will use the function defined earlier to convert the data from power scale to dB scale. This makes it easier to visualize variability in backscatter. Read more about SAR data scales <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/#sar-scales">here</a>.</p>
 <p>First let’s visualize backscatter variability over time. To do this, we will perform a reduction along the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions of the dataset. We can use built-in xarray plotting methods to plot the 2-dimensional data (backscatter and time, after reducing along <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>)</p>
 <p>(See the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/plotting.html">Xarray User Guide</a> for more on visualizing Xarray objects)</p>
@@ -9285,8 +9291,8 @@ Data variables:
 </div>
 </section>
 <section id="next">
-<h2>Next<a class="headerlink" href="#next" title="Permalink to this heading">#</a></h2>
-<p>The next notebook on <a class="reference internal" href="asf_inspect.html"><span class="doc std std-doc">preliminary dataset inspection</span></a> demonstrates how to explore and familiarize oneself with the dataset now that we have it read in and organized.</p>
+<h2>Next<a class="headerlink" href="#next" title="Link to this heading">#</a></h2>
+<p>The next notebook on <a class="reference internal" href="asf_inspect.html"><span class="std std-doc">preliminary dataset inspection</span></a> demonstrates how to explore and familiarize oneself with the dataset now that we have it read in and organized.</p>
 </section>
 </section>
 
@@ -9420,7 +9426,7 @@ By emma marshall
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Applied example: RTC time series analysis" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/nbs/rtc_timeseries.html" />
@@ -37,39 +36,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'nbs/rtc_timeseries';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -162,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Sentinel-1 RTC data workflows with xarray</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -381,14 +387,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="applied-example-rtc-time-series-analysis">
-<h1>Applied example: RTC time series analysis<a class="headerlink" href="#applied-example-rtc-time-series-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Applied example: RTC time series analysis<a class="headerlink" href="#applied-example-rtc-time-series-analysis" title="Link to this heading">#</a></h1>
 <p>Now that we have done so much work to organize these two datasets and prepare them for analysis, let’s explore the data with a scientific question in mind.</p>
 <p>In this example, we have data over a specific area of interest covering two glaciers and two proglacial lakes in the Central Himalaya near the India-Chinese border. As a glaciologist, I might be interested in questions related to the conditions of these surface – is there a seasonal pattern to proglacial lake conditions? Do they freeze during the winter, and if so, at similar times? What is the surface of the glacier like at certain times of year? SAR backscatter imagery may not conclusively answer any of these questions in itself, but it can provide important insights about surface conditions and how they change over time that could be used to answer some of these questions.</p>
 <p>This notebook will walk through some initial steps of how you could use the data objects we’ve created to explore backscatter dynamics over time and space for the area of interest we have identified.</p>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <section id="concepts">
-<h3>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading">#</a></h3>
+<h3>Concepts<a class="headerlink" href="#concepts" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Subset larger dataset to spatial areas of interest</p></li>
 <li><p>Computations and reductions</p></li>
@@ -396,7 +402,7 @@ document.write(`
 </ul>
 </section>
 <section id="techniques">
-<h3>Techniques<a class="headerlink" href="#techniques" title="Permalink to this heading">#</a></h3>
+<h3>Techniques<a class="headerlink" href="#techniques" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>:<br />
 - Handling projections<br />
@@ -409,7 +415,7 @@ document.write(`
 </ul>
 </section>
 <section id="other-useful-resources">
-<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h3>
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Link to this heading">#</a></h3>
 <p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
@@ -420,7 +426,7 @@ document.write(`
 </section>
 </section>
 <section id="software-and-setup">
-<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
+<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">xmode</span> minimal
@@ -445,7 +451,7 @@ document.write(`
 </div>
 </div>
 <section id="utility-functions">
-<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading">#</a></h3>
+<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_bbox_single</span><span class="p">(</span><span class="n">input_xr</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
@@ -501,7 +507,7 @@ document.write(`
 </div>
 </section>
 <section id="read-in-prepared-rtc-data">
-<h3>Read in prepared RTC data<a class="headerlink" href="#read-in-prepared-rtc-data" title="Permalink to this heading">#</a></h3>
+<h3>Read in prepared RTC data<a class="headerlink" href="#read-in-prepared-rtc-data" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>this example will use ASF dataset</p></li>
 </ul>
@@ -1456,7 +1462,7 @@ Data variables:
 </div>
 </section>
 <section id="read-in-vector-data">
-<h3>Read in vector data<a class="headerlink" href="#read-in-vector-data" title="Permalink to this heading">#</a></h3>
+<h3>Read in vector data<a class="headerlink" href="#read-in-vector-data" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Manually-drawn outlines of proglacial lakes</p></li>
 </ul>
@@ -2291,7 +2297,7 @@ Data variables:
 </section>
 </section>
 <section id="clip-to-lake-extent">
-<h2>Clip to lake extent<a class="headerlink" href="#clip-to-lake-extent" title="Permalink to this heading">#</a></h2>
+<h2>Clip to lake extent<a class="headerlink" href="#clip-to-lake-extent" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lake1</span> <span class="o">=</span> <span class="n">lakes_prj</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lakes_prj</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
@@ -3303,7 +3309,7 @@ Data variables:
 </div>
 </section>
 <section id="data-visualization">
-<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
+<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
@@ -3447,7 +3453,7 @@ By emma marshall
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

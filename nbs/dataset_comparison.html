@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="RTC dataset comparison" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/nbs/dataset_comparison.html" />
@@ -37,39 +36,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'nbs/dataset_comparison';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -162,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Sentinel-1 RTC data workflows with xarray</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -392,10 +398,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rtc-dataset-comparison">
-<h1>RTC dataset comparison<a class="headerlink" href="#rtc-dataset-comparison" title="Permalink to this heading">#</a></h1>
+<h1>RTC dataset comparison<a class="headerlink" href="#rtc-dataset-comparison" title="Link to this heading">#</a></h1>
 <p>Now that we have constructed and organized data cubes for both the ASF and Planetary Computer datasets, it would be useful and informative to compare the two. This notebook will demonstrate steps to ensure a direct comparison between the two datasets as well as use of xarray plotting tools for a preliminary visual comparison.</p>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p><strong>Xarray and python techniques:</strong></p>
 <ul class="simple">
 <li><p>Conditional selection based on non-dimensional coordinates using <code class="docutils literal notranslate"><span class="pre">xr.Dataset.where()</span></code></p></li>
@@ -411,7 +417,7 @@ document.write(`
 <li><p>Handling differences in spatial resolution</p></li>
 </ul>
 <section id="other-useful-resources">
-<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Permalink to this heading">#</a></h3>
+<h3>Other useful resources<a class="headerlink" href="#other-useful-resources" title="Link to this heading">#</a></h3>
 <p>These are resources that contain additional examples and discussion of the content in this notebook and more.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray user guide</a></p></li>
@@ -448,19 +454,19 @@ document.write(`
 </section>
 </section>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>While the datasets we will be comparing in this notebook are quite similar, they contain important differences related to how they were processed. The product description pages for both datasets contain important information for understanding how they are generated.</p>
 <section id="source-data">
-<h3>Source data<a class="headerlink" href="#source-data" title="Permalink to this heading">#</a></h3>
+<h3>Source data<a class="headerlink" href="#source-data" title="Link to this heading">#</a></h3>
 <p>One important difference is the source data used to generate the RTC images. ASF uses the Single Look Complex (<a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar/products-algorithms/level-1-algorithms/single-look-complex">SLC</a>) images that contains both amplitude and phase information for each pixel, is in radar coordinates and has not yet been multi-looked. The Microsoft Planetary Computer RTC imagery is generate from ground range detected images (GRD). <a class="reference external" href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar/products-algorithms/level-1-algorithms/ground-range-detected">GRD</a> data has been detected, multi-looked and projected to ground range.</p>
 </section>
 <section id="dem">
-<h3>DEM<a class="headerlink" href="#dem" title="Permalink to this heading">#</a></h3>
+<h3>DEM<a class="headerlink" href="#dem" title="Link to this heading">#</a></h3>
 <p>A digital elevation model (DEM) is an important input parameter for RTC processing. ASF RTC processing uses the Copernicus DEM with 30 m resolution. Planetary Computer uses higher resolution DEMs. One effect of the use of different DEMs during RTC processing is the different spatial resolutions of the RTC products: <strong>Planetary Computer RTC imagery has a spatial resolution of 10 meters while ASF RTC imagery has a spatial resolution of 30 meters.</strong></p>
 </section>
 </section>
 <section id="software-and-setup">
-<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Permalink to this heading">#</a></h2>
+<h2>Software and setup<a class="headerlink" href="#software-and-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
@@ -485,7 +491,7 @@ document.write(`
 </div>
 </div>
 <section id="utility-functions">
-<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading">#</a></h3>
+<h3>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power_to_db</span><span class="p">(</span><span class="n">input_arr</span><span class="p">):</span>
@@ -517,7 +523,7 @@ document.write(`
 </div>
 </section>
 <section id="read-in-prepared-data">
-<h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Permalink to this heading">#</a></h3>
+<h3>Read in prepared data<a class="headerlink" href="#read-in-prepared-data" title="Link to this heading">#</a></h3>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">storemagic</span></code> command <code class="docutils literal notranslate"><span class="pre">%store</span></code> to retrieve the variable we constructed and saved in a previous notebook, rather than having to create it again. Read more about this <a class="reference external" href="https://levelup.gitconnected.com/how-to-store-variables-in-jupyter-notebook-fea8aa60a9b">here</a></p>
 <p>This let’s us call the ASF dataset (<code class="docutils literal notranslate"><span class="pre">vrt_new</span></code>) and PC dataset (<code class="docutils literal notranslate"><span class="pre">da_pc</span></code>)</p>
 <div class="cell docutils container">
@@ -2344,7 +2350,7 @@ Attributes:
 </section>
 </section>
 <section id="extract-common-data-take-id-from-granule-ids">
-<h2>Extract common data take ID from granule IDs<a class="headerlink" href="#extract-common-data-take-id-from-granule-ids" title="Permalink to this heading">#</a></h2>
+<h2>Extract common data take ID from granule IDs<a class="headerlink" href="#extract-common-data-take-id-from-granule-ids" title="Link to this heading">#</a></h2>
 <p>We want to ensure that we are performing a direct comparison of the ASF and PC datasets. To do this, we would like to use the acquisition ID that is stored in the source granule name (published by ESA). In the setup notebooks we attached the entire granule IDs of the SLC images to the ASF dataset and the GRD images to the PC dataset. In the ASF data inspection notebook, we attached data take id as a non-dimensional coordinate. Now we will do the same for the Planetary Computer dataset, extracting just the 6-digit acquisition ID from the granule ID and using this for a scene-by-scene comparison.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4183,7 +4189,7 @@ Attributes:
 | 0.00, 0.00, 1.00|</dd><dt><span>resolution :</span></dt><dd>10.0</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="subset-to-only-common-data-takes">
-<h3>Subset to only common data takes<a class="headerlink" href="#subset-to-only-common-data-takes" title="Permalink to this heading">#</a></h3>
+<h3>Subset to only common data takes<a class="headerlink" href="#subset-to-only-common-data-takes" title="Link to this heading">#</a></h3>
 <p>Now we have data take ID coordinates for both datasets. We want to find the common data take IDs between the two datasets. To do this, I extract a list of the acquisition IDs (<code class="docutils literal notranslate"><span class="pre">data_take_id</span></code>) for both datasets and then find the intersection of the two lists (the list object <code class="docutils literal notranslate"><span class="pre">common_data_takes</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6004,10 +6010,10 @@ Data variables:
 </section>
 </section>
 <section id="visual-comparison">
-<h2>Visual comparison<a class="headerlink" href="#visual-comparison" title="Permalink to this heading">#</a></h2>
+<h2>Visual comparison<a class="headerlink" href="#visual-comparison" title="Link to this heading">#</a></h2>
 <p>Let’s perform some preliminary visual comparisons of the datasets:</p>
 <section id="individual-time-steps">
-<h3>Individual time steps<a class="headerlink" href="#individual-time-steps" title="Permalink to this heading">#</a></h3>
+<h3>Individual time steps<a class="headerlink" href="#individual-time-steps" title="Link to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">asf_bc_sidebyside()</span></code> to compare snapshot views of backscatter at individual time steps:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6051,7 +6057,7 @@ Data variables:
 </div>
 </section>
 <section id="average-backscatter-over-time">
-<h3>Average backscatter over time<a class="headerlink" href="#average-backscatter-over-time" title="Permalink to this heading">#</a></h3>
+<h3>Average backscatter over time<a class="headerlink" href="#average-backscatter-over-time" title="Link to this heading">#</a></h3>
 <p>Now we will look at the backscatter mean along the time dimension</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6072,7 +6078,7 @@ Data variables:
 </section>
 </section>
 <section id="handling-spatial-resolution-differences">
-<h2>Handling spatial resolution differences<a class="headerlink" href="#handling-spatial-resolution-differences" title="Permalink to this heading">#</a></h2>
+<h2>Handling spatial resolution differences<a class="headerlink" href="#handling-spatial-resolution-differences" title="Link to this heading">#</a></h2>
 <p>The PC dataset has a higher spatial resolution than the ASF dataset, which you can see in the sizes of the x and y dimensions of the dataset. The ASF dataset masks out more pixels due to shadow than the PC dataset. To explore whether or not this is the cause of the observed backscatter offset between the two, we need to mask out the pixels in the PC dataset that are masked in the ASF dataset.</p>
 <p>In order to do this, first we must downsample the PC dataset to match the spatial resolution of the ASF dataset. There are multiple xarray methods that could be used but here we will use the <code class="docutils literal notranslate"><span class="pre">xr.interp_like()</span></code> method because we would like the PC x and y dimensions to match the ASF dimensiosn exactly.</p>
 <div class="cell docutils container">
@@ -11480,7 +11486,7 @@ Data variables:
 </div>
 </section>
 <section id="break-up-by-asc-desc-pass">
-<h2>Break up by asc, desc pass<a class="headerlink" href="#break-up-by-asc-desc-pass" title="Permalink to this heading">#</a></h2>
+<h2>Break up by asc, desc pass<a class="headerlink" href="#break-up-by-asc-desc-pass" title="Link to this heading">#</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">xr.where()</span></code> to subset datasets by orbital pass:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -12631,7 +12637,7 @@ By emma marshall
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

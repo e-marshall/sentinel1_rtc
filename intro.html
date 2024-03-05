@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Introduction" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://e-marshall.github.io/sentinel1_rtc/intro.html" />
@@ -37,39 +36,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -163,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Sentinel-1 RTC data workflows with xarray</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -378,17 +384,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>This tutorial will demonstrate various ways to access, process, and work with Sentinel-1 Synthetic Aperture Radar (SAR) Radiometrically Terrain Corrected (RTC) imagery using the python package and open source project <a class="reference external" href="https://docs.xarray.dev/en/stable/#">xarray</a>, and a number of other open-source software packages. These notebooks are designed to show examples of data access, manipulation, processing, and exploratory analytical workflows with complex datasets and demonstrate common functionality for working with multi-dimensional gridded data using xarray.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h1>
 <p>This tutorial contains a number of jupyter notebooks that focus on working with Sentinel-1 imagery that has already undergone Radiometric Terrain Correction (RTC). Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged.</p>
 <p>SAR data is collected in slant range, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces represented by individual pixels in the two coordinate systems do not always align, and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis. For a much more detailed explanation of this, check out the Alaska Satellite Facility (ASF) <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">product guide for RTC imagery</a>. Chapter 2 of the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/Chp2Content.pdf">SAR Handbook</a> also has very useful descriptions of these concepts.</p>
 <p>Multiple algorithms perform radiometric terrain correction, and it is important to understand the components of whichever dataset you use and their relative benefits and tradeoffs. This book will demonstrate working with two different (but similar) datasets of Sentinel-1 RTC imagery. Processing of SAR imagery can be very computationally intensive, so we focus on datasets that leverage cloud-computing resources, including both cloud-processed and cloud-hosted data, as well as data that is processed in the cloud and then downloaded locally.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="learning-objectives">
-<h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h1>
+<h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h1>
 <p>This tutorial demonstrates accessing and working with different Sentinel-1 SAR RTC datasets. The learning goals include <strong>domain-specific steps related to working with synthetic aperture radar data</strong> and specific <em>python and xarray techniques</em>.</p>
 <ul class="simple">
 <li><p><strong>Find and access data from Microsoft Planetary Computer</strong> <em>Use <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> to navigate STAC-oriented data and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to read data as xarray objects</em></p></li>
@@ -397,18 +403,18 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="tutorial-outline">
-<h1>Tutorial Outline<a class="headerlink" href="#tutorial-outline" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial Outline<a class="headerlink" href="#tutorial-outline" title="Link to this heading">#</a></h1>
 <section id="chapter-1-data-access-and-organization">
-<h2>Chapter 1: Data access and organization<a class="headerlink" href="#chapter-1-data-access-and-organization" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="ch1_root.html"><span class="doc std std-doc">Chapter 1</span></a> focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks that cover steps related to reading and organizing data as ready-to-use xarray data cubes with x,y and time dimensions and appropriate metadata. The first demonstrates accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The second shows preliminary inspection and exploration of the prepared ASF data. The third notebook contains an example of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. This notebook focuses on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosted repository and format it as easy-to-work-with xarray objects.</p>
+<h2>Chapter 1: Data access and organization<a class="headerlink" href="#chapter-1-data-access-and-organization" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="ch1_root.html"><span class="std std-doc">Chapter 1</span></a> focuses on accessing Radiometric Terrain Corrected Sentinel-1 imagery. It contains three notebooks that cover steps related to reading and organizing data as ready-to-use xarray data cubes with x,y and time dimensions and appropriate metadata. The first demonstrates accessing Sentinel-1 RTC imagery that has been processed by ASF and preparing it for analysis. The second shows preliminary inspection and exploration of the prepared ASF data. The third notebook contains an example of accessing and working with Sentinel-1 RTC imagery processed and hosted by Microsoft Planetary Computer. This notebook focuses on working with <a class="reference external" href="https://stacspec.org/en">STAC</a> data and using python packages such as <code class="docutils literal notranslate"><span class="pre">pystac_client</span></code> and <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> to access data from a cloud-hosted repository and format it as easy-to-work-with xarray objects.</p>
 </section>
 <section id="chapter-2-dataset-comparison-and-preliminary-analysis">
-<h2>Chapter 2: Dataset comparison and preliminary analysis<a class="headerlink" href="#chapter-2-dataset-comparison-and-preliminary-analysis" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="ch2_root.html"><span class="doc std std-doc">Chapter 2</span></a> makes use of the datasets prepared in chapter 1. The first notebook demonstrates a comparison of the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalayas.</p>
+<h2>Chapter 2: Dataset comparison and preliminary analysis<a class="headerlink" href="#chapter-2-dataset-comparison-and-preliminary-analysis" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="ch2_root.html"><span class="std std-doc">Chapter 2</span></a> makes use of the datasets prepared in chapter 1. The first notebook demonstrates a comparison of the RTC imagery processed by ASF and by Microsoft Planetary Computer. The second contains an example of preliminary time series analysis of backscatter variability over proglacial lakes in the Himalayas.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="contributing-and-getting-help">
-<h1>Contributing and getting help<a class="headerlink" href="#contributing-and-getting-help" title="Permalink to this heading">#</a></h1>
+<h1>Contributing and getting help<a class="headerlink" href="#contributing-and-getting-help" title="Link to this heading">#</a></h1>
 <p>If you find a bug or run into an error, please check out the <a class="reference external" href="https://github.com/e-marshall/sentinel1_rtc/issues">issues</a> on the github repository and consider raising one. If you are stuck or have questions working through the content, please check out the <a class="reference external" href="https://github.com/e-marshall/sentinel1_rtc/discussions">discussions</a> page.</p>
 <div class="toctree-wrapper compound">
 </div>
@@ -503,7 +509,7 @@ By emma marshall
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
