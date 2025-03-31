@@ -1,6 +1,9 @@
 # Sentinel-1 Radiometric Terrain Corrected (RTC) Imagery + Xarray Tutorial Jupyter Book 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://e-marshall.github.io/sentinel1_rtc)
-[![DOI](https://zenodo.org/badge/537588743.svg)](https://zenodo.org/doi/10.5281/zenodo.10681095)
+[![DOI](https://zenodo.org/badge/537588743.svg)](https://zenodo.org/doi/10.5281/zenodo.10681095)  
+
+❗❗This book is no longer maintained. Please see [cloud-open-source-geospatial-datacube-workflows](https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows) instead.❗❗
+
 
 Sentinel-1 is a synthetic aperture radar (SAR) sensor operated by ESA that collects imaging data in C-band (~ 5 cm). Because Sentinel-1 has a side-looking viewing geometry, the data must undergo transformations and corrections to remove the effects of distortions due to surface topography and various radiometric characteristics and enable analysis in traditional geocoded coordinates. This tutorial focuses on Sentinel-1 imagery that has already had the corrections (radiometric terrain correction, RTC) applied. SAR datasets can be very large and unwieldy, and the RTC step can be computationally intensive. We focus on two publicly available Sentinel-1 RTC datasets: 1) Microsoft Planetary Computer processed and hosted global Sentinel-1 RTC dataset for 2019-2021 stored as cloud-optimized GeoTIFFs (COGs), and 2) Alaska Satellite Facility (ASF) hosted raw Sentinel-1 Single Look Complex (SLC) and Ground Range Detected (GRD) images with on-demand cloud processing resources for RTC and other processing needs. Imagery processed by ASF is available as COGs, though in this tutorial, we demonstrate working with the dataset as locally downloaded GeoTIFFs.
 
